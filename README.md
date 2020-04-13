@@ -1,4 +1,4 @@
-![DXC](https://github.dxc.com/AppliedAICoEGarages/DXCAILibrary/blob/master/dxc%20image.png)
+![DXC](https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/dxc%20image.png)
 # DXC Industrialized AI Starter
 
 This __DXC Industrialized AI Starter__ is a python library which is extensively developed and can be used for all AI projects. This library is an open source , using this library  makes it easier to build and deploy a machine-learning microservice. 
