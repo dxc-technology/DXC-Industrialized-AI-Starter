@@ -12,7 +12,7 @@ setup(
     description="Python library which is extensively used for all AI projects",
     long_description=readme(),
     long_description_content_type="text/markdown",
-    url="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter.git",
+    url="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter",
     author="DXC",
     license="Apache License 2.0",
     classifiers=[
