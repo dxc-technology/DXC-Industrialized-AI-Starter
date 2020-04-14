@@ -13,10 +13,12 @@ setup(
     long_description=readme(),
     long_description_content_type="text/markdown",
     url="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter",
+    #download_url = "https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/releases/tag/v1.0.tar.gz",
     author="DXC",
     license="Apache License 2.0",
+    platforms='any',
     classifiers=[
-        "License :: OSI Approved :: Apache License 2.0 License",
+        "License :: OSI Approved :: Apache Software License",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
     ],
