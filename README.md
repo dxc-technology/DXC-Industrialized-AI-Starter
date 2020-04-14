@@ -36,7 +36,7 @@ DXC Industrialized AI Starter License <a href = "https://github.com/dxc-technolo
 In future, we plan to provide detail documantion with few examples about the functions used in this library and add much more useful functions for AI related functions.
 
 ## How to Get Help
-If you want to help improve DXC Industrialized AI Starter directly we have a fairly detailed <a href = "https://github.dxc.com/AppliedAICoEGarages/DXC-Industrialized-AI-Starter/blob/master/CONTRIBUTING.md" >CONTRIBUTING guide</a> in the repository that you can use to understand how code gets into the system, how the project runs, and how to make changes yourself.
+If you want to help improve DXC Industrialized AI Starter directly we have a fairly detailed <a href = "https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/CONTRIBUTING.md" >CONTRIBUTING guide</a> in the repository that you can use to understand how code gets into the system, how the project runs, and how to make changes yourself.
 
 ## Reporting Issues
 If you find any issues, feel free to report them in the issues section of this repository.
