@@ -16,10 +16,10 @@ Requires <a href="https://www.python.org/downloads/">python 3.7</a> and above to
 In order to install and use above library please use the below code snippet:
 
 ```
-1. pip install git+https://github.dxc.com/AppliedAICoEGarages/DXC-Industrialized-AI-Starter.git
+1. pip install git+https://github.com/dxc-technology/DXC-Industrialized-AI-Starter.git
 2. from dxc import ai
 ```
-To know usage and to get started click <a href = "https://github.dxc.com/AppliedAICoEGarages/DXC-Industrialized-AI-Starter/blob/master/Getting%20Started.md"> here </a>
+To know usage and to get started click <a href = "https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/Getting%20Started.md"> here </a>
 
 ## Project structure:
 
@@ -30,7 +30,7 @@ dxc
 
 ## License
 
-DXC Industrialized AI Starter License <a href = "https://github.dxc.com/AppliedAICoEGarages/DXC-Industrialized-AI-Starter/blob/master/LICENSE" > here </a>
+DXC Industrialized AI Starter License <a href = "https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/LICENSE" > here </a>
 
 ## Future Plans
 In future, we plan to provide detail documantion with few examples about the functions used in this library and add much more useful functions for AI related functions.
