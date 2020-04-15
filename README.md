@@ -32,6 +32,9 @@ dxc
 
 DXC Industrialized AI Starter License <a href = "https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/LICENSE" > here </a>
 
+## Notebook
+Click <a href = https://colab.research.google.com/drive/1EV_Q09B-bppGbEehBgCvsv_JIM87T_n1 > here </a> to access the DXC_AI_Starter reference Notebook.
+
 ## Future Plans
 In future, we plan to provide detail documantion with few examples about the functions used in this library and add much more useful functions for AI related functions.
 
