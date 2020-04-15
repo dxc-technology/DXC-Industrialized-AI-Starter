@@ -7,8 +7,8 @@ def readme():
 
 
 setup(
-    name="dxc",
-    version="1.0",
+    name="DXC-Industrialized-AI-Starter",
+    version="0.1",
     description="Python library which is extensively used for all AI projects",
     long_description=readme(),
     long_description_content_type="text/markdown",
@@ -19,7 +19,6 @@ setup(
     platforms='any',
     classifiers=[
         "License :: OSI Approved :: Apache Software License",
-        "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
     ],
     packages=["dxc"],
