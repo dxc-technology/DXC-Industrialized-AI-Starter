@@ -1,4 +1,4 @@
-<img src="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/dxc%20image.png" alt="DXC">
+![DXC](https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/dxc%20image.png)
 
 # DXC Industrialized AI Starter
 
