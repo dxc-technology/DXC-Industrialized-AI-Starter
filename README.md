@@ -42,4 +42,4 @@ In future, we plan to provide detail documantion with few examples about the fun
 If you want to help improve DXC Industrialized AI Starter directly we have a fairly detailed <a href = "https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/CONTRIBUTING.md" >CONTRIBUTING guide</a> in the repository that you can use to understand how code gets into the system, how the project runs, and how to make changes yourself.
 
 ## Reporting Issues
-If you find any issues, feel free to report them in the issues section of this repository.
+If you find any issues, feel free to report them [here](https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/issues) with clear description of your issue.
