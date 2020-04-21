@@ -2,9 +2,6 @@
 
 # DXC Industrialized AI Starter
 
-# DXC Industrialized AI Starter
---- 
-
 DXC Indusrialized AI Starter makes it easier to build and deploy Indusrialized AI. This Library does the following:
 
 - Access, clean, and explore raw data
@@ -13,7 +10,7 @@ DXC Indusrialized AI Starter makes it easier to build and deploy Indusrialized A
 - Publish microservices
 
 ## Installation
----
+
 In order to install and use above library please use the below code snippet:
 ```
 1. pip install DXC-Industrialized-AI-Starter
@@ -21,7 +18,6 @@ In order to install and use above library please use the below code snippet:
 ```
 
 ## Getting Started
------
 
 ### Access, Clean, and Explore Raw Data
 
@@ -125,8 +121,7 @@ api_url = ai.publish_microservice(microservice_design, trained_model)
 print("api url: " + api_url)
 ```
 
-## Docs 
----
+## Docs
 
 For detailed and complete documentation, please <a href="https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/access_clean_explore/" target="_blank">click here</a>
 
