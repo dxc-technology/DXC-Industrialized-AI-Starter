@@ -113,9 +113,17 @@ def apply_for_an_ai_badge(ai_guild_profile, ai_badge):
 
 def flatten_json_into_dataframe(json_data):
     #flatten the nested JSON data into a data frame
-    json_data_flattened = [flatten(d) for d in json_data]
-    df = pd.DataFrame(json_data_flattened)
-    return(df)
+    try:
+        json_data_flattened = [flatten(d) for d in json_data]
+        df = pd.DataFrame(json_data_flattened)
+        return(df)
+    except:
+        try:
+            df = pd.DataFrame(json_data).T
+            return(df)
+        except:
+            raise Exception("Uploaded JSON file is not in proper structure. Please choose different file.")
+            
 
 class DataFrameImputer(TransformerMixin):
     def __init__(self):
@@ -159,6 +167,15 @@ def get_file_path_excel():
     root.destroy()
     return file_path
 
+def get_file_path_json():
+    root = Tk()
+    root.update()
+    def open_file():
+        file = filedialog.askopenfilename(filetypes=[("Json files", "*.json")]) 
+        return file
+    file_path = open_file()
+    root.destroy()
+    return file_path
 
 try:
   import google.colab
@@ -186,6 +203,14 @@ if IN_COLAB:
         excel_file_name = list(uploaded.keys())[0]
         df = pd.read_excel(io.BytesIO(uploaded[excel_file_name]))
         return(df)
+    #For Json file--Google Colab
+    def read_data_frame_from_local_json_file():
+        from google.colab import files
+        uploaded = files.upload()
+        file_name = list(uploaded.keys())[0]
+        json_data = json.loads(uploaded[file_name])
+        df = flatten_json_into_dataframe(json_data)
+        return df
     
 else:
     #For CSV file
@@ -202,6 +227,11 @@ else:
         df = pd.read_excel(excel_path)
         return(df)
     
+    def read_data_frame_from_local_json():
+        json_path = get_file_path_json()
+        json_data = json.load(open(json_path))
+        df = flatten_json_into_dataframe(json_data)
+        return df
     
 #Read CSV file from remote.
 def read_data_frame_from_remote_csv(csv_url, col_names = [], delim_whitespace=False, header = 'infer'):
@@ -210,16 +240,12 @@ def read_data_frame_from_remote_csv(csv_url, col_names = [], delim_whitespace=Fa
         df.columns = col_names
     return(df)
 
-
-
 #Read JSON file from remote
 def read_data_frame_from_remote_json(json_url):
     with urllib.request.urlopen(json_url) as url:
         json_data = json.loads(url.read().decode())
     df = flatten_json_into_dataframe(json_data)
     return(df)
-
-
 
 #CLEANING FILE
 
@@ -336,7 +362,7 @@ def convert_dates_from_arrow_to_string(df, arrow_date_fields):
         df[field] = df[field].apply(format)
     return(df)
 
-def write_raw_data(data_layer, raw_data, arrow_date_fields=[]):
+def write_raw_data(data_layer, raw_data, arrow_date_fields = []):
     ##convert your raw data into writable data by converting Arrow dates to strings
     writable_raw_data = convert_dates_from_arrow_to_string(raw_data, arrow_date_fields)
     
