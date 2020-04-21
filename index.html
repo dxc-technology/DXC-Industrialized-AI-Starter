@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="None">
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <title>Welcome &mdash; DXC Industrialized AI Starter</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href="." class="site-name"> DXC Industrialized AI Starter</a>
+                </div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="./search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1 current"><a class="nav-item current" href=".">DXC Industrialized AI Starter</a>
+<ul class="subnav">
+<li class="toctree-l2"><a class="nav-item toc" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="nav-item toc" href="#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="nav-item toc" href="#docs">Docs</a></li>
+</ul></li>
+                    <li class="toctree-l1"><a class="nav-item" href="access_clean_explore/">Access, Clean and Explore</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="data_pipeline/">Build Data Pipelines</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="experiment/">Run AI Experiments</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="publish_microservice/">Publish Microservice</a></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="next"><a href="access_clean_explore/">Next &raquo;</a></div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href="." class="site-name"> DXC Industrialized AI Starter</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    
+</ul>
+</nav>
+                <div id="content"><h1 id="dxc-industrialized-ai-starter">DXC Industrialized AI Starter</h1>
+<hr />
+<p>DXC Indusrialized AI Starter makes it easier to build and deploy Indusrialized AI. This Library does the following:</p>
+<ul>
+<li>Access, clean, and explore raw data</li>
+<li>Build data pipelines</li>
+<li>Run AI experiments</li>
+<li>Publish microservices</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<hr />
+<p>In order to install and use above library please use the below code snippet:</p>
+<pre><code>1. pip install DXC-Industrialized-AI-Starter
+2. from dxc import ai
+</code></pre>
+
+<h2 id="getting-started">Getting Started</h2>
+<hr />
+<h3 id="access-clean-and-explore-raw-data">Access, Clean, and Explore Raw Data</h3>
+<p>Here's a quick example of using the library to access, clean, and explore raw data.</p>
+<pre><code>#Access raw data
+df = ai.read_data_frame_from_remote_json(json_url)
+df = ai.read_data_frame_from_remote_csv(csv_url)
+df = ai.read_data_frame_from_local_csv()
+df = ai.read_data_frame_from_local_excel_file()
+
+#Clean data
+raw_data = ai.clean_dataframe(df)
+
+#Explore raw data
+ai.visualize_missing_data(raw_data)
+ai.explore_features(raw_data)
+ai.plot_distributions(raw_data)
+</code></pre>
+
+<h3 id="build-data-pipelines">Build Data Pipelines</h3>
+<p>Below example showcases how to build a data pipeline</p>
+<pre><code># Insert data into MongoDB
+data_layer = {
+    &quot;connection_string&quot;: &quot;&lt;your connection_string&gt;&quot;,
+    &quot;collection_name&quot;: &quot;&lt;your collection_name&gt;&quot;,
+    &quot;database_name&quot;: &quot;&lt;your database_name&gt;&quot;
+}
+wrt_raw_data = ai.write_raw_data(data_layer, raw_data, date_fields = [])
+
+#Example for creating pipeline
+pipeline = [
+        {
+            '$group':{
+                '_id': {
+                    &quot;funding_source&quot;:&quot;$funding_source&quot;,
+                    &quot;request_type&quot;:&quot;$request_type&quot;,
+                    &quot;department_name&quot;:&quot;$department_name&quot;,
+                    &quot;replacement_body_style&quot;:&quot;$replacement_body_style&quot;,
+                    &quot;equipment_class&quot;:&quot;$equipment_class&quot;,
+                    &quot;replacement_make&quot;:&quot;$replacement_make&quot;,
+                    &quot;replacement_model&quot;:&quot;$replacement_model&quot;,
+                    &quot;procurement_plan&quot;:&quot;$procurement_plan&quot;
+                    },
+                &quot;avg_est_unit_cost&quot;:{&quot;$avg&quot;:&quot;$est_unit_cost&quot;},
+                &quot;avg_est_unit_cost_error&quot;:{&quot;$avg&quot;:{ &quot;$subtract&quot;: [ &quot;$est_unit_cost&quot;, &quot;$actual_unit_cost&quot; ] }}
+            }
+        }
+]
+
+df = ai.access_data_from_pipeline(wrt_raw_data, pipeline)
+</code></pre>
+
+<h3 id="run-ai-experiments">Run AI Experiments</h3>
+<p>Sample code snippet to run an AI Experiment</p>
+<pre><code>experiment_design = {
+    #model options include ['regression()', 'classification()']
+    &quot;model&quot;: ai.regression(),
+    &quot;labels&quot;: df.avg_est_unit_cost_error,
+    &quot;data&quot;: df,
+    #Tell the model which column is 'output'
+    #Also note columns that aren't purely numerical
+    #Examples include ['nlp', 'date', 'categorical', 'ignore']
+    &quot;meta_data&quot;: {
+      &quot;avg_est_unit_cost_error&quot;: &quot;output&quot;,
+      &quot;_id.funding_source&quot;: &quot;categorical&quot;,
+      &quot;_id.department_name&quot;: &quot;categorical&quot;,
+      &quot;_id.replacement_body_style&quot;: &quot;categorical&quot;,
+      &quot;_id.replacement_make&quot;: &quot;categorical&quot;,
+      &quot;_id.replacement_model&quot;: &quot;categorical&quot;,
+      &quot;_id.procurement_plan&quot;: &quot;categorical&quot;
+  }
+}
+
+trained_model = ai.run_experiment(experiment_design)
+</code></pre>
+
+<h3 id="publish-microservice">Publish Microservice</h3>
+<p>Below is the example for publishing a Microservice</p>
+<pre><code>trained_model is the output of run_experiment() function
+microservice_design = {
+    &quot;microservice_name&quot;: &quot;&lt;Name of your microservice&gt;&quot;,
+    &quot;microservice_description&quot;: &quot;&lt;Brief description about your microservice&gt;&quot;,
+    &quot;execution_environment_username&quot;: &quot;&lt;Algorithmia username&gt;&quot;,
+    &quot;api_key&quot;: &quot;&lt;your api_key&gt;&quot;,
+    &quot;api_namespace&quot;: &quot;&lt;your api namespace&gt;&quot;,   
+    &quot;model_path&quot;:&quot;&lt;your model_path&gt;&quot;
+}
+
+# publish the micro service and display the url of the api
+api_url = ai.publish_microservice(microservice_design, trained_model)
+print(&quot;api url: &quot; + api_url)
+</code></pre>
+
+<h2 id="docs">Docs</h2>
+<hr />
+<p>For detailed and complete documentation, please <a href="https://soujanya8977.github.io/AI/access_clean_explore/" target="_blank">click here</a></p>
+<h3 id="example-of-colab-notebook">Example of colab notebook</h3>
+<p><a href="https://colab.research.google.com/drive/1EV_Q09B-bppGbEehBgCvsv_JIM87T_n1#scrollTo=T5ASIaeU8Ymx" target="_blank">Here</a> is an quick example of the google colab notebook </p>
+<h3 id="contributing-guide">Contributing Guide</h3>
+<p>To know more about the contribution and guidelines please <a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/CONTRIBUTING.md" target="_blank">click here</a></p>
+<h3 id="reporting-issues">Reporting Issues</h3>
+<p>If you find any issues, feel free to report them <a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/issues" target="_blank">here</a> with clear description of your issue.</p></div>
+                <footer>
+    <div class="footer-buttons">
+        <div class="next"><a href="access_clean_explore/" title="Access,Clean and Explore"><span>Next</span></a></div>
+    </div>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme.js"></script>
+    <script src="search/main.js"></script>
+</body>
+
+</html>

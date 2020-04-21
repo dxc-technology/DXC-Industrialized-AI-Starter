@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <title>Data Pipeline &mdash; DXC Industrialized AI Starter</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href=".." class="site-name"> DXC Industrialized AI Starter</a>
+                </div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="..">DXC Industrialized AI Starter</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../access_clean_explore/">Access, Clean and Explore</a></li>
+                    <li class="toctree-l1 current"><a class="nav-item current" href="./">Build Data Pipelines</a>
+<ul class="subnav">
+<li class="toctree-l2"><a class="nav-item toc" href="#insert-data-into-mongodb">Insert data into MongoDB</a></li>
+<li class="toctree-l2"><a class="nav-item toc" href="#build-pipeline">Build Pipeline</a></li>
+</ul></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../experiment/">Run AI Experiments</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../publish_microservice/">Publish Microservice</a></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="previous"><a href="../access_clean_explore/">&laquo; Previous</a></div>
+    <div class="next"><a href="../experiment/">Next &raquo;</a></div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href=".." class="site-name"> DXC Industrialized AI Starter</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    
+</ul>
+</nav>
+                <div id="content"><h1 id="build-data-pipelines">Build Data Pipelines</h1>
+<hr />
+<h2 id="insert-data-into-mongodb">Insert data into MongoDB</h2>
+<p>You will be using <a href="https://account.mongodb.com/account/login" target="_blank"> MongoDb </a> as your data store.</p>
+<p>This code defines the meta-data needed to connect to Mongo DB Atlas and create a new data store cluster. This is where you define basic information about the location of the cluster and the collection and database to use. Update this code with information appropriate to your project. In order to provide the information required in data_layer, you must:</p>
+<ul>
+<li>Create a <a href="https://account.mongodb.com/account/login" target="_blank"> MongoDb </a> Atlas account</li>
+<li>Create a cluster</li>
+<li>Create a user</li>
+<li>Generate a connection string</li>
+</ul>
+<p><strong>Note:</strong> When you configure the IP whitelist for your cluster, choose to allow a connection from anywhere. When creating the database connection string, choose the Python driver version 3.4 or later.</p>
+<p>Example:</p>
+<pre><code>data_layer = {
+    &quot;connection_string&quot;: &quot;&lt;your connection_string&gt;&quot;,
+    &quot;collection_name&quot;: &quot;&lt;your collection_name&gt;&quot;,
+    &quot;database_name&quot;: &quot;&lt;your database_name&gt;&quot;
+}
+
+wrt_raw_data = ai.write_raw_data(data_layer, raw_data, date_fields = [])
+</code></pre>
+
+<ul>
+<li>
+<p><strong>write_raw_data(data_layer, raw_data, date_fields = [ ]):</strong> </p>
+<ul>
+<li>This function handles Mongo DB Atlas automatically.</li>
+<li>Use write_raw_data function from ai library to convert Arrow dates to Strings data types</li>
+<li>It also transfers the raw data into the database and collection.</li>
+</ul>
+</li>
+</ul>
+<h2 id="build-pipeline">Build Pipeline</h2>
+<hr />
+<p>Example</p>
+<pre><code>pipeline = [
+        {
+            '$group':{
+                '_id': {
+                    &quot;funding_source&quot;:&quot;$funding_source&quot;,
+                    &quot;request_type&quot;:&quot;$request_type&quot;,
+                    &quot;department_name&quot;:&quot;$department_name&quot;,
+                    &quot;replacement_body_style&quot;:&quot;$replacement_body_style&quot;,
+                    &quot;equipment_class&quot;:&quot;$equipment_class&quot;,
+                    &quot;replacement_make&quot;:&quot;$replacement_make&quot;,
+                    &quot;replacement_model&quot;:&quot;$replacement_model&quot;,
+                    &quot;procurement_plan&quot;:&quot;$procurement_plan&quot;
+                    },
+                &quot;avg_est_unit_cost&quot;:{&quot;$avg&quot;:&quot;$est_unit_cost&quot;},
+                &quot;avg_est_unit_cost_error&quot;:{&quot;$avg&quot;:{ &quot;$subtract&quot;: [ &quot;$est_unit_cost&quot;, &quot;$actual_unit_cost&quot; ] }}
+            }
+        }
+]
+
+df = ai.access_data_from_pipeline(wrt_raw_data, pipeline)
+</code></pre>
+
+<ul>
+<li><strong>access_data_from_pipeline(write_raw_data, pipeline):</strong> This function instructs the data store on how to refine the output of raw data into something that can be used to train a machine-learning model. The refined data will be stored in the df Pandas dataframe. Make sure the output is what you want before continuing.</li>
+</ul></div>
+                <footer>
+    <div class="footer-buttons">
+        <div class="previous"><a href="../access_clean_explore/" title="Access,Clean and Explore"><span>Previous</span></a></div>
+        <div class="next"><a href="../experiment/" title="Experiment"><span>Next</span></a></div>
+    </div>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+    <script src="../search/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <title>Access,Clean and Explore &mdash; DXC Industrialized AI Starter</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href=".." class="site-name"> DXC Industrialized AI Starter</a>
+                </div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="..">DXC Industrialized AI Starter</a></li>
+                    <li class="toctree-l1 current"><a class="nav-item current" href="./">Access, Clean and Explore</a>
+<ul class="subnav">
+<li class="toctree-l2"><a class="nav-item toc" href="#access-raw-data">Access raw data</a></li>
+<li class="toctree-l2"><a class="nav-item toc" href="#clean-raw-data">Clean raw data</a></li>
+<li class="toctree-l2"><a class="nav-item toc" href="#explore-raw-data">Explore raw data</a></li>
+</ul></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../data_pipeline/">Build Data Pipelines</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../experiment/">Run AI Experiments</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../publish_microservice/">Publish Microservice</a></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="previous"><a href="..">&laquo; Previous</a></div>
+    <div class="next"><a href="../data_pipeline/">Next &raquo;</a></div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href=".." class="site-name"> DXC Industrialized AI Starter</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    
+</ul>
+</nav>
+                <div id="content"><h1 id="access-clean-and-explore">Access, Clean and Explore</h1>
+<hr />
+<h2 id="access-raw-data">Access raw data</h2>
+<p>Below code snippets help to bring in raw data from either a remote source or from your local machine into a dataframe.</p>
+<pre><code>    df = ai.read_data_frame_from_remote_json(json_url)
+    df = ai.read_data_frame_from_remote_csv(csv_url)
+</code></pre>
+
+<p>Get raw data from your <strong>local machine</strong> by opening up a file system browser, identifying a file, and importing the selected file.</p>
+<pre><code>    df = ai.read_data_frame_from_local_csv()
+    df = ai.read_data_frame_from_local_excel_file()
+</code></pre>
+
+<ul>
+<li>
+<p><strong>read_data_frame_from_remote_json(json_url):</strong> It reads JSON files from a URL and also flattened (in the case of nested data) the json data and cast into a pandas data frame.</p>
+</li>
+<li>
+<p><strong>read_data_frame_from_remote_csv(csv_url, col_names = [], delim_whitespace=False, header = 'infer'):</strong> It allows you to read character-delimited (commas, tabs, spaces) data from a URL. Expect csv_url parameter remaining all are optional.</p>
+</li>
+<li>
+<p><strong>read_data_frame_from_local_csv(col_names = [], delim_whitespace=False, header = 'infer'):</strong> This method allows you to import local character-delimited (commas, tabs, spaces) files. All parameters are optional. By default, the function will infer the header from the data, but an explicit header can be specified.</p>
+</li>
+<li>
+<p><strong>read_data_frame_from_local_excel_file():</strong> This function allows you to import XLSX files. When the file explorer is launched, you must select an XLSX file or the function will result in an error.</p>
+</li>
+</ul>
+<h2 id="clean-raw-data">Clean raw data</h2>
+<hr />
+<p>Below code snippet helps to clean raw data.</p>
+<pre><code>    raw_data = ai.clean_dataframe(df)
+</code></pre>
+
+<ul>
+<li><strong>clean_dataframe(df, impute = False, text_fields = [], date_fields = [], numeric_fields = [], categorical_fields = []):</strong><ul>
+<li>This method imputes missing data, cleans the column headings, removes empty rows and columns, anonymizes text, and casts fields to their proper data type. </li>
+<li>Except for the data, every input field for clean_dataframe is optional. By default the method will not impute missing data. If instructed, clean_dataframe will replace missing numeric fields with the mean value and replace missing categorical fields with the mode.</li>
+</ul>
+</li>
+</ul>
+<h2 id="explore-raw-data">Explore raw data</h2>
+<hr />
+<p>Below code snippet helps to explore and visualize raw data.</p>
+<pre><code>    ai.visualize_missing_data(raw_data)
+    ai.explore_features(raw_data)
+    ai.plot_distributions(raw_data)
+</code></pre>
+
+<ul>
+<li>
+<p><strong>explore_features(df):</strong> </p>
+<ul>
+<li>It visualizes the relationships between all features in a given data frame. Areas of heat show closely-related features.</li>
+<li>This visualization is useful when trying to determine which features can be predicted and which features are needed to make the prediction.</li>
+<li>It is useful to explore the correlations between features in the raw data. Use this visualization to form a hypothesis about how the raw data can be used. It may be necessary to enrich raw data with other features to increase the number and strength of correlations.</li>
+</ul>
+</li>
+<li>
+<p><strong>visualize_missing_data(df):</strong> </p>
+<ul>
+<li>It creates a visual display of missing data in a data frame. Each column of the data frame is shown as a column in the graph. Missing data is represented as horizontal lines in each column.</li>
+<li>This visualization is useful when determining whether or not to impute missing values or for determining whether or not the data is complete enough for analysis. </li>
+<li>It is useful to visualize missing fields in your raw data. Determine if imputing is necessary.</li>
+</ul>
+</li>
+<li>
+<p><strong>plot_distributions(df):</strong> </p>
+<ul>
+<li>It creates a distribution graph for each column in a given data frame. </li>
+<li>Graphs for data types that cannot be plotted on a distribution graph without refinement (types like dates), will show as blank in the output. </li>
+<li>This visualization is useful for determining skew or bias in the source data. Use plot_distributions to show the distributions for each feature in raw_data. </li>
+<li>Depending on raw data, this visualization may take several minutes to complete. Use the visualization to determine if there is a data skew that may prevent proper analysis or useful insight.</li>
+</ul>
+</li>
+</ul></div>
+                <footer>
+    <div class="footer-buttons">
+        <div class="previous"><a href=".." title="Welcome"><span>Previous</span></a></div>
+        <div class="next"><a href="../data_pipeline/" title="Data Pipeline"><span>Next</span></a></div>
+    </div>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+    <script src="../search/main.js"></script>
+</body>
+
+</html>

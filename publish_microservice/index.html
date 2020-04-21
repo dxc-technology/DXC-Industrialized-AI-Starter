@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <title>Publish Microservice &mdash; DXC Industrialized AI Starter</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href=".." class="site-name"> DXC Industrialized AI Starter</a>
+                </div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="..">DXC Industrialized AI Starter</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../access_clean_explore/">Access, Clean and Explore</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../data_pipeline/">Build Data Pipelines</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../experiment/">Run AI Experiments</a></li>
+                    <li class="toctree-l1 current"><a class="nav-item current" href="./">Publish Microservice</a>
+<ul class="subnav">
+</ul></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="previous"><a href="../experiment/">&laquo; Previous</a></div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href=".." class="site-name"> DXC Industrialized AI Starter</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    
+</ul>
+</nav>
+                <div id="content"><h1 id="publish-microservice">Publish Microservice</h1>
+<hr />
+<p>This code assumes that the microservice execution environment is <a href = "https://algorithmia.com/signin#credentials" target="_blank">Algorithmia</a>. The execution environment is where the micorservice runs. In order to provide the information required to design the microservice, you must:</p>
+<ul>
+<li>create an <a href = "https://algorithmia.com/signin#credentials" target="_blank"> Algorithmia</a> account </li>
+<li>create an API key with BOTH "Read &amp; Write Data" and "Manage Algorithms" permissions enabled</li>
+<li>create an algorithm user name</li>
+</ul>
+<pre><code>trained_model is the output of run_experiment() function
+microservice_design = {
+    &quot;microservice_name&quot;: &quot;&lt;Name of your microservice&gt;&quot;,
+    &quot;microservice_description&quot;: &quot;&lt;Brief description about your microservice&gt;&quot;,
+    &quot;execution_environment_username&quot;: &quot;&lt;Algorithmia username&gt;&quot;,
+    &quot;api_key&quot;: &quot;&lt;your api_key&gt;&quot;,
+    &quot;api_namespace&quot;: &quot;&lt;your api namespace&gt;&quot;,   
+    &quot;model_path&quot;:&quot;&lt;your model_path&gt;&quot;
+}
+
+# publish the micro service and display the url of the api
+api_url = ai.publish_microservice(microservice_design, trained_model)
+print(&quot;api url: &quot; + api_url)
+</code></pre>
+
+<ul>
+<li>
+<p><strong>publish_microservice(microservice_design, trained_model):</strong></p>
+<ul>
+<li>
+<p>The code in this section prepares an execution environment for the microservice, builds a microservice using the machine-learning model, deploys the microservice into the execution environment, and publishes an API enpoint for the microservice.</p>
+</li>
+<li>
+<p>The work of creating the microservice and deploying it will be done automatically. The code will also automatically handle the source code reposity management.</p>
+</li>
+<li>
+<p>This code defines the parameters needed to build and delpoy a microservice based on the trained model.</p>
+</li>
+<li>Update microservice_design with parameters appropriate for your project. The parameters must contain valid keys, namespaces, and model paths from Algorithmia.</li>
+</ul>
+</li>
+</ul></div>
+                <footer>
+    <div class="footer-buttons">
+        <div class="previous"><a href="../experiment/" title="Experiment"><span>Previous</span></a></div>
+    </div>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+    <script src="../search/main.js"></script>
+</body>
+
+</html>
