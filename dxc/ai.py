@@ -336,7 +336,7 @@ def convert_dates_from_arrow_to_string(df, arrow_date_fields):
         df[field] = df[field].apply(format)
     return(df)
 
-def write_raw_data(data_layer, raw_data, arrow_date_fields):
+def write_raw_data(data_layer, raw_data, arrow_date_fields=[]):
     ##convert your raw data into writable data by converting Arrow dates to strings
     writable_raw_data = convert_dates_from_arrow_to_string(raw_data, arrow_date_fields)
     
