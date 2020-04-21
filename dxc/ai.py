@@ -204,7 +204,7 @@ if IN_COLAB:
         df = pd.read_excel(io.BytesIO(uploaded[excel_file_name]))
         return(df)
     #For Json file--Google Colab
-    def read_data_frame_from_local_json_file():
+    def read_data_frame_from_local_json():
         from google.colab import files
         uploaded = files.upload()
         file_name = list(uploaded.keys())[0]
