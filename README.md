@@ -27,6 +27,7 @@ Here's a quick example of using the library to access, clean, and explore raw da
 #Access raw data
 df = ai.read_data_frame_from_remote_json(json_url)
 df = ai.read_data_frame_from_remote_csv(csv_url)
+df = ai.read_data_frame_from_local_json()
 df = ai.read_data_frame_from_local_csv()
 df = ai.read_data_frame_from_local_excel_file()
 
