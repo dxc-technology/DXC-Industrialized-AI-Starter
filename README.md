@@ -130,7 +130,7 @@ For detailed and complete documentation, please <a href="https://dxc-technology.
 ### Example of colab notebook
 
 
-<a href="https://colab.research.google.com/drive/1EV_Q09B-bppGbEehBgCvsv_JIM87T_n1#scrollTo=T5ASIaeU8Ymx" target="_blank">Here</a> is an quick example of the google colab notebook 
+<a href="https://colab.research.google.com/drive/1EV_Q09B-bppGbEehBgCvsv_JIM87T_n1#scrollTo=T5ASIaeU8Ymx" target="_blank">Here</a> is an  detailed example of  the google colab notebook 
 
 ### Contributing Guide
 
