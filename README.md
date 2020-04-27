@@ -42,9 +42,7 @@ ai.plot_distributions(raw_data)
 
 ### Build Data Pipelines
 
-Below example showcases how to build a data pipeline. In order to build data pipeline and to use the below snippet ,you need to first have an MongoDB account. you can signup for free and create an account for yourself.
-
-  <a href= "https://account.mongodb.com/account/register" target="_blank">click here</a> to register and login MongoDB account.
+Below example showcases how to build a data pipeline. In order to get started,you need to first have an  <a href= "https://account.mongodb.com/account/register" target="_blank">MongoDB</a> account which you can signup for free and create a database connection string and specify those details in the data_layer below.
 
 
 ```
