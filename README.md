@@ -42,11 +42,12 @@ ai.plot_distributions(raw_data)
 
 ### Build Data Pipelines
 
-Below example showcases how to build a data pipeline. In order to get started,you need to first have an  <a href= "https://account.mongodb.com/account/register" target="_blank">MongoDB</a> account which you can signup for free and create a database connection string and specify those details in the data_layer below.
+Below example showcases how to build a data pipeline. In order to get started,you need to first have an  <a href= "https://account.mongodb.com/account/register" target="_blank">MongoDB</a> account which you can signup for free and create a database "connection_string" and specify those details in the data_layer below.
 
+
+Insert data into MongoDB:
 
 ```
-# Insert data into MongoDB
 data_layer = {
     "connection_string": "<your connection_string>",
     "collection_name": "<your collection_name>",
@@ -54,7 +55,18 @@ data_layer = {
 }
 wrt_raw_data = ai.write_raw_data(data_layer, raw_data, date_fields = [])
 
-#Example for creating pipeline
+```
+Data pipeline takes raw data and turns it into refined data that can be used to train and score a machine-learning model.
+
+This code instructs the data store on how to refine the output of raw_data into something that can be used to train a machine-learning model. Update data_pipeline() with code with an aggregation pipeline that fits your project. The refined data will be stored in the df Pandas dataframe. Make sure the output is what you want before continuing.
+
+For more detailed explaination <a href= "https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/data_pipeline/" target="_blank">click here</a>
+
+ 
+
+Below is the example for creating pipeline:
+
+```
 pipeline = [
         {
             '$group':{
