@@ -108,7 +108,7 @@ trained_model = ai.run_experiment(experiment_design)
 
 ### Publish Microservice
 
-Below is the example for publishing a Microservice
+Below is the example for publishing a Microservice. In order to  design the microservice, you must [create an Algorithmia account](https://algorithmia.com/signup). This code defines the parameters needed to build and delpoy a microservice based on the trained model. Update microservice_design with parameters appropriate for your project.
 ```
 trained_model is the output of run_experiment() function
 microservice_design = {
