@@ -81,7 +81,7 @@ For more detailed explaination <a href= "https://dxc-technology.github.io/DXC-In
 
 ### Run AI Experiments
 
-Sample code snippet to run an AI Experiment
+Sample code snippet to run an AI Experiment. This code executes an experiment by running run_experiment() on a model. Update experiment_design with parameters that fit your project. The data parameter should remain the refined training data. The model parameter must be a model subclass. The labels parameter indicates the column of the data dataframe to be predicted. For the prediction model, the meta-data must describe the column to be predicted and the types for non-numeric columns.
 
 ```
 experiment_design = {
@@ -105,6 +105,7 @@ experiment_design = {
 
 trained_model = ai.run_experiment(experiment_design)
 ```
+For more info click [here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/experiment/)
 
 ### Publish Microservice
 
