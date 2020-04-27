@@ -108,7 +108,7 @@ trained_model = ai.run_experiment(experiment_design)
 
 ### Publish Microservice
 
-Below is the example for publishing a Microservice. In order to  design the microservice, you must [create an Algorithmia account](https://algorithmia.com/signup). This code defines the parameters needed to build and delpoy a microservice based on the trained model. Update microservice_design with parameters appropriate for your project.
+Below is the example for publishing a Microservice. In order to  design the microservice, you must create an [Algorithmia account](https://algorithmia.com/signup). This code defines the parameters needed to build and delpoy a microservice based on the trained model. Update microservice_design with parameters appropriate for your project.
 ```
 trained_model is the output of run_experiment() function
 microservice_design = {
@@ -124,7 +124,7 @@ microservice_design = {
 api_url = ai.publish_microservice(microservice_design, trained_model)
 print("api url: " + api_url)
 ```
-
+For more info [click here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/publish_microservice/)
 ## Docs
 
 For detailed and complete documentation, please <a href="https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/access_clean_explore/" target="_blank">click here</a>
