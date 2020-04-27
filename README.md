@@ -39,7 +39,7 @@ ai.visualize_missing_data(raw_data)
 ai.explore_features(raw_data)
 ai.plot_distributions(raw_data)
 ```
-
+For more info [click here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/access_clean_explore/)
 ### Build Data Pipelines
 
 Below example showcases how to build a data pipeline. In order to get started,you need to first have an  <a href= "https://account.mongodb.com/account/register" target="_blank">MongoDB</a> account which you can signup for free and create a database "connection_string" and specify those details in the data_layer below.
