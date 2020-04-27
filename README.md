@@ -127,7 +127,7 @@ print("api url: " + api_url)
 For more info [click here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/publish_microservice/)
 ## Docs
 
-For detailed and complete documentation, please <a href="https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/access_clean_explore/" target="_blank">click here</a>
+For detailed and complete documentation, please <a href="https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/" target="_blank">click here</a>
 
 
 ### Example of colab notebook
