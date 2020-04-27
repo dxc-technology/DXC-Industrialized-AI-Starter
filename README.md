@@ -129,16 +129,13 @@ For more info [click here](https://dxc-technology.github.io/DXC-Industrialized-A
 
 For detailed and complete documentation, please <a href="https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/" target="_blank">click here</a>
 
-
 ### Example of colab notebook
 
-
-<a href="https://colab.research.google.com/drive/1EV_Q09B-bppGbEehBgCvsv_JIM87T_n1" target="_blank">Here</a> is an  detailed and in-depth example of the google colab notebook 
+<a href="https://colab.research.google.com/drive/1EV_Q09B-bppGbEehBgCvsv_JIM87T_n1" target="_blank">Here</a> is an detailed and in-depth example of DXC Indusrialized AI Starter library usage.
 
 ### Contributing Guide
 
 To know more about the contribution and guidelines please <a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/CONTRIBUTING.md" target="_blank">click here</a>
-
 
 ### Reporting Issues
 If you find any issues, feel free to report them <a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/issues" target="_blank">here</a> with clear description of your issue.
