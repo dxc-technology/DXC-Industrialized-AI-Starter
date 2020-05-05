@@ -37,6 +37,8 @@ import math #data exploration, distribution plotting
 from tkinter import Tk
 from tkinter import filedialog
 from enum import Enum
+from contextlib import redirect_stdout
+import warnings
 
 #create an AI guild profile
 
@@ -397,9 +399,9 @@ class model:
         return key_list[val_list.index(value)] 
 
 #define the model lifecycle
-def run_experiment(design):
+def run_experiment(design, verbose = False):
     design["model"].build(design["meta_data"])
-    design["model"].train_and_score(design["data"], design["labels"])
+    design["model"].train_and_score(design["data"], design["labels"], verbose)
     design["model"].interpret()
     return design["model"].python_object()
 
@@ -414,15 +416,25 @@ class prediction(model):
         self.__model = Predictor(type_of_estimator=self.estimator, column_descriptions=meta_data)
         self.__label = self.meta_data_key(meta_data, "output")
 
-    def train_and_score(self, data, labels):
+    def train_and_score(self, data, labels, verbose):
     # create training and test data
         training_data, test_data = train_test_split(data, test_size=0.2)
-
+    
     # train the model
-        self.__model.train(training_data, verbose=False, ml_for_analytics=False)
+        if verbose == False:
+            warnings.filterwarnings('ignore')
+            text_trap = io.StringIO()
+            with redirect_stdout(text_trap):
+                self.__model.train(training_data, verbose=False, ml_for_analytics= False)
+        else:
+            warnings.filterwarnings('ignore')
+            self.__model.train(training_data, verbose=True, ml_for_analytics=False)          
   
     # score the model
-        self.__model.score(test_data, test_data[self.__label], verbose=0)
+        if verbose == False:
+            self.__model.score(test_data, test_data[self.__label], verbose=0)
+        else:
+            self.__model.score(test_data, test_data[self.__label], verbose=1)
   
     def interpret(self):
         pass
@@ -442,27 +454,17 @@ class classification(prediction):
     def estimator(self):
         return("classifier")
 
-
-def run_experiment(experiment_design):
-    # define the general class of models
-
-    experiment_design["model"].build(experiment_design["meta_data"])
-    experiment_design["model"].train_and_score(experiment_design["data"], experiment_design["labels"])
-    experiment_design["model"].interpret()
-      
-    return experiment_design["model"].python_object()
-
    
-def publish_microservice(microservice_design, trained_model):
+def publish_microservice(microservice_design, trained_model, verbose = False):
     # create a connection to algorithmia
     client=Algorithmia.client(microservice_design["api_key"])
     api = client.algo(microservice_design["execution_environment_username"] + "/" + microservice_design["microservice_name"])
     
-    # create the api if it doesn't exist
+    # create the algorithm if it doesn't exist
     try:
         api.create(
             details = {
-                "label": api_label(),
+                "label": microservice_design["microservice_name"],
             },
             settings = {
                 "language": "python3-1",
@@ -474,7 +476,7 @@ def publish_microservice(microservice_design, trained_model):
             }
     )
     except Exception as error:
-        print(error)
+            print(error)
         
     # create data collection if it doesn't exist
     if not client.dir(microservice_design["model_path"]).exists():
@@ -515,10 +517,16 @@ def publish_microservice(microservice_design, trained_model):
         )
 
     class Progress(remote.RemoteProgress):
-        def line_dropped(self, line):
-            print(line)
-        def update(self, *args):
-            print(self._cur_line)
+        if verbose == False:
+            def line_dropped(self, line):
+                pass
+            def update(self, *args):
+                pass
+        else:  
+            def line_dropped(self, line):
+                print(line)
+            def update(self, *args):
+                print(self._cur_line)
             
     p = Progress()
     
@@ -593,13 +601,7 @@ def apply(input):
     files = ["src/{}.py".format(microservice_design["microservice_name"]), "requirements.txt"]
     cloned_repo.index.add(files)
     cloned_repo.index.commit("Add algorithm files")
-    origin = cloned_repo.remote(name='origin')
-    
-    class Progress(remote.RemoteProgress):
-        def line_dropped(self, line):
-            print(line)
-        def update(self, *args):
-            print(self._cur_line)
+    origin = cloned_repo.remote(name='origin')        
     
     p = Progress()
 
