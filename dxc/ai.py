@@ -265,7 +265,7 @@ def clean_dataframe(df, impute = False, text_fields = [], date_fields = [], nume
 
     #remove harmful characters. remove personal identifiers. make lowercase
     for field in text_fields:
-        field = field.lower()
+        field = '_'.join(field.split()).lower()
         clean_df[field] = clean_df[field].apply(fix_text)
         clean_df[field] = clean_df[field].apply(scrubadub.clean, replace_with='identifier')
         clean_df[field] = clean_df[field].str.lower()
@@ -276,17 +276,17 @@ def clean_dataframe(df, impute = False, text_fields = [], date_fields = [], nume
 
     #standardize the format of all date fields
     for field in date_fields:
-        field = field.lower()
+        field = '_'.join(field.split()).lower()
         clean_df[field] = clean_df[field].apply(arrow.get)
 
     #make sure all numeric fields have the proper data type
     for field in numeric_fields:
-        field = field.lower()
+        field = '_'.join(field.split()).lower()
         clean_df[field] = pd.to_numeric(clean_df[field])
   
     #make sure all categorical variables have the proper data type
     for field in categorical_fields:
-        field = field.lower()
+        field = '_'.join(field.split()).lower()
         clean_df[field] = clean_df[field].astype('category')
 
     return(clean_df)
