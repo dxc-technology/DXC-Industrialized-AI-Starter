@@ -24,7 +24,7 @@ setup(
     packages=["dxc"],
     include_package_data=True,
     install_requires=["JIRA","auto_ml","Algorithmia","gitpython","flatten_json","pyjanitor","ftfy","arrow",
-                      "scrubadub","yellowbrick","datacleaner","missingno","pymongo","IPython"],
+                      "scrubadub","yellowbrick==1.1","datacleaner","missingno","pymongo","IPython"],
     entry_points={
         "console_scripts": [
             "dxc=dxc.ai:main",
