@@ -2,7 +2,7 @@
 
 # DXC Industrialized AI Starter
 
-DXC Indusrialized AI Starter makes it easier to build and deploy Indusrialized AI. This Library does the following:
+DXC Indusrialized AI Starter makes it makes for you to deploy your AI algorithms (Industrialize).If you are a data scientist, working on an algorithm that you would like to deploy across the enterprise, DXC's Industrialized AI starter makes it easier for you to:
 
 - Access, clean, and explore raw data
 - Build data pipelines
@@ -11,7 +11,7 @@ DXC Indusrialized AI Starter makes it easier to build and deploy Indusrialized A
 
 ## Installation
 
-In order to install and use above library please use the below code snippet:
+In order to  install and use the DXC AI Starter library , please use the below code snippet:
 ```
 1. pip install DXC-Industrialized-AI-Starter
 2. from dxc import ai
@@ -21,7 +21,7 @@ In order to install and use above library please use the below code snippet:
 
 ### Access, Clean, and Explore Raw Data
 
-Here's a quick example of using the library to access, clean, and explore raw data.
+Use the library to access, clean, and explore your raw data.
 
 ```
 #Access raw data
@@ -32,6 +32,7 @@ df = ai.read_data_frame_from_local_csv()
 df = ai.read_data_frame_from_local_excel_file()
 
 #Clean data
+
 raw_data = ai.clean_dataframe(df)
 
 #Explore raw data
@@ -39,10 +40,10 @@ ai.visualize_missing_data(raw_data)
 ai.explore_features(raw_data)
 ai.plot_distributions(raw_data)
 ```
-For more info [click here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/access_clean_explore/)
+"[click here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/access_clean_explore/) for  details about Acess,clean,explore raw data.
 ### Build Data Pipelines
 
-Below example showcases how to build a data pipeline. In order to get started,you need to first have an  <a href= "https://account.mongodb.com/account/register" target="_blank">MongoDB</a> account which you can signup for free and create a database "connection_string" and specify those details in the data_layer below.
+ Pipelines .... By default, the DXC AI Starter library uses the free tier of MongoDB Atlas to store raw data and execute pipelines. In order to get started, you need to first have an  <a href= "https://account.mongodb.com/account/register" target="_blank">MongoDB</a> account which you can signup for free and create a database "connection_string" and specify those details in the data_layer below. The following code connects to MongoDB and stores raw data for processing.
 
 
 ```
@@ -54,7 +55,7 @@ data_layer = {
 }
 wrt_raw_data = ai.write_raw_data(data_layer, raw_data, date_fields = [])
 ```
-This code instructs the data store on how to refine the output of raw_data into something that can be used to train a machine-learning model. Update data_pipeline() with code with an aggregation pipeline that fits your project. The refined data will be stored in the  Pandas dataframe. Make sure the output is what you want before continuing. Below is the example for creating pipeline:
+Once raw data is stored, you can run pipelines to transform the data.This code instructs the data store on how to refine the output of raw_data into something that can be used to train a machine-learning model. (to the syntax of MongDB pipelines for the details of how to write a pipeline). Below is an example of creating and executing a pipeline.
 ```
 pipeline = [
         {
@@ -75,13 +76,14 @@ pipeline = [
         }
 ]
 
+mention that the output will be in a pandas data frame
 df = ai.access_data_from_pipeline(wrt_raw_data, pipeline)
 ```
-For more detailed explaination <a href= "https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/data_pipeline/" target="_blank">click here</a>
+<a href= "https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/data_pipeline/" target="_blank">click here</a> for more details about build data pipeline.
 
 ### Run AI Experiments
 
-Sample code snippet to run an AI Experiment. This code executes an experiment by running run_experiment() on a model. Update experiment_design with parameters that fit your project. The data parameter should remain the refined training data. The model parameter must be a model subclass. The labels parameter indicates the column of the data dataframe to be predicted. For the prediction model, the meta-data must describe the column to be predicted and the types for non-numeric columns.
+Use the DXC AI Starter to build and test algorithms. Sample code snippet to run an AI Experiment. This code executes an experiment by running run_experiment() on a model. 
 
 ```
 experiment_design = {
@@ -105,11 +107,11 @@ experiment_design = {
 
 trained_model = ai.run_experiment(experiment_design)
 ```
-For more info click [here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/experiment/)
+ click [here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/experiment/) for more details about Run AI Experiments.
 
 ### Publish Microservice
 
-Below is the example for publishing a Microservice. In order to  design the microservice, you must create an [Algorithmia account](https://algorithmia.com/signup). This code defines the parameters needed to build and delpoy a microservice based on the trained model. Update microservice_design with parameters appropriate for your project.
+The DXC AI Starter library makes it easy to publish your models as working microservices. By default, the DXC AI Starter library uses the free tier of Algorithmia to publish models as microservices. you must create an [Algorithmia account](https://algorithmia.com/signup).  Below is the example for publishing a Microservicee. 
 ```
 trained_model is the output of run_experiment() function
 microservice_design = {
@@ -125,7 +127,7 @@ microservice_design = {
 api_url = ai.publish_microservice(microservice_design, trained_model)
 print("api url: " + api_url)
 ```
-For more info [click here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/publish_microservice/)
+ [click here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/publish_microservice/) for details about publish Microservice.
 ## Docs
 
 For detailed and complete documentation, please <a href="https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/" target="_blank">click here</a>
