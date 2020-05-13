@@ -40,7 +40,7 @@ ai.visualize_missing_data(raw_data)
 ai.explore_features(raw_data)
 ai.plot_distributions(raw_data)
 ```
-"[click here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/access_clean_explore/) for  details about Acess,clean,explore raw data.
+[click here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/access_clean_explore/) for details about Acess,clean,explore raw data.
 ### Build Data Pipelines
 
  Pipelines .... By default, the DXC AI Starter library uses the free tier of MongoDB Atlas to store raw data and execute pipelines. In order to get started, you need to first have an  <a href= "https://account.mongodb.com/account/register" target="_blank">MongoDB</a> account which you can signup for free and create a database "connection_string" and specify those details in the data_layer below. The following code connects to MongoDB and stores raw data for processing.
@@ -79,7 +79,7 @@ pipeline = [
 mention that the output will be in a pandas data frame
 df = ai.access_data_from_pipeline(wrt_raw_data, pipeline)
 ```
-<a href= "https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/data_pipeline/" target="_blank">click here</a> for more details about build data pipeline.
+<a href= "https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/data_pipeline/" target="_blank">click here</a> for details about build data pipeline.
 
 ### Run AI Experiments
 
@@ -107,7 +107,7 @@ experiment_design = {
 
 trained_model = ai.run_experiment(experiment_design)
 ```
- click [here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/experiment/) for more details about Run AI Experiments.
+ click [here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/experiment/) for details about Run AI Experiments.
 
 ### Publish Microservice
 
