@@ -2,7 +2,7 @@
 
 # DXC Industrialized AI Starter
 
-DXC Indusrialized AI Starter makes it makes for you to deploy your AI algorithms (Industrialize).If you are a data scientist, working on an algorithm that you would like to deploy across the enterprise, DXC's Industrialized AI starter makes it easier for you to:
+DXC Indusrialized AI Starter makes it easy for you to deploy your AI algorithms (Industrialize).If you are a data scientist, working on an algorithm that you would like to deploy across the enterprise, DXC's Industrialized AI starter makes it easier for you to:
 
 - Access, clean, and explore raw data
 - Build data pipelines
