@@ -83,7 +83,7 @@ df = ai.access_data_from_pipeline(wrt_raw_data, pipeline)
 
 ### Run AI Experiments
 
-Use the DXC AI Starter to build and test algorithms. Sample code snippet to run an AI Experiment. This code executes an experiment by running run_experiment() on a model. 
+Use the DXC AI Starter to build and test algorithms. This code executes an experiment by running run_experiment() on a model. 
 
 ```
 experiment_design = {
