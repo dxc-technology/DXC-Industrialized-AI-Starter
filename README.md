@@ -80,7 +80,7 @@ pipeline = [
         }
 ]
 
-mention that the output will be in a pandas data frame
+# Refined data will be stored in pandas dataframe.
 df = ai.access_data_from_pipeline(wrt_raw_data, pipeline)
 ```
 <a href= "https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/data_pipeline/" target="_blank">click here</a> for details about build data pipeline.
