@@ -111,7 +111,7 @@ trained_model = ai.run_experiment(experiment_design)
 
 ### Publish Microservice
 
-The DXC AI Starter library makes it easy to publish your models as working microservices. By default, the DXC AI Starter library uses  free tier of [Algorithmia](https://algorithmia.com/signup) to publish models as microservices. you must create an [Algorithmia](https://algorithmia.com/signup)  account to use. Below is the example for publishing a Microservice. 
+The DXC AI Starter library makes it easy to publish your models as working microservices. By default, the DXC AI Starter library uses  free tier of [Algorithmia](https://algorithmia.com/signup) to publish models as microservices. You must create an [Algorithmia](https://algorithmia.com/signup)  account to use. Below is the example for publishing a microservice. 
 ```python
 #trained_model is the output of run_experiment() function
 microservice_design = {
