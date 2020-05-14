@@ -12,7 +12,7 @@ DXC Indusrialized AI Starter makes it easy for you to deploy your AI algorithms 
 ## Installation
 
 In order to  install and use the DXC AI Starter library , please use the below code snippet:
-```
+```python
 1. pip install DXC-Industrialized-AI-Starter
 2. from dxc import ai
 ```
@@ -23,7 +23,7 @@ In order to  install and use the DXC AI Starter library , please use the below c
 
 Use the library to access, clean, and explore your raw data.
 
-```
+``` python
 #Access raw data
 df = ai.read_data_frame_from_remote_json(json_url)
 df = ai.read_data_frame_from_remote_csv(csv_url)
@@ -46,7 +46,7 @@ ai.plot_distributions(raw_data)
  Pipelines .... By default, the DXC AI Starter library uses the free tier of MongoDB Atlas to store raw data and execute pipelines. In order to get started, you need to first have an  <a href= "https://account.mongodb.com/account/register" target="_blank">MongoDB</a> account which you can signup for free and create a database "connection_string" and specify those details in the data_layer below. The following code connects to MongoDB and stores raw data for processing.
 
 
-```
+```python
 #Insert data into MongoDB:
 data_layer = {
     "connection_string": "<your connection_string>",
@@ -56,7 +56,7 @@ data_layer = {
 wrt_raw_data = ai.write_raw_data(data_layer, raw_data, date_fields = [])
 ```
 Once raw data is stored, you can run pipelines to transform the data.This code instructs the data store on how to refine the output of raw_data into something that can be used to train a machine-learning model. (to the syntax of MongDB pipelines for the details of how to write a pipeline). Below is an example of creating and executing a pipeline.
-```
+```python
 pipeline = [
         {
             '$group':{
@@ -85,7 +85,7 @@ df = ai.access_data_from_pipeline(wrt_raw_data, pipeline)
 
 Use the DXC AI Starter to build and test algorithms. This code executes an experiment by running run_experiment() on a model. 
 
-```
+```python
 experiment_design = {
     #model options include ['regression()', 'classification()']
     "model": ai.regression(),
@@ -112,7 +112,7 @@ trained_model = ai.run_experiment(experiment_design)
 ### Publish Microservice
 
 The DXC AI Starter library makes it easy to publish your models as working microservices. By default, the DXC AI Starter library uses the free tier of Algorithmia to publish models as microservices. you must create an [Algorithmia account](https://algorithmia.com/signup).  Below is the example for publishing a Microservicee. 
-```
+```python
 trained_model is the output of run_experiment() function
 microservice_design = {
     "microservice_name": "<Name of your microservice>",
