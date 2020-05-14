@@ -31,14 +31,18 @@ df = ai.read_data_frame_from_local_json()
 df = ai.read_data_frame_from_local_csv()
 df = ai.read_data_frame_from_local_excel_file()
 
-#Clean data
+#Clean data: It imputes missing data,removes empty rows and columns and anonymizes text.
 
 raw_data = ai.clean_dataframe(df)
 
-#Explore raw data
-ai.visualize_missing_data(raw_data)
-ai.explore_features(raw_data)
-ai.plot_distributions(raw_data)
+#Explore raw data: 
+ai.visualize_missing_data(raw_data):
+# It visualizes relationships between all features in a given data frame. 
+ai.explore_features(raw_data):
+#It creates a visual display of missing data in a data frame.Each column of the data frame is shown as a column in the graph.
+ai.plot_distributions(raw_data):
+#It creates a distribution graph for each column in a given data frame.
+
 ```
 [click here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/access_clean_explore/) for details about Acess,clean,explore raw data.
 ### Build Data Pipelines
@@ -111,7 +115,7 @@ trained_model = ai.run_experiment(experiment_design)
 
 ### Publish Microservice
 
-The DXC AI Starter library makes it easy to publish your models as working microservices. By default, the DXC AI Starter library uses the free tier of Algorithmia to publish models as microservices. you must create an [Algorithmia account](https://algorithmia.com/signup).  Below is the example for publishing a Microservicee. 
+The DXC AI Starter library makes it easy to publish your models as working microservices. By default, the DXC AI Starter library uses  free tier of Algorithmia to publish models as microservices. you must create an [Algorithmia account](https://algorithmia.com/signup) to use.  Below is the example for publishing a Microservicee. 
 ```python
 trained_model is the output of run_experiment() function
 microservice_design = {
