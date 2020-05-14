@@ -2,7 +2,7 @@
 
 # DXC Industrialized AI Starter
 
-DXC Indusrialized AI Starter makes it easy for you to deploy your AI algorithms (Industrialize).If you are a data scientist, working on an algorithm that you would like to deploy across the enterprise, DXC's Industrialized AI starter makes it easier for you to:
+DXC Indusrialized AI Starter makes it easy for you to deploy your AI algorithms (Industrialize). If you are a data scientist, working on an algorithm that you would like to deploy across the enterprise, DXC's Industrialized AI starter makes it easier for you to:
 
 - Access, clean, and explore raw data
 - Build data pipelines
@@ -11,7 +11,7 @@ DXC Indusrialized AI Starter makes it easy for you to deploy your AI algorithms 
 
 ## Installation
 
-In order to  install and use the DXC AI Starter library , please use the below code snippet:
+In order to  install and use the DXC AI Starter library, please use the below code snippet:
 ```python
 1. pip install DXC-Industrialized-AI-Starter
 2. from dxc import ai
@@ -31,17 +31,15 @@ df = ai.read_data_frame_from_local_json()
 df = ai.read_data_frame_from_local_csv()
 df = ai.read_data_frame_from_local_excel_file()
 
-#Clean data: It imputes missing data,removes empty rows and columns and anonymizes text.
+#Clean data: Imputes missing data, removes empty rows and columns,anonymizes text.
 
 raw_data = ai.clean_dataframe(df)
 
 #Explore raw data: 
-ai.visualize_missing_data(raw_data):
-# It visualizes relationships between all features in a given data frame. 
-ai.explore_features(raw_data):
-#It creates a visual display of missing data in a data frame.Each column of the data frame is shown as a column in the graph.
-ai.plot_distributions(raw_data):
-#It creates a distribution graph for each column in a given data frame.
+ai.visualize_missing_data(raw_data) # visualizes relationships between all features in data.
+ai.explore_features(raw_data) # It creates a visual display of missing data.
+ai.plot_distributions(raw_data) # creates a distribution graph for each column.
+
 
 ```
 [click here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/access_clean_explore/) for details about Acess,clean,explore raw data.
@@ -59,7 +57,7 @@ data_layer = {
 }
 wrt_raw_data = ai.write_raw_data(data_layer, raw_data, date_fields = [])
 ```
-Once raw data is stored, you can run pipelines to transform the data.This code instructs the data store on how to refine the output of raw_data into something that can be used to train a machine-learning model. please refer to the syntax of [MongDB pipelines](https://docs.mongodb.com/manual/core/aggregation-pipeline/) for the details of how to write a pipeline. Below is an example of creating and executing a pipeline.
+Once raw data is stored, you can run pipelines to transform the data.This code instructs the data store on how to refine the output of raw_data into something that can be used to train a machine-learning model. Please refer to the syntax of [MongDB pipelines](https://docs.mongodb.com/manual/core/aggregation-pipeline/) for the details of how to write a pipeline. Below is an example of creating and executing a pipeline.
 ```python
 pipeline = [
         {
