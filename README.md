@@ -59,7 +59,7 @@ data_layer = {
 }
 wrt_raw_data = ai.write_raw_data(data_layer, raw_data, date_fields = [])
 ```
-Once raw data is stored, you can run pipelines to transform the data.This code instructs the data store on how to refine the output of raw_data into something that can be used to train a machine-learning model. (to the syntax of MongDB pipelines for the details of how to write a pipeline). Below is an example of creating and executing a pipeline.
+Once raw data is stored, you can run pipelines to transform the data.This code instructs the data store on how to refine the output of raw_data into something that can be used to train a machine-learning model. please refer to the syntax of [MongDB pipelines] (https://docs.mongodb.com/manual/core/aggregation-pipeline/) for the details of how to write a pipeline. Below is an example of creating and executing a pipeline.
 ```python
 pipeline = [
         {
