@@ -31,14 +31,13 @@ df = ai.read_data_frame_from_local_json()
 df = ai.read_data_frame_from_local_csv()
 df = ai.read_data_frame_from_local_excel_file()
 
-#Clean data: Imputes missing data, removes empty rows and columns,anonymizes text.
-
+#Clean data: Imputes missing data, removes empty rows and columns, anonymizes text.
 raw_data = ai.clean_dataframe(df)
 
 #Explore raw data: 
-ai.visualize_missing_data(raw_data) # visualizes relationships between all features in data.
-ai.explore_features(raw_data) # It creates a visual display of missing data.
-ai.plot_distributions(raw_data) # creates a distribution graph for each column.
+ai.visualize_missing_data(raw_data) #visualizes relationships between all features in data.
+ai.explore_features(raw_data) #creates a visual display of missing data.
+ai.plot_distributions(raw_data) #creates a distribution graph for each column.
 
 
 ```
