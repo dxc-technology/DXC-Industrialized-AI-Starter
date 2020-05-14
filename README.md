@@ -44,7 +44,7 @@ ai.plot_distributions(raw_data) #creates a distribution graph for each column.
 [Click here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/access_clean_explore/) for details about Acess,clean,explore raw data.
 ### Build Data Pipelines
 
- Pipelines are a standard way to process your data towards modeling and interpreting. By default, the DXC AI Starter library uses the free tier of MongoDB Atlas to store raw data and execute pipelines. In order to get started, you need to first have an  <a href= "https://account.mongodb.com/account/register" target="_blank">MongoDB</a> account which you can signup for free and create a database "connection_string" and specify those details in the data_layer below. The following code connects to MongoDB and stores raw data for processing.
+ Pipelines are a standard way to process your data towards modeling and interpreting. By default, the DXC AI Starter library uses the free tier of [MongoDB Atlas](https://account.mongodb.com/account/register) to store raw data and execute pipelines. In order to get started, you need to first have an  <a href= "https://account.mongodb.com/account/register" target="_blank">MongoDB</a> account which you can signup for free and create a database "connection_string" and specify those details in the data_layer below. The following code connects to MongoDB and stores raw data for processing.
 
 
 ```python
@@ -56,7 +56,7 @@ data_layer = {
 }
 wrt_raw_data = ai.write_raw_data(data_layer, raw_data, date_fields = [])
 ```
-Once raw data is stored, you can run pipelines to transform the data.This code instructs the data store on how to refine the output of raw_data into something that can be used to train a machine-learning model. Please refer to the syntax of [MongDB pipelines](https://docs.mongodb.com/manual/core/aggregation-pipeline/) for the details of how to write a pipeline. Below is an example of creating and executing a pipeline.
+Once raw data is stored, you can run pipelines to transform the data. This code instructs the data store on how to refine the output of raw_data into something that can be used to train a machine-learning model. Please refer to the syntax of [MongDB pipelines](https://docs.mongodb.com/manual/core/aggregation-pipeline/) for the details of how to write a pipeline. Below is an example of creating and executing a pipeline.
 ```python
 pipeline = [
         {
@@ -77,8 +77,7 @@ pipeline = [
         }
 ]
 
-# Refined data will be stored in pandas dataframe.
-df = ai.access_data_from_pipeline(wrt_raw_data, pipeline)
+df = ai.access_data_from_pipeline(wrt_raw_data, pipeline) #refined data will be stored in pandas dataframe.
 ```
 <a href= "https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/data_pipeline/" target="_blank">Click here</a> for details about build data pipeline.
 
@@ -108,13 +107,13 @@ experiment_design = {
 
 trained_model = ai.run_experiment(experiment_design)
 ```
- Click [here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/experiment/) for details about Run AI Experiments.
+ [Click here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/experiment/) for details about run AI experiments.
 
 ### Publish Microservice
 
-The DXC AI Starter library makes it easy to publish your models as working microservices. By default, the DXC AI Starter library uses  free tier of Algorithmia to publish models as microservices. you must create an [Algorithmia account](https://algorithmia.com/signup) to use.  Below is the example for publishing a Microservicee. 
+The DXC AI Starter library makes it easy to publish your models as working microservices. By default, the DXC AI Starter library uses  free tier of [Algorithmia](https://algorithmia.com/signup) to publish models as microservices. you must create an [Algorithmia](https://algorithmia.com/signup)  account to use. Below is the example for publishing a Microservicee. 
 ```python
-trained_model is the output of run_experiment() function
+#trained_model is the output of run_experiment() function
 microservice_design = {
     "microservice_name": "<Name of your microservice>",
     "microservice_description": "<Brief description about your microservice>",
