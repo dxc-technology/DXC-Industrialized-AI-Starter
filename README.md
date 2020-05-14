@@ -44,7 +44,7 @@ ai.plot_distributions(raw_data) #creates a distribution graph for each column.
 [Click here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/access_clean_explore/) for details about Acess,clean,explore raw data.
 ### Build Data Pipelines
 
- Pipelines are a standard way to process your data towards modeling and interpreting. By default, the DXC AI Starter library uses the free tier of [MongoDB Atlas](https://account.mongodb.com/account/register) to store raw data and execute pipelines. In order to get started, you need to first have an  <a href= "https://account.mongodb.com/account/register" target="_blank">MongoDB</a> account which you can signup for free and create a database "connection_string" and specify those details in the data_layer below. The following code connects to MongoDB and stores raw data for processing.
+Pipelines are a standard way to process your data towards modeling and interpreting. By default, the DXC AI Starter library uses the free tier of [MongoDB Atlas](https://account.mongodb.com/account/register) to store raw data and execute pipelines. In order to get started, you need to first have an  <a href= "https://account.mongodb.com/account/register" target="_blank">MongoDB</a> account which you can signup for free and create a database "connection_string" and specify those details in the data_layer below. The following code connects to MongoDB and stores raw data for processing.
 
 
 ```python
@@ -111,7 +111,7 @@ trained_model = ai.run_experiment(experiment_design)
 
 ### Publish Microservice
 
-The DXC AI Starter library makes it easy to publish your models as working microservices. By default, the DXC AI Starter library uses  free tier of [Algorithmia](https://algorithmia.com/signup) to publish models as microservices. you must create an [Algorithmia](https://algorithmia.com/signup)  account to use. Below is the example for publishing a Microservicee. 
+The DXC AI Starter library makes it easy to publish your models as working microservices. By default, the DXC AI Starter library uses  free tier of [Algorithmia](https://algorithmia.com/signup) to publish models as microservices. you must create an [Algorithmia](https://algorithmia.com/signup)  account to use. Below is the example for publishing a Microservice. 
 ```python
 #trained_model is the output of run_experiment() function
 microservice_design = {
@@ -123,7 +123,7 @@ microservice_design = {
     "model_path":"<your model_path>"
 }
 
-# publish the micro service and display the url of the api
+#publish the micro service and display the url of the api
 api_url = ai.publish_microservice(microservice_design, trained_model)
 print("api url: " + api_url)
 ```
