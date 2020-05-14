@@ -47,7 +47,7 @@ ai.plot_distributions(raw_data):
 [click here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/access_clean_explore/) for details about Acess,clean,explore raw data.
 ### Build Data Pipelines
 
- Pipelines .... By default, the DXC AI Starter library uses the free tier of MongoDB Atlas to store raw data and execute pipelines. In order to get started, you need to first have an  <a href= "https://account.mongodb.com/account/register" target="_blank">MongoDB</a> account which you can signup for free and create a database "connection_string" and specify those details in the data_layer below. The following code connects to MongoDB and stores raw data for processing.
+ Pipelines are a standard way to process your data towards modeling and interpreting. By default, the DXC AI Starter library uses the free tier of MongoDB Atlas to store raw data and execute pipelines. In order to get started, you need to first have an  <a href= "https://account.mongodb.com/account/register" target="_blank">MongoDB</a> account which you can signup for free and create a database "connection_string" and specify those details in the data_layer below. The following code connects to MongoDB and stores raw data for processing.
 
 
 ```python
