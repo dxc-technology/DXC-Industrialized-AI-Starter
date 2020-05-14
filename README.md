@@ -56,7 +56,7 @@ data_layer = {
 }
 wrt_raw_data = ai.write_raw_data(data_layer, raw_data, date_fields = [])
 ```
-Once raw data is stored, you can run pipelines to transform the data. This code instructs the data store on how to refine the output of raw_data into something that can be used to train a machine-learning model. Please refer to the syntax of [MongDB pipelines](https://docs.mongodb.com/manual/core/aggregation-pipeline/) for the details of how to write a pipeline. Below is an example of creating and executing a pipeline.
+Once raw data is stored, you can run pipelines to transform the data. This code instructs the data store on how to refine the output of raw data into something that can be used to train a machine-learning model. Please refer to the syntax of [MongDB pipelines](https://docs.mongodb.com/manual/core/aggregation-pipeline/) for the details of how to write a pipeline. Below is an example of creating and executing a pipeline.
 ```python
 pipeline = [
         {
@@ -79,11 +79,11 @@ pipeline = [
 
 df = ai.access_data_from_pipeline(wrt_raw_data, pipeline) #refined data will be stored in pandas dataframe.
 ```
-<a href= "https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/data_pipeline/" target="_blank">Click here</a> for details about build data pipeline.
+<a href= "https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/data_pipeline/" target="_blank">Click here</a> for details about building data pipeline.
 
 ### Run AI Experiments
 
-Use the DXC AI Starter to build and test algorithms. This code executes an experiment by running run_experiment() on a model. 
+Use the DXC AI Starter to build and test algorithms. This code executes an experiment by running run_experiment() on an experiment design. 
 
 ```python
 experiment_design = {
@@ -127,7 +127,7 @@ microservice_design = {
 api_url = ai.publish_microservice(microservice_design, trained_model)
 print("api url: " + api_url)
 ```
- [Click here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/publish_microservice/) for details about publish Microservice.
+ [Click here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/publish_microservice/) for details about publishing microservice.
 ## Docs
 
 For detailed and complete documentation, please <a href="https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/" target="_blank">click here</a>
