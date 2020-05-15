@@ -69,8 +69,7 @@
                 <div id="content"><h1 id="build-data-pipelines">Build Data Pipelines</h1>
 <hr />
 <h2 id="insert-data-into-mongodb">Insert data into MongoDB</h2>
-<p>You will be using <a href="https://account.mongodb.com/account/login" target="_blank"> MongoDb </a> as your data store.</p>
-<p>This code defines the meta-data needed to connect to Mongo DB Atlas and create a new data store cluster. This is where you define basic information about the location of the cluster and the collection and database to use. Update this code with information appropriate to your project. In order to provide the information required in data_layer, you must:</p>
+<p>Pipelines are a standard way to process your data towards modeling and interpreting. By default, the DXC AI Starter library uses the free tier of <a href="https://account.mongodb.com/account/register">MongoDB Atlas</a> to store raw data and execute pipelines. This code defines the meta-data needed to connect to Mongo DB Atlas and create a new data store cluster. This is where you define basic information about the location of the cluster and the collection and database to use. Update this code with information appropriate to your project. In order to provide the information required in data_layer, you must:</p>
 <ul>
 <li>Create a <a href="https://account.mongodb.com/account/login" target="_blank"> MongoDb </a> Atlas account</li>
 <li>Create a cluster</li>
@@ -100,7 +99,7 @@ wrt_raw_data = ai.write_raw_data(data_layer, raw_data, date_fields = [])
 </ul>
 <h2 id="build-pipeline">Build Pipeline</h2>
 <hr />
-<p>Example</p>
+<p>Once raw data is stored, you can run pipelines to transform the data. Please refer to the syntax of <a href="https://docs.mongodb.com/manual/core/aggregation-pipeline/">MongDB pipelines</a> for the details of how to write a pipeline. Below is an example of creating and executing a pipeline.</p>
 <pre><code>pipeline = [
         {
             '$group':{

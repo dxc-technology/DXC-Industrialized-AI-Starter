@@ -102,10 +102,10 @@ trained_model = ai.run_experiment(experiment_design)
 </li>
 </ul>
 <p><strong>Further Information on Model</strong></p>
-<p>The model provides the intelligent behavior that you will publish as a microservice. The code in this section provides you with options for the model. Each code block defines a different type of model. You must select a model capable of using df to learn the behavior specified in the design section of the datastory. Run this function by defining each model type, then choose the model most appropriate for your datastory. Each model adheres to the specifications of a model. This allows any of the models to run according to the standard model lifecycle defined in run_experiment.</p>
+<p>Machine learning model provides the intelligent behavior that you will publish as a microservice. The code in this section provides you with options for the model. You must select a model capable of using df to learn the behavior specified in the design section of the datastory. Run this function by defining each model type, then choose the model most appropriate for your datastory. Each model adheres to the specifications of a model. This allows any of the models to run according to the standard model lifecycle defined in run_experiment.</p>
 <ul>
 <li>
-<p><strong>Prediction model:</strong> This section defines a new type of model by creating a subclass of model. The prediction model learns to predict a particular outcome. It automatically optimizes parameters, selects features, selects an algorithm, and scores the results.</p>
+<p><strong>Prediction:</strong> This section defines a new type of model by creating a subclass of model. The prediction model learns to predict a particular outcome. It automatically optimizes parameters, selects features, selects an algorithm, and scores the results.</p>
 </li>
 <li>
 <p><strong>Regressor model:</strong> The regressor model makes a numeric prediction. Use this model when the design specification of the datastory requires the AI microservice to give a numerical outut prediction.</p>
