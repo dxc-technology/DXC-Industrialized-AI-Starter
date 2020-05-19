@@ -1,4 +1,4 @@
-import ai
+from dxc import ai
 
 import pandas as pd
 
