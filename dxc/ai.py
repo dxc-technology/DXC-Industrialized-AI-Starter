@@ -378,7 +378,31 @@ def write_raw_data(data_layer, raw_data, arrow_date_fields = []):
     db.insert_many(writable_raw_data.to_dict('records'))
     return db
 
+#Handle case-sensitive for column names in pipeline
+def col_header_conv_1(pipe):
+    for key,value in pipe.items():
+        if type(value) is dict:
+            col_header_conv_1(value)
+        elif type(value) is list:
+            for each in value:
+                if type(each) is dict:
+                    col_header_conv_1(each)
+                else:
+                    j = value.index(each)
+                    value[j] = '_'.join(each.split()).lower()
+        else:
+            pipe[key] = '_'.join(value.split()).lower()
+    return pipe
+
+def col_header_conv(pipe):
+    for i in range(len(pipe)):
+        single_pipe = pipe[i]
+        new_value = col_header_conv_1(single_pipe)
+        pipe[i] = new_value
+    return pipe
+
 def access_data_from_pipeline(db, pipe):
+    pipe = col_header_conv(pipe)
     data = db.aggregate(pipeline=pipe)
     data = list(data)
     df = pd.io.json.json_normalize(data)
