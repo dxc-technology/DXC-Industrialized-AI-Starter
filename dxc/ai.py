@@ -569,25 +569,21 @@ def publish_microservice(microservice_design, trained_model):
 import auto_ml
 import pandas as pd
 import pickle
-
 # create an Algorithmia client
 client = Algorithmia.client()
-
 def load_model():
     # Get file by name
     # Open file and load model
-    file_path = {file_path}
-    model_path = client.file(file_path).getFile().name
+\tfile_path = {file_path}
+\tmodel_path = client.file(file_path).getFile().name
     # Open file and load model
-    with open(model_path, 'rb') as f:
-        model = pickle.load(f)
-        return model
-
+\twith open(model_path, 'rb') as f:
+\t\tmodel = pickle.load(f)
+\t\treturn model
 trained_model = load_model()
-
 def apply(input):
-    prediction = trained_model.predict(input)
-    return {results}"""
+\tprediction = trained_model.predict(input)
+\treturn {results}"""
   
     splitted=src_code_content.split('\n')
     
