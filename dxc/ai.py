@@ -490,7 +490,7 @@ def publish_microservice(microservice_design, trained_model):
     try:
         api.create(
             details = {
-                "label": api_label(),
+                "label": microservice_design['microservice_name'],
             },
             settings = {
                 "language": "python3-1",
