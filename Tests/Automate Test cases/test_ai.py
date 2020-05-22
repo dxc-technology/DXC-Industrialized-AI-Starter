@@ -53,9 +53,9 @@ def test_plot():
         
 
 data_layer = {
-    "connection_string": "mongodb://mbandru2:V7DT67MaslOVpmdL@freecluster0-shard-00-00-sxnu6.azure.mongodb.net:27017,freecluster0-shard-00-01-sxnu6.azure.mongodb.net:27017,freecluster0-shard-00-02-sxnu6.azure.mongodb.net:27017/test?ssl=true&replicaSet=FreeCluster0-shard-0&authSource=admin&retryWrites=true&w=majority",
-    "collection_name": "aistartercollection",
-    "database_name": "aistarterdatabase"
+    "connection_string": "mongodb://mbandru2:Newpassword@freecluster0-shard-00-00-sxnu6.azure.mongodb.net:27017,freecluster0-shard-00-01-sxnu6.azure.mongodb.net:27017,freecluster0-shard-00-02-sxnu6.azure.mongodb.net:27017/test?ssl=true&replicaSet=FreeCluster0-shard-0&authSource=admin&retryWrites=true&w=majority",
+    "collection_name": "travistestcollection",
+    "database_name": "travisdatabase"
 }
 
 def test_wrt_data():
@@ -95,7 +95,7 @@ def test_datepipeline():
         assert type(df) == type(pd.DataFrame())
         assert loaded_data.empty == False
     except:
-        print ('----------INCORRECT URL----------')
+        print ('----------ACCESS DATA FROM MONGODB FAILED----------')
         
         
 # TODO: design and run an experiment
