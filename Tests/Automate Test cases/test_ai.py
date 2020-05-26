@@ -52,11 +52,7 @@ def test_plot():
         print('----------PLOT DISTRIBUTION FAILED----------')
         
 
-data_layer = {
-    "connection_string": "mongodb://mbandru2:Newpassword@freecluster0-shard-00-00-sxnu6.azure.mongodb.net:27017,freecluster0-shard-00-01-sxnu6.azure.mongodb.net:27017,freecluster0-shard-00-02-sxnu6.azure.mongodb.net:27017/test?ssl=true&replicaSet=FreeCluster0-shard-0&authSource=admin&retryWrites=true&w=majority",
-    "collection_name": "travistestcollection",
-    "database_name": "travisdatabase"
-}
+#data_layer need to be included here for MongoDB access.
 
 def test_wrt_data():
     global wrt_raw_data
