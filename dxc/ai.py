@@ -37,6 +37,8 @@ import math #data exploration, distribution plotting
 from tkinter import Tk
 from tkinter import filedialog
 from enum import Enum
+from pandas.io.json import json_normalize
+import globals_file
 
 #create an AI guild profile
 
@@ -288,6 +290,8 @@ def clean_dataframe(df, impute = False, text_fields = [], date_fields = [], nume
     for field in categorical_fields:
         field = '_'.join(field.split()).lower()
         clean_df[field] = clean_df[field].astype('category')
+        
+    globals_file.clean_data_used = True
 
     return(clean_df)
 
@@ -367,6 +371,12 @@ def convert_dates_from_arrow_to_string(df, arrow_date_fields):
     return(df)
 
 def write_raw_data(data_layer, raw_data, arrow_date_fields = []):
+    #make the column names lower case and remove spaces
+    if globals_file.clean_data_used == True:
+        raw_data = raw_data.clean_names()
+        globals_file.wrt_raw_data_used = True
+        globals_file.clean_data_used = False
+        
     ##convert your raw data into writable data by converting Arrow dates to strings
     writable_raw_data = convert_dates_from_arrow_to_string(raw_data, arrow_date_fields)
     
@@ -404,10 +414,13 @@ def col_header_conv(pipe):
     return pipe
 
 def access_data_from_pipeline(db, pipe):
-    pipe = col_header_conv(pipe)
+    if globals_file.wrt_raw_data_used == True or globals_file.clean_data_used == True:
+        pipe = col_header_conv(pipe)
+        globals_file.wrt_raw_data_used = False
+        globals_file.clean_data_used = False
     data = db.aggregate(pipeline=pipe)
     data = list(data)
-    df = pd.io.json.json_normalize(data)
+    df = json_normalize(data)
 
     return df
 
