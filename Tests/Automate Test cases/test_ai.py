@@ -1,5 +1,5 @@
 from dxc import ai
-
+from dxc import globals_file
 import pandas as pd
 
 loaded_data = None
