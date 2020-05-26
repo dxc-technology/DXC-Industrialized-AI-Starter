@@ -38,7 +38,7 @@ from tkinter import Tk
 from tkinter import filedialog
 from enum import Enum
 from pandas.io.json import json_normalize
-import globals_file
+from dxc import globals_file
 
 #create an AI guild profile
 
