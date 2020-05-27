@@ -136,6 +136,10 @@ For detailed and complete documentation, please <a href="https://dxc-technology.
 
 <a href="https://colab.research.google.com/drive/1EV_Q09B-bppGbEehBgCvsv_JIM87T_n1" target="_blank">Here</a> is an detailed and in-depth example of DXC Indusrialized AI Starter library usage.
 
+Below is the screen for collab notebook.
+
+![aistaterscreen](https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/aistarterscreen.png)
+
 ### Contributing Guide
 
 To know more about the contribution and guidelines please <a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/CONTRIBUTING.md" target="_blank">click here</a>
