@@ -1,5 +1,7 @@
 ![DXC](https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/dxc%20image.png)
 
+![Industrialized AI Animation](https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/Industrialized%20AI%20Animation.gif)
+
 # DXC Industrialized AI Starter
 
 DXC Indusrialized AI Starter makes it easy for you to deploy your AI algorithms (Industrialize). If you are a data scientist, working on an algorithm that you would like to deploy across the enterprise, DXC's Industrialized AI starter makes it easier for you to:
