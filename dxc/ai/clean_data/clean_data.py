@@ -7,7 +7,7 @@ import scrubadub #data cleaning
 import arrow #normalizing dates
 import numpy as np
 from sklearn.base import TransformerMixin
-from global_variables import globals_file
+from dxc.ai.global_variables import globals_file
 
 
 class DataFrameImputer(TransformerMixin):

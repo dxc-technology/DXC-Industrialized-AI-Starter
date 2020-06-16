@@ -1,7 +1,7 @@
 from pymongo import MongoClient #MongoDB
 import pandas as pd
 import json
-from global_variables import globals_file
+from dxc.ai.global_variables import globals_file
 
 
 def convert_dates_from_arrow_to_string(df, arrow_date_fields):
