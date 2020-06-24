@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 def readme():
     with open('README.md') as f:
@@ -21,7 +21,8 @@ setup(
         "License :: OSI Approved :: Apache Software License",
         "Programming Language :: Python :: 3.7",
     ],
-    packages=["dxc", "dxc.ai"],
+    #packages=["dxc", "dxc.ai"],
+    packages=find_packages(),
     include_package_data=True,
     install_requires=["JIRA","scikit-learn==0.22.2.post1","auto_ml","Algorithmia","gitpython","flatten_json","pyjanitor","ftfy","arrow",
                       "scrubadub","yellowbrick==1.1","datacleaner","missingno","pymongo","IPython","dnspython"],
