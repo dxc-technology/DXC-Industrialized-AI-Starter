@@ -8,6 +8,7 @@ import pickle
 from contextlib import redirect_stdout
 import warnings
 import io
+from dxc.ai.global_variables import globals_file
 
 
 
@@ -79,6 +80,7 @@ class classification(prediction):
         return("classifier")
     
 def run_experiment(design, verbose = False):
+    globals_file.run_experiment_used = True
     design["model"].build(design["meta_data"])
     design["model"].train_and_score(design["data"], design["labels"], verbose)
     design["model"].interpret()
