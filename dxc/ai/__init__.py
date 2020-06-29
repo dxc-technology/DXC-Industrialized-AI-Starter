@@ -34,3 +34,8 @@ from .run_model.run_model import regression
 from .run_model.run_model import classification
 
 from .publish_microservice.publish_microservice import publish_microservice
+
+from .deep_learning.image_classifier import create_training_data
+from .deep_learning.image_classifier import seggregate_data
+from .deep_learning.image_classifier import split_normalize_data
+from .deep_learning.image_classifier import image_classifier
