@@ -32,6 +32,7 @@ from .run_model.run_model import model
 from .run_model.run_model import prediction
 from .run_model.run_model import regression
 from .run_model.run_model import classification
+from .run_model.interpret_model import interpret_model
 
 from .publish_microservice.publish_microservice import publish_microservice
 
