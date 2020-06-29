@@ -25,7 +25,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=["JIRA","scikit-learn==0.22.2.post1","auto_ml","Algorithmia","gitpython","flatten_json","pyjanitor","ftfy","arrow",
-                      "scrubadub","yellowbrick==1.1","datacleaner","missingno","pymongo","IPython","dnspython","pmdarima","pyaf"],
+                      "scrubadub","yellowbrick==1.1","datacleaner","missingno","pymongo","IPython","dnspython","pmdarima","pyaf","interpret-community"],
     entry_points={
         "console_scripts": [
             "dxc=dxc.ai:main",
