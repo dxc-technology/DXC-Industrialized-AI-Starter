@@ -9,6 +9,7 @@ from contextlib import redirect_stdout
 import warnings
 import io
 from dxc.ai.global_variables import globals_file
+from .TimeSeriesModels import getBestForcastingModel
 
 
 
@@ -22,10 +23,10 @@ class model:
 
     @staticmethod
     def meta_data_key(meta_data, value):
-        key_list = list(meta_data.keys()) 
-        val_list = list(meta_data.values()) 
-  
-        return key_list[val_list.index(value)] 
+        key_list = list(meta_data.keys())
+        val_list = list(meta_data.values())
+
+        return key_list[val_list.index(value)]
 
 #define the model lifecycle
 
@@ -44,7 +45,7 @@ class prediction(model):
     def train_and_score(self, data, labels, verbose):
     # create training and test data
         training_data, test_data = train_test_split(data, test_size=0.2)
-    
+
     # train the model
         if verbose == False:
             warnings.filterwarnings('ignore')
@@ -53,17 +54,17 @@ class prediction(model):
                 self.__model.train(training_data, verbose=False, ml_for_analytics= False)
         else:
             warnings.filterwarnings('ignore')
-            self.__model.train(training_data, verbose=True, ml_for_analytics=False)          
-  
+            self.__model.train(training_data, verbose=True, ml_for_analytics=False)
+
     # score the model
         if verbose == False:
             self.__model.score(test_data, test_data[self.__label], verbose=0)
         else:
             self.__model.score(test_data, test_data[self.__label], verbose=1)
-  
+
     def interpret(self):
         pass
-  
+
     def python_object(self):
         return self.__model
 
@@ -78,10 +79,14 @@ class classification(prediction):
     @property
     def estimator(self):
         return("classifier")
-    
+
 def run_experiment(design, verbose = False):
+    if design["model"] == 'timeseries':
+        trained_model = getBestForcastingModel(design['labels'], no_predictions=7, debug=verbose, visualize = False)
+        return trained_model
     globals_file.run_experiment_used = True
     design["model"].build(design["meta_data"])
     design["model"].train_and_score(design["data"], design["labels"], verbose)
     design["model"].interpret()
     return design["model"].python_object()
+    
