@@ -34,6 +34,4 @@ def read_data_frame_from_local_excel_file():
         df = pd.read_excel(excel_path)
         return(df)
     
-def read_data_frame_from_remote_excel(url):
-    df=pd.read_excel(url)
-    return df
+

@@ -56,6 +56,8 @@ def read_data_frame_from_local_json():
         df = flatten_json_into_dataframe(json_data)
         return df
 
-def read_data_frame_from_remote_json(url):
-    df=pd.read_json(url)
-    return df
+def read_data_frame_from_remote_json(json_url):
+    with urllib.request.urlopen(json_url) as url:
+        json_data = json.loads(url.read().decode())
+    df = flatten_json_into_dataframe(json_data)
+    return(df)

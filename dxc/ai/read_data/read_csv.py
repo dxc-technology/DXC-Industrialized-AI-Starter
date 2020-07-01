@@ -40,6 +40,8 @@ def read_data_frame_from_local_csv(col_names = [], delim_whitespace=False, heade
             df.columns = col_names
         return(df)
         
-def read_data_frame_from_remote_csv(url):
-    df=pd.read_csv(url)
-    return df
+def read_data_frame_from_remote_csv(csv_url, col_names = [], delim_whitespace=False, header = 'infer'):
+    df = pd.read_csv(csv_url, delim_whitespace=delim_whitespace, header = header)
+    if col_names != []:
+        df.columns = col_names
+    return(df)
