@@ -16,6 +16,9 @@ from .read_data.read_excel import get_file_path_excel
 from .read_data.read_excel import read_data_frame_from_local_excel_file
 from .read_data.read_csv import get_file_path_csv
 from .read_data.read_csv import read_data_frame_from_local_csv
+from .read_data.read_csv import read_data_frame_from_remote_csv
+from .read_data.read_excel import read_data_frame_from_remote_excel
+from .read_data.read_json import read_data_frame_from_remote_json
 
 from .clean_data.clean_data import clean_dataframe
 
