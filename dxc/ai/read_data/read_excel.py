@@ -15,25 +15,7 @@ def get_file_path_excel():
     root.destroy()
     return file_path
 
-# try:
-#     import google.colab
-#     IN_COLAB = True
-# except:
-#     IN_COLAB = False
 
-# #Read CSV & Excel file from local.
-# if IN_COLAB:
-#     def read_data_frame_from_local_excel_file():
-#         from google.colab import files
-#         uploaded = files.upload()
-#         excel_file_name = list(uploaded.keys())[0]
-#         df = pd.read_excel(io.BytesIO(uploaded[excel_file_name]))
-#         return(df)
-# else:
-#     def read_data_frame_from_local_excel_file():
-#         excel_path = get_file_path_excel()
-#         df = pd.read_excel(excel_path)
-#         return(df)
 def read_data_frame_from_local_excel_file():
     try:
         from google.colab import files
