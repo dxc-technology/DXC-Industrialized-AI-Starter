@@ -9,6 +9,12 @@ def interpret_model(model,x_train,x_test,feature_names = None,classes = None):
                                   classes=classes)
     #Generate global explanations
     global_explanation = explainer.explain_global(x_test)
+    ##print the global importance rank data
+    print('global importance rank: {}'.format(global_explanation.get_feature_importance_dict()))
     #Return Generated Explanation dashboard
-    return ExplanationDashboard(global_explanation, model, datasetX=x_test)
+    return global_explanation
+
+def Explanation_Dashboard(global_explanation, model, x_train):
+    ExplanationDashboard(global_explanation, model, datasetX=x_train)
+
     
