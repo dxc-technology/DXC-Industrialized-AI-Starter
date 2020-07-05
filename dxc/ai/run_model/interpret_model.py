@@ -8,7 +8,7 @@ def Global_Model_Explanation(model,x_train,x_test,feature_names = None,classes =
                                   features=feature_names, 
                                   classes=classes)
     #Generate global explanations
-    if explantion_data == 'Train':
+    if explantion_data == 'Training':
         global_explanation = explainer.explain_global(x_train)
     else:
         global_explanation = explainer.explain_global(x_test)
@@ -18,7 +18,7 @@ def Global_Model_Explanation(model,x_train,x_test,feature_names = None,classes =
     return global_explanation
 
 def Explanation_Dashboard(global_explanation, model, x_train, x_test, explantion_data = None):
-    if explantion_data == 'Train':
+    if explantion_data == 'Training':
         ExplanationDashboard(global_explanation, model, datasetX=x_train)
     else:
         ExplanationDashboard(global_explanation, model, datasetX=x_test)
