@@ -47,7 +47,7 @@ def Clustering(X,num_clusters=None):
         yhat_KM = model_KM.predict(X)
         silhouette_KM = silhouette_score(X, yhat_KM)
     
-    model_DB = DBSCAN(eps=0.30, min_samples=9)
+    model_DB = DBSCAN(eps=9.5, min_samples=2)
     # fit model and predict clusters
     yhat_DB = model_DB.fit_predict(X)
     silhouette_DB = silhouette_score(X, yhat_DB)
