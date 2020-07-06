@@ -56,21 +56,7 @@ def Clustering(X,num_clusters=None):
     algo=[model_DB,model_KM,AP]
     maxi=algo[silhouette.index(max(silhouette))]
     
-    
-    
-    yhat = maxi.fit_predict(X)
-    # retrieve unique clusters
-    clusters = unique(yhat)
-    # create scatter plot for samples from each cluster
-    for cluster in clusters:
-        # get row indexes for samples with this cluster
-        row_ix = where(yhat == cluster)
-        # create scatter of these samples
-        pyplot.scatter(X[row_ix, 0], X[row_ix, 1])
-    # show the plot
-    pyplot.show()
-    
-    return maxi
+    return maxi.fit(X)
     
     
         
