@@ -5,3 +5,6 @@ This notebook helps in understanding how to use a time series model from DXC Ind
 
 ### DL_Image_classifier.ipynb
 This notebook helps in understanding how to use a Image Classifier model from DXC Industrialized AI Starter Library.
+
+### Clustering.ipynb
+This notebook helps in understanding how to use the clustering module from DXC Industrialized AI Starter Library.
