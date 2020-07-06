@@ -4,6 +4,7 @@ import urllib.parse #input data
 from tkinter import Tk
 from tkinter import filedialog
 from enum import Enum
+import io
 
 def get_file_path_csv():
     root = Tk()
