@@ -145,7 +145,7 @@ Below is the screen for collab notebook.
 
 ### Example of colab notebook for each model
 
-<a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/tree/master/Examples" target="_blank">Here</a> are example notebooks for individual models. These notebooks help to understand on how to use each function, what parameters are expected for each function and what will be the output of each function.
+<a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/tree/master/Examples" target="_blank">Here</a> are example notebooks for individual models. These sample notebooks help to understand on how to use each function, what parameters are expected for each function and what will be the output of each function in a model.
 
 ### Contributing Guide
 
