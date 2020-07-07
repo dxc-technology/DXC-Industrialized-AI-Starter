@@ -143,6 +143,10 @@ Below is the screen for collab notebook.
 
 <a href="https://colab.research.google.com/drive/1EV_Q09B-bppGbEehBgCvsv_JIM87T_n1" target="_blank">![aistaterscreen](https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/aistarterscreen.png) </a>
 
+### Example of colab notebook for each model
+
+<a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/tree/master/Examples" target="_blank">Here</a> are example notebooks for individual models. These notebooks help to understand on how to use each function, what parameters are expected for each function and what will be the output of each function.
+
 ### Contributing Guide
 
 To know more about the contribution and guidelines please <a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/CONTRIBUTING.md" target="_blank">click here</a>
