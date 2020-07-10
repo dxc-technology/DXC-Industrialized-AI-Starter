@@ -25,6 +25,16 @@ import warnings
 warnings.filterwarnings('ignore', 'statsmodels.tsa.ar_model.AR', FutureWarning)
 
 
+#Dickey-Fuller Test for stationary check
+def adf_test(timeseries):
+    #Perform Dickey-Fuller test:
+    print('Results of Augmented Dickey-Fuller(ADF) Statistical Test:')
+    dftest = adfuller(timeseries, autolag='AIC')
+    dfoutput = pd.Series(dftest[0:4], index=['Test Statistic','p-value','#Lags Used','Number of Observations Used'])
+    for key,value in dftest[4].items():
+       dfoutput['Critical Value (%s)'%key] = value
+    print(dfoutput)
+
 #autoRegressiveModel
 def autoRegressiveModel(df, no_predictions = 7, debug = False , visualize = False):
     data = df.values
@@ -99,15 +109,20 @@ def getBestForcastingModel(df, no_predictions=7, debug=False, visualize = False)
     modelResults["autoRegressiveMovingAverageModel"] = autoRegressiveMovingAverageModel(df, order=(1,0), no_predictions=no_predictions)[1]
     bestModel = min(modelResults.items(), key=operator.itemgetter(1))[0]
     print(bestModel)
+    print(adf_test(df))
     if bestModel == 'autoRegressiveModel':
         results, error, model = autoRegressiveModel(df, no_predictions, debug, visualize)
+        print('RMSE:', error)
         return model
     elif bestModel == 'simpleExponentialSmoothing':
         results, error, model =  simpleExponentialSmoothing(df, no_predictions, debug, visualize)
+        print('RMSE:', error)
         return model
     elif bestModel == 'doubleSmoothing':
         results, error, model = doubleSmoothing(df, no_predictions, debug, visualize)
+        print('RMSE:', error)
         return model
     elif bestModel == 'autoRegressiveMovingAverageModel':
         results, error, model = autoRegressiveMovingAverageModel(df, order=(1,0), no_predictions=no_predictions, debug=debug, visualize=visualize)
+        print('RMSE:', error)
         return model
