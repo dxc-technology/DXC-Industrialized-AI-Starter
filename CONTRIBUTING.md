@@ -56,6 +56,7 @@ of things.
   * If possible, run the acceptance tests as well as the unit tests.
   * You can *always* ask for help getting the tests working, or with
 	writing tests.
+  * <a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/tree/master/Tests" target="_blank">Click Here</a> to view the basic test cases of AI starter library. Test cases file is locted under Automate Test cases folder. These test cases should be passed by your new changes to ensure that existing basic functionalities are not affected by your latest commit. Please refer to <a href="https://docs.travis-ci.com/" target="_blank">Travis CI</a> documentation for automate test case execution.
 
 ## Branching, and Where Changes Go
 
