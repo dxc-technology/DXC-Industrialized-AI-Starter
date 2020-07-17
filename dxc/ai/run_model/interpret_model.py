@@ -1,4 +1,4 @@
-from interpret.ext.blackbox import TabularExplainer
+from interpret_community import TabularExplainer
 from interpret_community.widget import ExplanationDashboard
 
 def Global_Model_Explanation(model,x_train,x_test,feature_names = None,classes = None, explantion_data = None):
