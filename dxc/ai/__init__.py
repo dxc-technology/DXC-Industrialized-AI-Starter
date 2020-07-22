@@ -45,3 +45,7 @@ from .deep_learning.image_classifier import create_training_data
 from .deep_learning.image_classifier import seggregate_data
 from .deep_learning.image_classifier import split_normalize_data
 from .deep_learning.image_classifier import image_classifier
+
+from .logging.logging import pipeline_log
+from .logging.logging import experiment_design_log
+from .logging.logging import microservice_design_log
