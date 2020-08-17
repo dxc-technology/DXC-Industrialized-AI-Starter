@@ -4,7 +4,7 @@ import json
 import datetime
 import re
 from dxc.ai.global_variables import globals_file
-
+from dxc.ai.logging import logging
 
 def convert_dates_from_arrow_to_string(df, arrow_date_fields):
     for field in arrow_date_fields:
@@ -81,6 +81,7 @@ def col_header_conv(pipe):
     return pipe
 
 def access_data_from_pipeline(db, pipe):
+    logging.pipeline_log(pipe)
     if globals_file.wrt_raw_data_used == True or globals_file.clean_data_used == True:
         pipe = col_header_conv(pipe)
         globals_file.wrt_raw_data_used = False
