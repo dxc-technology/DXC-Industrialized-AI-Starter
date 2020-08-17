@@ -46,7 +46,7 @@ def clean_dataframe(df, impute = False, text_fields = [], date_fields = [], nume
     #remove harmful characters. remove personal identifiers. make lowercase
     for field in text_fields:
         field = '_'.join(field.split()).lower()
-        clean_df[field] = clean_df[field].apply(fix_text)
+        clean_df[field] = clean_df[field].fillna(' ').apply(fix_text)
         clean_df[field] = clean_df[field].apply(scrubadub.clean, replace_with='identifier')
         clean_df[field] = clean_df[field].str.lower()
   
