@@ -66,8 +66,7 @@ def impute(df):
     return imputed_data
     
 #CLEANING FILE
-def clean_dataframe(df, impute = False, text_fields = [], date_fields = [], numeric_fields = [], categorical_fields = []):
-    
+def clean_dataframe(df, impute = False, text_fields = [], date_fields = [], numeric_fields = [], categorical_fields = []):   
     clean_df = (
       df
       #make the column names lower case and remove spaces
@@ -89,7 +88,7 @@ def clean_dataframe(df, impute = False, text_fields = [], date_fields = [], nume
   
     #impute missing values
     if impute:
-        clean_df = impute(clean_df)
+        clean_df = DataFrameImputer().fit_transform(clean_df)
 
     #standardize the format of all date fields
     for field in date_fields:
