@@ -24,6 +24,7 @@ from .clean_data.clean_data import clean_dataframe
 from .visualization.visualization import explore_features
 from .visualization.visualization import visualize_missing_data
 from .visualization.visualization import plot_distributions
+from .visualization.visualization import explore_complete_data
 
 from .pipeline.pipeline import convert_dates_from_arrow_to_string
 from .pipeline.pipeline import write_raw_data
@@ -44,3 +45,10 @@ from .deep_learning.image_classifier import create_training_data
 from .deep_learning.image_classifier import seggregate_data
 from .deep_learning.image_classifier import split_normalize_data
 from .deep_learning.image_classifier import image_classifier
+
+from .logging.logging import pipeline_log
+from .logging.logging import experiment_design_log
+from .logging.logging import microservice_design_log
+
+from .datasets._base import load_data
+from .datasets._base import load_data_details

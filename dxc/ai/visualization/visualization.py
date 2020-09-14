@@ -7,6 +7,7 @@ import pandas as pd
 from datacleaner import autoclean
 import math
 from pandas.api.types import is_numeric_dtype
+from pandas_profiling import ProfileReport
 
 
 #VISUALIZATION
@@ -29,6 +30,10 @@ def explore_features(df):
 #display a visual representation of missing fields in the given data
 def visualize_missing_data(df):
     msno.matrix(df, figsize=(15,8))
+    
+def explore_complete_data(df):
+    profile = ProfileReport(df)
+    return profile
 
 #plot the distribution of values of each field in the given data
 def plot_distributions(df):
