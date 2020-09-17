@@ -31,8 +31,8 @@ def explore_features(df):
 def visualize_missing_data(df):
     msno.matrix(df, figsize=(15,8))
     
-def explore_complete_data(df):
-    profile = ProfileReport(df)
+def explore_complete_data(df, title='Complete Data Report'):
+    profile = ProfileReport(df, title, html={'style':{'full_width':False}})
     return profile
 
 #plot the distribution of values of each field in the given data
