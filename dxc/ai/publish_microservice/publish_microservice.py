@@ -9,11 +9,11 @@ from IPython.display import YouTubeVideo
 from IPython.core.magic import register_line_cell_magic
 import urllib.request, json
 from dxc.ai.global_variables import globals_file
-from dxc.ai.logging import logging
+from dxc.ai.logging import microservice_logging
 
 def publish_microservice(microservice_design, trained_model, verbose = False):
     #Capture microservice_design in log
-    logging.microservice_design_log(microservice_design)
+    microservice_logging.microservice_design_log(microservice_design)
     # create a connection to algorithmia
     client=Algorithmia.client(microservice_design["api_key"])
     api = client.algo(microservice_design["execution_environment_username"] + "/" + microservice_design["microservice_name"])

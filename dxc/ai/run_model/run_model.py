@@ -10,7 +10,7 @@ import warnings
 import io
 from dxc.ai.global_variables import globals_file
 from .TimeSeriesModels import getBestForcastingModel
-from dxc.ai.logging import logging
+from dxc.ai.logging import experiment_design_logging
 
 
 # define the general class of models
@@ -81,7 +81,7 @@ class classification(prediction):
         return("classifier")
 
 def run_experiment(design, verbose = False):
-    logging.experiment_design_log(design)
+    experiment_design_logging.experiment_design_log(design)
     if design["model"] == 'timeseries':
         trained_model = getBestForcastingModel(design['labels'], no_predictions=7, debug=verbose, visualize = False)
         return trained_model
