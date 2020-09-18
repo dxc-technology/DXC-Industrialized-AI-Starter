@@ -19,7 +19,10 @@ from .read_data.read_csv import read_data_frame_from_local_csv
 from .read_data.read_csv import read_data_frame_from_remote_csv
 from .read_data.read_json import read_data_frame_from_remote_json
 
+from .clean_data.clean_data import encode
+from .clean_data.clean_data import impute_df
 from .clean_data.clean_data import clean_dataframe
+
 
 from .visualization.visualization import explore_features
 from .visualization.visualization import visualize_missing_data

@@ -27,7 +27,7 @@ def encode(data):
     data.loc[data.notnull()] = np.squeeze(impute_ordinal)
     return (data,encoder)
 
-def impute(df):
+def impute_df(df):
     # imputer = KNN()
     imputer = KNN(k=2)
     object_types = list(X.select_dtypes(include=['object']).columns)
@@ -71,7 +71,7 @@ def clean_dataframe(df, impute = False, text_fields = [], date_fields = [], nume
   
     #impute missing values
     if impute:
-        clean_df = impute(clean_df)
+        clean_df = impute_df(clean_df)
 
     #standardize the format of all date fields
     for field in date_fields:
