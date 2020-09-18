@@ -30,8 +30,8 @@ def encode(data):
 def impute_df(df):
     # imputer = KNN()
     imputer = KNN(k=2)
-    object_types = list(X.select_dtypes(include=['object']).columns)
-    num_types = list(set(X.columns) - set(object_types))
+    object_types = list(df.select_dtypes(include=['object']).columns)
+    num_types = list(set(df.columns) - set(object_types))
     encoders_store={}
     for column in num_types:
         skew=df[column].skew()
@@ -41,7 +41,7 @@ def impute_df(df):
             df[column]=df[column].fillna(df[column].median())
     #create a for loop to iterate through each column in the data
     for columns in object_types:
-        new=encode(df[columns],columns)
+        new=encode(df[columns])
         encoders_store[columns]=new[1]
     imputed_data = pd.DataFrame(np.round(imputer.fit_transform(df)),columns = df.columns)
     for columns in object_types:
