@@ -8,7 +8,7 @@ def readme():
 
 setup(
     name="DXC-Industrialized-AI-Starter",
-    version="2.1.1",
+    version="2.2.1",
     description="Python library which is extensively used for all AI projects",
     long_description=readme(),
     long_description_content_type="text/markdown",
@@ -23,7 +23,7 @@ setup(
     ],
     #packages=["dxc", "dxc.ai"],
     packages=find_packages(),
-    include_package_data=True,
+#     include_package_data=True,
     install_requires=["JIRA","scikit-learn==0.22.2.post1","auto_ml","Algorithmia","gitpython","flatten_json==0.1.7","pyjanitor","ftfy","arrow","pandas-profiling[notebook]==2.9.0",
                       "scrubadub","yellowbrick==1.1","datacleaner","missingno","pymongo","IPython","dnspython","pmdarima","pyaf","interpret-community==0.14.1","flask_cors","gevent"],
     entry_points={
@@ -31,4 +31,6 @@ setup(
             "dxc=dxc.ai:main",
         ]
     },
+    package_data={'datasets/data': ['datasets/data/*'],},
+    include_package_data=True,
 )
