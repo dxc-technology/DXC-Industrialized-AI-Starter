@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <title>Visualization &mdash; DXC Industrialized AI Starter</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href=".." class="site-name"> DXC Industrialized AI Starter</a>
+                </div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="..">DXC Industrialized AI Starter</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../access_clean/">Access and Clean</a></li>
+                    <li class="toctree-l1 current"><a class="nav-item current" href="./">Explore Data</a>
+<ul class="subnav">
+<li class="toctree-l2"><a class="nav-item toc" href="#explore-raw-data">Explore raw data</a></li>
+<li class="toctree-l2"><a class="nav-item toc" href="#visualize-complete-data">Visualize complete data:</a></li>
+</ul></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../data_pipeline/">Build Data Pipelines</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../experiment/">Run AI Experiments</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../model_explainability/">Model Explainability</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../publish_microservice/">Publish Microservice</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../logging/">Logging Functionality</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../data_sets/">Load Data</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../contributing_guide/">How to contribute</a></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="previous"><a href="../access_clean/">&laquo; Previous</a></div>
+    <div class="next"><a href="../data_pipeline/">Next &raquo;</a></div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href=".." class="site-name"> DXC Industrialized AI Starter</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    
+</ul>
+</nav>
+                <div id="content"><h1 id="explore-data">Explore Data</h1>
+<hr />
+<h2 id="explore-raw-data">Explore raw data</h2>
+<p>Below code snippet helps to explore and visualize raw data.</p>
+<pre><code>    ai.visualize_missing_data(raw_data)
+    ai.explore_features(raw_data)
+    ai.plot_distributions(raw_data)
+</code></pre>
+
+<ul>
+<li>
+<p><strong>explore_features(df):</strong></p>
+<ul>
+<li>It visualizes the relationships between all features in a given data frame. Areas of heat show closely-related features.</li>
+<li>This visualization is useful when trying to determine which features can be predicted and which features are needed to make the prediction.</li>
+<li>It is useful to explore the correlations between features in the raw data. Use this visualization to form a hypothesis about how the raw data can be used. It may be necessary to enrich raw data with other features to increase the number and strength of correlations.</li>
+</ul>
+</li>
+<li>
+<p><strong>visualize_missing_data(df):</strong></p>
+<ul>
+<li>It creates a visual display of missing data in a data frame. Each column of the data frame is shown as a column in the graph. Missing data is represented as horizontal lines in each column.</li>
+<li>This visualization is useful when determining whether or not to impute missing values or for determining whether or not the data is complete enough for analysis.</li>
+<li>It is useful to visualize missing fields in your raw data. Determine if imputing is necessary.</li>
+</ul>
+</li>
+<li>
+<p><strong>plot_distributions(df):</strong></p>
+<ul>
+<li>It creates a distribution graph for each column in a given data frame.</li>
+<li>Graphs for data types that cannot be plotted on a distribution graph without refinement (types like dates), will show as blank in the output.</li>
+<li>This visualization is useful for determining skew or bias in the source data. Use plot_distributions to show the distributions for each feature in raw_data.</li>
+<li>Depending on raw data, this visualization may take several minutes to complete. Use the visualization to determine if there is a data skew that may prevent proper analysis or useful insight.</li>
+</ul>
+</li>
+</ul>
+<h2 id="visualize-complete-data">Visualize complete data:</h2>
+<pre><code class="python">report = ai.explore_complete_data(df)
+report.to_notebook_iframe()
+</code></pre>
+
+<p><strong>ai.explore_complete_data(df):</strong> This function generates a profile reports from a pandas DataFrame for exploratory data analysis. For each column the following statistics are presented in an interactive HTML report. You can download that as an HTML report and share to others easily.</p>
+<ul>
+<li><strong>Type inference:</strong> detect the types of columns in a DataFrame.</li>
+<li><strong>Essentials:</strong> type, unique values, missing values</li>
+<li>Quantile statistics like minimum value, Q1, median, Q3, maximum, range, interquartile range</li>
+<li>Descriptive statistics like mean, mode, standard deviation, sum, median absolute deviation, coefficient of variation, kurtosis, skewness</li>
+<li>Most frequent values</li>
+<li>Histogram</li>
+<li>Correlations highlighting of highly correlated variables, Spearman, Pearson and Kendall matrices</li>
+<li>Missing values matrix, count, heatmap and dendrogram of missing values</li>
+<li>Text analysis learn about categories (Uppercase, Space), scripts (Latin, Cyrillic) and blocks (ASCII) of text data.</li>
+<li>File and Image analysis extract file sizes, creation dates and dimensions and scan for truncated images or those containing EXIF information.</li>
+</ul></div>
+                <footer>
+    <div class="footer-buttons">
+        <div class="previous"><a href="../access_clean/" title="Access and Clean"><span>Previous</span></a></div>
+        <div class="next"><a href="../data_pipeline/" title="Data Pipeline"><span>Next</span></a></div>
+    </div>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+    <script src="../search/main.js"></script>
+</body>
+
+</html>

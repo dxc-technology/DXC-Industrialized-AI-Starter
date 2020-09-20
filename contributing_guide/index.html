@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <title>How to Contribute &mdash; DXC Industrialized AI Starter</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href=".." class="site-name"> DXC Industrialized AI Starter</a>
+                </div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="..">DXC Industrialized AI Starter</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../access_clean/">Access and Clean</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../explore/">Explore Data</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../data_pipeline/">Build Data Pipelines</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../experiment/">Run AI Experiments</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../model_explainability/">Model Explainability</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../publish_microservice/">Publish Microservice</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../logging/">Logging Functionality</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../data_sets/">Load Data</a></li>
+                    <li class="toctree-l1 current"><a class="nav-item current" href="./">How to contribute</a>
+<ul class="subnav">
+<li class="toctree-l2"><a class="nav-item toc" href="#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="nav-item toc" href="#making-changes">Making Changes</a></li>
+<li class="toctree-l2"><a class="nav-item toc" href="#branching-and-where-changes-go">Branching, and Where Changes Go</a></li>
+<li class="toctree-l2"><a class="nav-item toc" href="#submitting-changes">Submitting Changes</a></li>
+<li class="toctree-l2"><a class="nav-item toc" href="#becoming-a-committer">Becoming a Committer</a></li>
+</ul></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="previous"><a href="../data_sets/">&laquo; Previous</a></div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href=".." class="site-name"> DXC Industrialized AI Starter</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    
+</ul>
+</nav>
+                <div id="content"><h1 id="how-to-contribute">How to contribute</h1>
+<p>We want to keep it as easy as possible to contribute changes that get things
+working in your environment. There are a few guidelines that we need
+contributors to follow so that we can have a chance of keeping on top
+of things.</p>
+<h2 id="getting-started">Getting Started</h2>
+<ul>
+<li>Make sure you have a <a href="https://github.com/signup/free">GitHub account</a>.</li>
+<li>Submit a ticket for your issue, assuming one does not already exist.</li>
+<li>DXC Industrialized AI Starter tickets are filed on the GitHub project in <a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/issues">issues tab</a>.</li>
+<li>Please try to clearly describe the issue, including the steps to reproduce
+    any bug.</li>
+<li>Please include the story of "why" you want to do something.</li>
+<li>Fork the repository on GitHub.</li>
+<li>Glance at the <a href="http://sethrobertson.github.com/GitBestPractices/">Git Best Practices</a> document, even if you
+  don't read it all yet.</li>
+</ul>
+<h2 id="making-changes">Making Changes</h2>
+<ul>
+<li>Create a topic branch for your work.</li>
+<li>You should branch off the <code>master</code> branch.</li>
+<li>Name your branch by the type of contribution and target:<ul>
+<li>Generally, the type is <code>bug</code>, or <code>feature</code>, but if they don't fit pick
+  something sensible.</li>
+</ul>
+</li>
+<li>
+<p>To create a topic branch based on master:</p>
+<p><code>git checkout master &amp;&amp; git pull &amp;&amp; git checkout -b bug/master/my_contribution</code></p>
+</li>
+<li>
+<p>Don't work directly on the <code>master</code> branch, or any other core branch.
+  Your pull request will be rejected unless it is on a topic branch.</p>
+</li>
+<li>Every commit should do one thing, and only one thing.</li>
+<li>Having too many commits is better than having too few commits.</li>
+<li>Check for unnecessary whitespace with <code>git diff --check</code> before committing.</li>
+<li>Make sure your commit messages are in the proper format.
+  If your commit fixes an issue, close it with your commit message (by
+  appending, e.g., <code>fixes #99999</code>, to the summary).</li>
+<li>Make sure you have added tests for your changes.</li>
+<li>Run <em>all</em> the tests to assure nothing else was accidentally broken.</li>
+<li>If possible, run the acceptance tests as well as the unit tests.</li>
+<li>You can <em>always</em> ask for help getting the tests working, or with
+    writing tests.</li>
+<li><a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/tree/master/Tests" target="_blank">Click Here</a> to view the basic test cases of AI starter library. Test cases file is located under Automate Test cases folder. These test cases should be passed by your new changes to ensure that existing basic functionalities are not affected by your latest commit. Please refer to <a href="https://docs.travis-ci.com/" target="_blank">Travis CI</a> documentation for automate test case execution.</li>
+</ul>
+<h2 id="branching-and-where-changes-go">Branching, and Where Changes Go</h2>
+<p>Until a stable version of DXC Industrialized AI Starter is shipped, there is only one branch:
+<code>master</code>.  All changes target that branch.</p>
+<h3 id="branch-and-version-compatibility">Branch and Version Compatibility</h3>
+<p>Any change to  DXC Industrialized AI Starter branch should strive as much as possible to be compatible
+with all released versions of DXC Industrialized AI Starter.  We want to avoid multiple incompatible
+versions existing as much as possible.</p>
+<p>Until 1.0.0 we are willing to accept backward-incompatible changes if there is
+no possible way around it.  Those changes MUST provide a migration strategy
+and, if possible, deprecation warnings about the older functionality.</p>
+<p>Right now any change committed to <code>master</code> must be considered "live".</p>
+<h2 id="submitting-changes">Submitting Changes</h2>
+<ul>
+<li>Unless your contribution is <a href="http://opensource.csc.com/sysworkflow/en/neoclassic/251810809537eb36f73ac23031915862/TrivialPatchExemptionProcess.php">trivial</a>, ensure you have signed the
+  <a href="http://opensource.csc.com/sysworkflow/en/neoclassic/251810809537eb36f73ac23031915862/Signing_CLA_Welcome_Page.php">Contributor License Agreement</a>.</li>
+<li>Push your changes to a topic branch in your fork of the repository.</li>
+<li>Submit a pull request to the repository in the Dxc organization.</li>
+<li>Update your ticket to mark that you have submitted code and are ready to be
+  reviewed.</li>
+<li>Mentioning the issue number in the subject will make this happen through
+    GitHub magic.</li>
+<li>A committer checks that the pull request is well formed.  If not, they will
+  ask that it is fixed:</li>
+<li>it is on its own, appropriately named, branch.</li>
+<li>it was submitted to an appropriate target branch.</li>
+<li>it only has commits relevant to the specific issue.</li>
+<li>it has appropriate, clear, and effective commit messages.</li>
+<li>A committer can start a pull request specific discussion; at this point that covers:</li>
+<li>Reviewing the code for any obvious problems.</li>
+<li>Providing feedback based on personal experience on the subject.</li>
+<li>Testing relevant examples on an untested platform.</li>
+<li>Thoroughly stepping through the change to understand potential side-effects.</li>
+<li>Examining discrepancies between the original issue and the pull request.</li>
+<li>Using @mentioning to involve another committer in the discussion.</li>
+</ul>
+<p>Anyone can offer their assessment of a pull request, or be involved in the
+discussion, but keep in mind that this isn't the time to decide if the pull
+request is desired or not.  The only reason it should be rejected at this
+point is if someone skipped the earlier steps in the process and submitted
+code before any discussion happened.</p>
+<ul>
+<li>Every review should add any specific changes required to the pull request:</li>
+<li>For comments on specific code, using GitHub line comments.</li>
+<li>For general changes, include them in the final assessment.</li>
+<li>Every review should end by specifying the type of review, and a vote:</li>
+<li>Good to merge.</li>
+<li>Good to merge with minor changes (which are specified, or line comments).</li>
+<li>Not good to merge without major changes (which are specified).</li>
+<li>Any committer can merge after there is a vote of "good to merge".</li>
+<li>Committers are trusted to do the right thing - you can merge your own code, but you should make sure you get appropriate independent review.</li>
+<li>Most changes should not merge unless a code review has been completed.</li>
+<li>If the pull request is not reviewed within 14 days, you can ask any committer to execute the merge regardless:</li>
+<li>This can be blocked at any time by a single constructive vote against
+    merging ("Don't merge this, until you change...")</li>
+<li>This is not stopped by a non-constructive vote (Don't merge this, I have
+    not had a chance to look at it yet.")</li>
+<li>The committer is encouraged to review before merging.</li>
+</ul>
+<h2 id="becoming-a-committer">Becoming a Committer</h2>
+<p>DXC Industrialized AI Starter is an open project: any contributor can become a committer.  Being a
+committer comes with great responsibility: your decisions directly shape the
+community, and the effectiveness, of the DXC Industrialized AI Starter project.  You will probably
+invest more, and produce less, as a committer than a regular developer
+submitting pull requests.</p>
+<p>As a committer your code is subject to the same review and commit restrictions
+as regular committers. You must exercise greater caution that most people in
+what you submit and include in the project.</p>
+<p>On the other hand you have several additional responsibilities over and above
+those of a regular developer:
+1. You are responsible for reviewing and voting on inclusion of code from
+   other developers.
+   * You are responsible for giving constructive feedback that action can be
+     taken on when code isn't quite there yet
+2. You are responsible for ensuring that quality, tested code is committed.
+3. You are responsible for ensuring that code merges into the
+   appropriate branch.
+4. You are responsible for ensuring that our community is diverse, accepting,
+   and friendly.
+5. You are responsible for voting in a timely fashion, where required.</p>
+<p>The best way to become a committer is to fulfill those requirements in the
+community, so that it is clear that approving you is just a formality.</p>
+<p>The process for adding a committer is:</p>
+<ol>
+<li>A candidate has demonstrated familiarity with the quality guidelines and
+   coding standards by submitting at least two pull requests that are accepted
+   without modification.</li>
+<li>The candidate is proposed by an existing committer.</li>
+<li>A formal vote is held on the project private mailing list.</li>
+<li>Existing committers vote on the candidate:</li>
+<li>yes, accept them as a committer.</li>
+<li>no, do not accept them as a committer.</li>
+<li>If a majority of existing committers vote positively, the new committer
+   is added to the public list of committers, and announced on the mailing list.</li>
+</ol>
+<p>Voting on adding a committer is absolutely private, and any feedback to
+candidates about why they were not accepted is at the option of the
+project leader.</p>
+<h3 id="removing-committers">Removing Committers</h3>
+<p>Removing a committer happens if they don't live up to their responsibilities,
+or if they violate the community standards.  This is done by the project
+leader.  The details of why are private, and will not be shared.</p>
+<h3 id="security-issue-notifications">Security issue notifications</h3>
+<p>If you discover a potential security issue in this project we ask that you notify DXC Technology Security via email. Please do <strong>not</strong> create a public github issue</p></div>
+                <footer>
+    <div class="footer-buttons">
+        <div class="previous"><a href="../data_sets/" title="Load Data"><span>Previous</span></a></div>
+    </div>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+    <script src="../search/main.js"></script>
+</body>
+
+</html>

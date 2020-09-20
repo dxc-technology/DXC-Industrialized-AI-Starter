@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../img/favicon.ico">
-    <title>Publish Microservice &mdash; DXC Industrialized AI Starter</title>
+    <title>Logging &mdash; DXC Industrialized AI Starter</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
@@ -44,17 +44,17 @@
                     <li class="toctree-l1"><a class="nav-item" href="../data_pipeline/">Build Data Pipelines</a></li>
                     <li class="toctree-l1"><a class="nav-item" href="../experiment/">Run AI Experiments</a></li>
                     <li class="toctree-l1"><a class="nav-item" href="../model_explainability/">Model Explainability</a></li>
-                    <li class="toctree-l1 current"><a class="nav-item current" href="./">Publish Microservice</a>
+                    <li class="toctree-l1"><a class="nav-item" href="../publish_microservice/">Publish Microservice</a></li>
+                    <li class="toctree-l1 current"><a class="nav-item current" href="./">Logging Functionality</a>
 <ul class="subnav">
 </ul></li>
-                    <li class="toctree-l1"><a class="nav-item" href="../logging/">Logging Functionality</a></li>
                     <li class="toctree-l1"><a class="nav-item" href="../data_sets/">Load Data</a></li>
                     <li class="toctree-l1"><a class="nav-item" href="../contributing_guide/">How to contribute</a></li>
                 </ul>
             </nav>
             <div class="repo">
-    <div class="previous"><a href="../model_explainability/">&laquo; Previous</a></div>
-    <div class="next"><a href="../logging/">Next &raquo;</a></div>
+    <div class="previous"><a href="../publish_microservice/">&laquo; Previous</a></div>
+    <div class="next"><a href="../data_sets/">Next &raquo;</a></div>
 </div>
         </aside>
         <div id="spacer"><button class="arrow"></button></div>
@@ -69,50 +69,21 @@
     
 </ul>
 </nav>
-                <div id="content"><h1 id="publish-microservice">Publish Microservice</h1>
-<hr />
-<p>The DXC AI Starter library makes it easy to publish your models as working microservices. By default, the DXC AI Starter library uses  free tier of <a href="https://algorithmia.com/signup">Algorithmia</a> to publish models as microservices. In order to provide the information required to design the microservice, you must:</p>
+                <div id="content"><h1 id="logging-functionality">Logging Functionality</h1>
+<p>Logging is an important module in tracking the work or performance. Maintaining logs helps is tracing the error, variable value and other many uses.</p>
+<p>DXC industrialized AI starter also performs default logging for few crucial functions. We have provided the automatic logging functionality for below major funtions in this library.</p>
 <ul>
-<li>create an <a href = "https://algorithmia.com/signin#credentials" target="_blank"> Algorithmia</a> account </li>
-<li>create an API key with BOTH "Read &amp; Write Data" and "Manage Algorithms" permissions enabled</li>
-<li>create an algorithm user name</li>
+<li>Build Data Pipelines</li>
+<li>Run AI Experiments</li>
+<li>Publish Microservice</li>
 </ul>
-<pre><code>trained_model is the output of run_experiment() function
-microservice_design = {
-    &quot;microservice_name&quot;: &quot;&lt;Name of your microservice&gt;&quot;,
-    &quot;microservice_description&quot;: &quot;&lt;Brief description about your microservice&gt;&quot;,
-    &quot;execution_environment_username&quot;: &quot;&lt;Algorithmia username&gt;&quot;,
-    &quot;api_key&quot;: &quot;&lt;your api_key&gt;&quot;,
-    &quot;api_namespace&quot;: &quot;&lt;your api namespace&gt;&quot;,   
-    &quot;model_path&quot;:&quot;&lt;your model_path&gt;&quot;
-}
-
-# publish the micro service and display the url of the api
-api_url = ai.publish_microservice(microservice_design, trained_model)
-print(&quot;api url: &quot; + api_url)
-</code></pre>
-
-<ul>
-<li>
-<p><strong>publish_microservice(microservice_design, trained_model):</strong></p>
-<ul>
-<li>
-<p>The code in this section prepares an execution environment for the microservice, builds a microservice using the machine-learning model, deploys the microservice into the execution environment, and publishes an API enpoint for the microservice.</p>
-</li>
-<li>
-<p>The work of creating the microservice and deploying it will be done automatically. The code will also automatically handle the source code reposity management.</p>
-</li>
-<li>
-<p>This code defines the parameters needed to build and delpoy a microservice based on the trained model.</p>
-</li>
-<li>Update microservice_design with parameters appropriate for your project. The parameters must contain valid keys, namespaces, and model paths from Algorithmia.</li>
-</ul>
-</li>
-</ul></div>
+<p>These auto logging is introduced to save the user build pipelines, inputs provided for run experiment function and also to store the microservice design skeleton used for publishing model in algorithmia.</p>
+<p>These logs can be referred back in case to rerun or reuse any pipeline or microservice design details.
+Logs will be saved in the same location where notebook with functions used. Refer to sample example notebook for reference of sample logs.</p></div>
                 <footer>
     <div class="footer-buttons">
-        <div class="previous"><a href="../model_explainability/" title="Model Explainability"><span>Previous</span></a></div>
-        <div class="next"><a href="../logging/" title="Logging"><span>Next</span></a></div>
+        <div class="previous"><a href="../publish_microservice/" title="Publish Microservice"><span>Previous</span></a></div>
+        <div class="next"><a href="../data_sets/" title="Load Data"><span>Next</span></a></div>
     </div>
     <div class="footer-note">
         <p>

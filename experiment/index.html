@@ -39,17 +39,23 @@
             <nav class="nav">
                 <ul class="root">
                     <li class="toctree-l1"><a class="nav-item" href="..">DXC Industrialized AI Starter</a></li>
-                    <li class="toctree-l1"><a class="nav-item" href="../access_clean_explore/">Access, Clean and Explore</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../access_clean/">Access and Clean</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../explore/">Explore Data</a></li>
                     <li class="toctree-l1"><a class="nav-item" href="../data_pipeline/">Build Data Pipelines</a></li>
                     <li class="toctree-l1 current"><a class="nav-item current" href="./">Run AI Experiments</a>
 <ul class="subnav">
+<li class="toctree-l2"><a class="nav-item toc" href="#deep-learning-model">Deep Learning Model</a></li>
 </ul></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../model_explainability/">Model Explainability</a></li>
                     <li class="toctree-l1"><a class="nav-item" href="../publish_microservice/">Publish Microservice</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../logging/">Logging Functionality</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../data_sets/">Load Data</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../contributing_guide/">How to contribute</a></li>
                 </ul>
             </nav>
             <div class="repo">
     <div class="previous"><a href="../data_pipeline/">&laquo; Previous</a></div>
-    <div class="next"><a href="../publish_microservice/">Next &raquo;</a></div>
+    <div class="next"><a href="../model_explainability/">Next &raquo;</a></div>
 </div>
         </aside>
         <div id="spacer"><button class="arrow"></button></div>
@@ -69,7 +75,7 @@
 <p>An experiment trains and tests a machine-learning model. The code in this section runs a model through a complete lifecycle and saves the final model to the local drive. Run the code that defines a machine-learning model and its lifecycle. Design an experiment and execute it. Most of the work of choosing features and specific model parameters will be done automatically. The code will also automatically score each option and return the options with the best predictive performance.</p>
 <p>Below is a example for run_experiment() function.</p>
 <pre><code>experiment_design = {
-    #model options include ['regression()', 'classification()']
+    #model options include ['regression()', 'classification()', 'timeseries']
     &quot;model&quot;: ai.regression(),
     &quot;labels&quot;: df.avg_est_unit_cost_error,
     &quot;data&quot;: df,
@@ -92,32 +98,48 @@ trained_model = ai.run_experiment(experiment_design)
 
 <ul>
 <li>
-<p><strong>run_experiment(experiment_design):</strong> </p>
+<p><strong>run_experiment(experiment_design):</strong></p>
 <ul>
 <li>This function executes an experiment on selected model. Update experiment_design with parameters that fit your project.</li>
-<li>The data parameter should be same as the refined training data. The model parameter must be a model subclass. </li>
-<li>The labels parameter indicates the column of the data dataframe to be predicted. </li>
+<li>The data parameter should be same as the refined training data. The model parameter must be a model subclass.</li>
+<li>The labels parameter indicates the column of the data dataframe to be predicted.</li>
 <li>For the prediction model, the meta-data must describe the column to be predicted and the types for non-numeric columns.</li>
 </ul>
 </li>
 </ul>
 <p><strong>Further Information on Model</strong></p>
-<p>Machine learning model provides the intelligent behavior that you will publish as a microservice. The code in this section provides you with options for the model. You must select a model capable of using df to learn the behavior specified in the design section of the datastory. Run this function by defining each model type, then choose the model most appropriate for your datastory. Each model adheres to the specifications of a model. This allows any of the models to run according to the standard model lifecycle defined in run_experiment.</p>
+<p>Machine learning model provides the intelligent behavior that you will publish as a microservice. The code in this section provides you with options for the model. You must select a model capable of using df to learn the behavior specified in the design section of the datastory. Run this function by defining each model type, then choose the model most appropriate for your data story. Each model adheres to the specifications of a model. This allows any of the models to run according to the standard model lifecycle defined in run_experiment.</p>
 <ul>
+<li>
+<p><strong>Regressor model:</strong> The regressor model makes a numeric prediction. Use this model when the design specification of the data story requires the AI microservice to give a numerical output prediction.</p>
+</li>
+<li>
+<p><strong>Classification model:</strong> The classification model makes a classification prediction. Use this model when the design specification of the data story requires the AI microservice to give a categorical (text-based) output prediction.</p>
+</li>
+<li>
+<p><strong>Timeseries model:</strong> The timeseries model automated the process for predicting future values of a signal using a machine learning approach. It allows forecasting a time series (or a signal) for future values in a fully automated way. Use this model when design specification of the data story requires to predict future values based on time.</p>
+</li>
 <li>
 <p><strong>Prediction:</strong> This section defines a new type of model by creating a subclass of model. The prediction model learns to predict a particular outcome. It automatically optimizes parameters, selects features, selects an algorithm, and scores the results.</p>
 </li>
-<li>
-<p><strong>Regressor model:</strong> The regressor model makes a numeric prediction. Use this model when the design specification of the datastory requires the AI microservice to give a numerical outut prediction.</p>
-</li>
-<li>
-<p><strong>Classification model:</strong> The classification model makes a classification prediction. Use this model when the design specification of the datastory requires the AI microservice to give a categorical (text-based) outut prediction.</p>
-</li>
-</ul></div>
+</ul>
+<h2 id="deep-learning-model">Deep Learning Model</h2>
+<p>DXC Industrialized AI starter has Deep Learning model for image classification.</p>
+<p>Image classification is a supervised learning problem. A set of target classes are defined, and a model is trained with labeled images (train set). This trained model will identify and classifies new input into one of the target class.</p>
+<p>This model can be used through three functions mentioned below</p>
+<ol>
+<li>ai.create_training_data</li>
+<li>ai.split_normalize_data</li>
+<li>ai.image_classifier</li>
+</ol>
+<p><strong>ai.create_training_data:</strong> This function reads each folder and each image from the path provided and will convert image to an array. It will also resize your image to the size provided, default size is 100. This function takes list of image categories, image folder directory/path and resize size. This function return features and labels.</p>
+<p><strong>ai.split_normalize_data:</strong> This function split your training data into train and test based on the size of test provided. Default test size will be 0.20. Along with splitting the data to train and test, this function will also normalize the data.Th is function takes features, labels, test size (default 0.20), category count and image size (default 100).This function returns train and test sets.</p>
+<p><strong>ai.image_classifier:</strong> This function compiles the model with the image size and number of categories provided. It adds the input, hidden and output layers and compiles the model. Here returned model is trained with train data sets and further used for prediction.</p>
+<p>An example notebook for this model is placed under “Examples” folder in git repository.</p></div>
                 <footer>
     <div class="footer-buttons">
         <div class="previous"><a href="../data_pipeline/" title="Data Pipeline"><span>Previous</span></a></div>
-        <div class="next"><a href="../publish_microservice/" title="Publish Microservice"><span>Next</span></a></div>
+        <div class="next"><a href="../model_explainability/" title="Model Explainability"><span>Next</span></a></div>
     </div>
     <div class="footer-note">
         <p>
