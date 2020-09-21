@@ -10,7 +10,7 @@ Citation Request:
                 [Pre-press (pdf)] http://www3.dsi.uminho.pt/pcortez/winequality09.pdf
                 [bib] http://www3.dsi.uminho.pt/pcortez/dss09.bib
 
-1. Title: Wine Quality Red
+1. Title: Wine Quality White
 
 2. Sources
    Created by: Paulo Cortez (Univ. Minho), Antonio Cerdeira, Fernando Almeida, Telmo Matos and Jose Reis (CVRVV) @ 2009
