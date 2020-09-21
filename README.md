@@ -55,7 +55,9 @@ Pipelines are a standard way to process your data towards modeling and interpret
 data_layer = {
     "connection_string": "<your connection_string>",
     "collection_name": "<your collection_name>",
-    "database_name": "<your database_name>"
+    "database_name": "<your database_name>",
+    "data_source":"<Source of your datset>",
+    "cleaner":"<whether applied cleaner yes/no >"
 }
 wrt_raw_data = ai.write_raw_data(data_layer, raw_data, date_fields = [])
 ```
