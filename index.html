@@ -116,7 +116,9 @@ ai.plot_distributions(raw_data) #creates a distribution graph for each column.
 data_layer = {
     &quot;connection_string&quot;: &quot;&lt;your connection_string&gt;&quot;,
     &quot;collection_name&quot;: &quot;&lt;your collection_name&gt;&quot;,
-    &quot;database_name&quot;: &quot;&lt;your database_name&gt;&quot;
+    &quot;database_name&quot;: &quot;&lt;your database_name&gt;&quot;,
+    &quot;data_source&quot;:&quot;&lt;Source of your datset&gt;&quot;,
+    &quot;cleaner&quot;:&quot;&lt;whether applied cleaner yes/no &gt;&quot;
 }
 wrt_raw_data = ai.write_raw_data(data_layer, raw_data, date_fields = [])
 </code></pre>
