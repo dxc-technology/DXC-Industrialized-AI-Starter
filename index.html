@@ -43,7 +43,7 @@
 <ul class="subnav">
 <li class="toctree-l2"><a class="nav-item toc" href="#installation">Installation</a></li>
 <li class="toctree-l2"><a class="nav-item toc" href="#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="nav-item toc" href="#example">Example</a></li>
+<li class="toctree-l2"><a class="nav-item toc" href="#example-notebooks">Example Notebooks</a></li>
 </ul></li>
                     <li class="toctree-l1"><a class="nav-item" href="access_clean/">Access and Clean</a></li>
                     <li class="toctree-l1"><a class="nav-item" href="explore/">Explore Data</a></li>
@@ -106,10 +106,12 @@ ai.visualize_missing_data(raw_data) #visualizes relationships between all featur
 ai.explore_features(raw_data) #creates a visual display of missing data.
 ai.plot_distributions(raw_data) #creates a distribution graph for each column.
 
-
+#To visualize complete data as a report
+report = ai.explore_complete_data(df)
+report.to_notebook_iframe()
 </code></pre>
 
-<p><a href="https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/access_clean_explore/">Click here</a> for details about Acess,clean,explore raw data.</p>
+<p><a href="https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/access_clean/">Click here</a> for details about Acess,clean,explore raw data.</p>
 <h3 id="build-data-pipelines">Build Data Pipelines</h3>
 <p>Pipelines are a standard way to process your data towards modeling and interpreting. By default, the DXC AI Starter library uses the free tier of <a href="https://account.mongodb.com/account/register">MongoDB Atlas</a> to store raw data and execute pipelines. In order to get started, you need to first have an  <a href= "https://account.mongodb.com/account/register" target="_blank">MongoDB</a> account which you can signup for free and create a database "connection_string" and specify those details in the data_layer below. The following code connects to MongoDB and stores raw data for processing.</p>
 <pre><code class="python">#Insert data into MongoDB:
@@ -190,9 +192,8 @@ print(&quot;api url: &quot; + api_url)
 </code></pre>
 
 <p><a href="https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/publish_microservice/">Click here</a> for details about publishing microservice.</p>
-<h2 id="example">Example</h2>
-<p><a href="https://colab.research.google.com/drive/1EV_Q09B-bppGbEehBgCvsv_JIM87T_n1" target="_blank">Here</a> is an detailed and in-depth example of colab notebook for DXC Indusrialized AI Starter library usage.</p>
-<p><img alt="aistarterscreen" src="img/aistarterscreen.png" /></p>
+<h2 id="example-notebooks">Example Notebooks</h2>
+<p><a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/tree/master/Examples" target="_blank">Here</a> are example notebooks for individual models. These sample notebooks help to understand on how to use each function, what parameters are expected for each function and what will be the output of each function in a model.</p>
 <h3 id="reporting-issues">Reporting Issues</h3>
 <p>If you find any issues, feel free to report them <a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/issues" target="_blank">here</a> with clear description of your issue.</p></div>
                 <footer>

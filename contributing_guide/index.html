@@ -79,34 +79,31 @@ working in your environment. There are a few guidelines that we need
 contributors to follow so that we can have a chance of keeping on top
 of things.</p>
 <h2 id="getting-started">Getting Started</h2>
-<ul>
+<ol>
 <li>Make sure you have a <a href="https://github.com/signup/free">GitHub account</a>.</li>
-<li>Submit a ticket for your issue, assuming one does not already exist.</li>
+<li>Submit a ticket for your issue, assuming one does not already exist.<ul>
 <li>DXC Industrialized AI Starter tickets are filed on the GitHub project in <a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/issues">issues tab</a>.</li>
 <li>Please try to clearly describe the issue, including the steps to reproduce
     any bug.</li>
 <li>Please include the story of "why" you want to do something.</li>
+</ul>
+</li>
 <li>Fork the repository on GitHub.</li>
 <li>Glance at the <a href="http://sethrobertson.github.com/GitBestPractices/">Git Best Practices</a> document, even if you
   don't read it all yet.</li>
-</ul>
+</ol>
 <h2 id="making-changes">Making Changes</h2>
-<ul>
-<li>Create a topic branch for your work.</li>
+<ol>
+<li>Create a topic branch for your work.<ul>
 <li>You should branch off the <code>master</code> branch.</li>
-<li>Name your branch by the type of contribution and target:<ul>
-<li>Generally, the type is <code>bug</code>, or <code>feature</code>, but if they don't fit pick
-  something sensible.</li>
+<li>Name your branch by the type of contribution and target:</li>
+<li>Generally, the type is <code>bug</code>, or <code>feature</code>, but if they don't fit pick something sensible.</li>
+<li>To create a topic branch based on master:
+    <code>git checkout master &amp;&amp; git pull &amp;&amp; git checkout -b bug/master/my_contribution</code> </li>
 </ul>
 </li>
-<li>
-<p>To create a topic branch based on master:</p>
-<p><code>git checkout master &amp;&amp; git pull &amp;&amp; git checkout -b bug/master/my_contribution</code></p>
-</li>
-<li>
-<p>Don't work directly on the <code>master</code> branch, or any other core branch.
-  Your pull request will be rejected unless it is on a topic branch.</p>
-</li>
+<li>Don't work directly on the <code>master</code> branch, or any other core branch.
+  Your pull request will be rejected unless it is on a topic branch.</li>
 <li>Every commit should do one thing, and only one thing.</li>
 <li>Having too many commits is better than having too few commits.</li>
 <li>Check for unnecessary whitespace with <code>git diff --check</code> before committing.</li>
@@ -114,12 +111,14 @@ of things.</p>
   If your commit fixes an issue, close it with your commit message (by
   appending, e.g., <code>fixes #99999</code>, to the summary).</li>
 <li>Make sure you have added tests for your changes.</li>
-<li>Run <em>all</em> the tests to assure nothing else was accidentally broken.</li>
+<li>Run <em>all</em> the tests to assure nothing else was accidentally broken.<ul>
 <li>If possible, run the acceptance tests as well as the unit tests.</li>
 <li>You can <em>always</em> ask for help getting the tests working, or with
     writing tests.</li>
 <li><a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/tree/master/Tests" target="_blank">Click Here</a> to view the basic test cases of AI starter library. Test cases file is located under Automate Test cases folder. These test cases should be passed by your new changes to ensure that existing basic functionalities are not affected by your latest commit. Please refer to <a href="https://docs.travis-ci.com/" target="_blank">Travis CI</a> documentation for automate test case execution.</li>
 </ul>
+</li>
+</ol>
 <h2 id="branching-and-where-changes-go">Branching, and Where Changes Go</h2>
 <p>Until a stable version of DXC Industrialized AI Starter is shipped, there is only one branch:
 <code>master</code>.  All changes target that branch.</p>
@@ -132,22 +131,25 @@ no possible way around it.  Those changes MUST provide a migration strategy
 and, if possible, deprecation warnings about the older functionality.</p>
 <p>Right now any change committed to <code>master</code> must be considered "live".</p>
 <h2 id="submitting-changes">Submitting Changes</h2>
-<ul>
+<ol>
 <li>Unless your contribution is <a href="http://opensource.csc.com/sysworkflow/en/neoclassic/251810809537eb36f73ac23031915862/TrivialPatchExemptionProcess.php">trivial</a>, ensure you have signed the
   <a href="http://opensource.csc.com/sysworkflow/en/neoclassic/251810809537eb36f73ac23031915862/Signing_CLA_Welcome_Page.php">Contributor License Agreement</a>.</li>
 <li>Push your changes to a topic branch in your fork of the repository.</li>
 <li>Submit a pull request to the repository in the Dxc organization.</li>
 <li>Update your ticket to mark that you have submitted code and are ready to be
-  reviewed.</li>
-<li>Mentioning the issue number in the subject will make this happen through
-    GitHub magic.</li>
+  reviewed.<ul>
+<li>Mentioning the issue number in the subject will make this happen through GitHub magic.</li>
+</ul>
+</li>
 <li>A committer checks that the pull request is well formed.  If not, they will
-  ask that it is fixed:</li>
-<li>it is on its own, appropriately named, branch.</li>
-<li>it was submitted to an appropriate target branch.</li>
-<li>it only has commits relevant to the specific issue.</li>
-<li>it has appropriate, clear, and effective commit messages.</li>
-<li>A committer can start a pull request specific discussion; at this point that covers:</li>
+  ask that it is fixed:<ul>
+<li>It is on its own, appropriately named, branch.</li>
+<li>It was submitted to an appropriate target branch.</li>
+<li>It only has commits relevant to the specific issue.</li>
+<li>It has appropriate, clear, and effective commit messages.</li>
+</ul>
+</li>
+<li>A committer can start a pull request specific discussion; at this point that covers:<ul>
 <li>Reviewing the code for any obvious problems.</li>
 <li>Providing feedback based on personal experience on the subject.</li>
 <li>Testing relevant examples on an untested platform.</li>
@@ -155,29 +157,37 @@ and, if possible, deprecation warnings about the older functionality.</p>
 <li>Examining discrepancies between the original issue and the pull request.</li>
 <li>Using @mentioning to involve another committer in the discussion.</li>
 </ul>
+</li>
+</ol>
 <p>Anyone can offer their assessment of a pull request, or be involved in the
 discussion, but keep in mind that this isn't the time to decide if the pull
 request is desired or not.  The only reason it should be rejected at this
 point is if someone skipped the earlier steps in the process and submitted
 code before any discussion happened.</p>
-<ul>
-<li>Every review should add any specific changes required to the pull request:</li>
+<ol>
+<li>Every review should add any specific changes required to the pull request:<ul>
 <li>For comments on specific code, using GitHub line comments.</li>
 <li>For general changes, include them in the final assessment.</li>
-<li>Every review should end by specifying the type of review, and a vote:</li>
+</ul>
+</li>
+<li>Every review should end by specifying the type of review, and a vote:<ul>
 <li>Good to merge.</li>
 <li>Good to merge with minor changes (which are specified, or line comments).</li>
 <li>Not good to merge without major changes (which are specified).</li>
-<li>Any committer can merge after there is a vote of "good to merge".</li>
+</ul>
+</li>
+<li>Any committer can merge after there is a vote of "good to merge".<ul>
 <li>Committers are trusted to do the right thing - you can merge your own code, but you should make sure you get appropriate independent review.</li>
 <li>Most changes should not merge unless a code review has been completed.</li>
-<li>If the pull request is not reviewed within 14 days, you can ask any committer to execute the merge regardless:</li>
-<li>This can be blocked at any time by a single constructive vote against
-    merging ("Don't merge this, until you change...")</li>
-<li>This is not stopped by a non-constructive vote (Don't merge this, I have
-    not had a chance to look at it yet.")</li>
+</ul>
+</li>
+<li>If the pull request is not reviewed within 14 days, you can ask any committer to execute the merge regardless:<ul>
+<li>This can be blocked at any time by a single constructive vote against merging ("Don't merge this, until you change...")</li>
+<li>This is not stopped by a non-constructive vote (Don't merge this, I have not had a chance to look at it yet.")</li>
 <li>The committer is encouraged to review before merging.</li>
 </ul>
+</li>
+</ol>
 <h2 id="becoming-a-committer">Becoming a Committer</h2>
 <p>DXC Industrialized AI Starter is an open project: any contributor can become a committer.  Being a
 committer comes with great responsibility: your decisions directly shape the
@@ -191,8 +201,7 @@ what you submit and include in the project.</p>
 those of a regular developer:
 1. You are responsible for reviewing and voting on inclusion of code from
    other developers.
-   * You are responsible for giving constructive feedback that action can be
-     taken on when code isn't quite there yet
+    * You are responsible for giving constructive feedback that action can be taken on when code isn't quite there yet
 2. You are responsible for ensuring that quality, tested code is committed.
 3. You are responsible for ensuring that code merges into the
    appropriate branch.
@@ -208,9 +217,11 @@ community, so that it is clear that approving you is just a formality.</p>
    without modification.</li>
 <li>The candidate is proposed by an existing committer.</li>
 <li>A formal vote is held on the project private mailing list.</li>
-<li>Existing committers vote on the candidate:</li>
+<li>Existing committers vote on the candidate:<ul>
 <li>yes, accept them as a committer.</li>
 <li>no, do not accept them as a committer.</li>
+</ul>
+</li>
 <li>If a majority of existing committers vote positively, the new committer
    is added to the public list of committers, and announced on the mailing list.</li>
 </ol>

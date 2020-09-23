@@ -86,16 +86,16 @@
 
 <ul>
 <li>
-<p><strong>read_data_frame_from_remote_json(json_url):</strong> It reads JSON files from a URL and also flattened (in the case of nested data) the json data and cast into a pandas data frame.</p>
+<p><strong>ai.read_data_frame_from_remote_json(json_url):</strong> It reads JSON files from a URL and also flattened (in the case of nested data) the json data and cast into a pandas data frame.</p>
 </li>
 <li>
-<p><strong>read_data_frame_from_remote_csv(csv_url, col_names = [], delim_whitespace=False, header = 'infer'):</strong> It allows you to read character-delimited (commas, tabs, spaces) data from a URL. Expect csv_url parameter remaining all are optional.</p>
+<p><strong>ai.read_data_frame_from_remote_csv(csv_url, col_names = [], delim_whitespace=False, header = 'infer'):</strong> It allows you to read character-delimited (commas, tabs, spaces) data from a URL. Expect csv_url parameter remaining all are optional.</p>
 </li>
 <li>
-<p><strong>read_data_frame_from_local_csv(col_names = [], delim_whitespace=False, header = 'infer'):</strong> This method allows you to import local character-delimited (commas, tabs, spaces) files. All parameters are optional. By default, the function will infer the header from the data, but an explicit header can be specified.</p>
+<p><strong>ai.read_data_frame_from_local_csv(col_names = [], delim_whitespace=False, header = 'infer'):</strong> This method allows you to import local character-delimited (commas, tabs, spaces) files. All parameters are optional. By default, the function will infer the header from the data, but an explicit header can be specified.</p>
 </li>
 <li>
-<p><strong>read_data_frame_from_local_excel_file():</strong> This function allows you to import XLSX files. When the file explorer is launched, you must select an XLSX file or the function will result in an error.</p>
+<p><strong>ai.read_data_frame_from_local_excel_file():</strong> This function allows you to import XLSX files. When the file explorer is launched, you must select an XLSX file or the function will result in an error.</p>
 </li>
 </ul>
 <h2 id="clean-raw-data">Clean raw data</h2>
@@ -104,7 +104,7 @@
 <pre><code class="python">    clean_data = ai.clean_dataframe(df)
 </code></pre>
 
-<p><strong>clean_dataframe(df, impute = False, text_fields = [], date_fields = [], numeric_fields = [], categorical_fields = []):</strong>
+<p><strong>ai.clean_dataframe(df, impute = False, text_fields = [], date_fields = [], numeric_fields = [], categorical_fields = []):</strong>
     - This method imputes missing data, cleans the column headings, removes empty rows and columns, anonymizes text, and casts fields to their proper data type. 
     - Except for the data, every input field for clean_dataframe is optional. By default the method will not impute missing data. If instructed, clean_dataframe will replace missing numeric fields with the mean value and replace missing categorical fields with the mode.</p>
 <p>The above function performs the following process:</p>

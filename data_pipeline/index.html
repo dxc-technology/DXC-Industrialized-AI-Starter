@@ -95,11 +95,12 @@ wrt_raw_data = ai.write_raw_data(data_layer, raw_data, date_fields = [])
 </code></pre>
 
 <p><strong>ai.write_raw_data(data_layer, raw_data, date_fields = [ ]):</strong> </p>
-<pre><code>- This function handles Mongo DB Atlas automatically.
-- Use write_raw_data function from ai library to convert Arrow dates to Strings data types
-- It also transfers the raw data into the database and collection.
-- It also stores meta data details, which is created as a seperate collection, and it stores the information about the each version along with their time of insertion.
-</code></pre>
+<ul>
+<li>This function handles Mongo DB Atlas automatically.</li>
+<li>Use write_raw_data function from ai library to convert Arrow dates to Strings data types</li>
+<li>It also transfers the raw data into the database and collection.</li>
+<li>It also stores meta data details, which is created as a seperate collection, and it stores the information about the each version along with their time of insertion.</li>
+</ul>
 <p><strong>Version control in Mongo DB:</strong></p>
 <p>DXC AI Starter is being equipped with the version control functionality, wherein the documents(dataframes) inserted into the mongo are saved automatically as versions. The latest version is always in sync with the retrieved document. The versions are made with underscore(_) and a number which is directly proportional to the number of times the document is changed. This helps in retrieving back the previous versions of the data.</p>
 <h2 id="build-pipeline">Build Pipeline</h2>
@@ -128,7 +129,7 @@ df = ai.access_data_from_pipeline(wrt_raw_data, pipeline)
 </code></pre>
 
 <ul>
-<li><strong>access_data_from_pipeline(write_raw_data, pipeline):</strong> This function instructs the data store on how to refine the output of raw data into something that can be used to train a machine-learning model. The refined data will be stored in the df Pandas dataframe. Make sure the output is what you want before continuing.</li>
+<li><strong>ai.access_data_from_pipeline(write_raw_data, pipeline):</strong> This function instructs the data store on how to refine the output of raw data into something that can be used to train a machine-learning model. The refined data will be stored in the df Pandas dataframe. Make sure the output is what you want before continuing.</li>
 </ul></div>
                 <footer>
     <div class="footer-buttons">
