@@ -1,0 +1,13 @@
+site_name: DXC Industrialized AI Starter
+nav:
+    - Welcome: index.md
+    - Access and Clean: access_clean.md
+    - Visualization: explore.md
+    - Data Pipeline: data_pipeline.md
+    - Experiment: experiment.md
+    - Model Explainability: model_explainability.md
+    - Publish Microservice: publish_microservice.md
+    - Logging: logging.md
+    - Load Data: data_sets.md
+    - How to Contribute: contributing_guide.md
+theme: ivory
