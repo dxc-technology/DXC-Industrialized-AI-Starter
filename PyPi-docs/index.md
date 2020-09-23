@@ -1,4 +1,3 @@
-
 # DXC Industrialized AI Starter
 
 DXC Indusrialized AI Starter makes it easy for you to deploy your AI algorithms (Industrialize). If you are a data scientist, working on an algorithm that you would like to deploy across the enterprise, DXC's Industrialized AI starter makes it easier for you to:
@@ -7,6 +6,10 @@ DXC Indusrialized AI Starter makes it easy for you to deploy your AI algorithms 
 - Build data pipelines
 - Run AI experiments
 - Publish microservices
+
+Here is short visual represtion about DXC Indusrialized AI Starter.
+
+![Animation](img/Industrialized_AI_Animation.gif)
 
 ## Installation
 
@@ -38,9 +41,11 @@ ai.visualize_missing_data(raw_data) #visualizes relationships between all featur
 ai.explore_features(raw_data) #creates a visual display of missing data.
 ai.plot_distributions(raw_data) #creates a distribution graph for each column.
 
-
+#To visualize complete data as a report
+report = ai.explore_complete_data(df)
+report.to_notebook_iframe()
 ```
-[Click here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/access_clean_explore/) for details about Acess,clean,explore raw data.
+[Click here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/access_clean/) for details about Acess,clean,explore raw data.
 ### Build Data Pipelines
 
 Pipelines are a standard way to process your data towards modeling and interpreting. By default, the DXC AI Starter library uses the free tier of [MongoDB Atlas](https://account.mongodb.com/account/register) to store raw data and execute pipelines. In order to get started, you need to first have an  <a href= "https://account.mongodb.com/account/register" target="_blank">MongoDB</a> account which you can signup for free and create a database "connection_string" and specify those details in the data_layer below. The following code connects to MongoDB and stores raw data for processing.
@@ -51,7 +56,9 @@ Pipelines are a standard way to process your data towards modeling and interpret
 data_layer = {
     "connection_string": "<your connection_string>",
     "collection_name": "<your collection_name>",
-    "database_name": "<your database_name>"
+    "database_name": "<your database_name>",
+    "data_source":"<Source of your datset>",
+    "cleaner":"<whether applied cleaner yes/no >"
 }
 wrt_raw_data = ai.write_raw_data(data_layer, raw_data, date_fields = [])
 ```
@@ -127,17 +134,11 @@ api_url = ai.publish_microservice(microservice_design, trained_model)
 print("api url: " + api_url)
 ```
  [Click here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/publish_microservice/) for details about publishing microservice.
-## Docs
 
-For detailed and complete documentation, please <a href="https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/" target="_blank">click here</a>
+## Example Notebooks
 
-### Example of colab notebook
+<a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/tree/master/Examples" target="_blank">Here</a> are example notebooks for individual models. These sample notebooks help to understand on how to use each function, what parameters are expected for each function and what will be the output of each function in a model.
 
-<a href="https://colab.research.google.com/drive/1EV_Q09B-bppGbEehBgCvsv_JIM87T_n1" target="_blank">Here</a> is an detailed and in-depth example of DXC Indusrialized AI Starter library usage.
-
-### Contributing Guide
-
-To know more about the contribution and guidelines please <a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/CONTRIBUTING.md" target="_blank">click here</a>
 
 ### Reporting Issues
 If you find any issues, feel free to report them <a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/issues" target="_blank">here</a> with clear description of your issue.

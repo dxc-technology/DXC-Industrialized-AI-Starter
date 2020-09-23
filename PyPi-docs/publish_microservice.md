@@ -6,7 +6,7 @@ The DXC AI Starter library makes it easy to publish your models as working micro
 - create an API key with BOTH "Read & Write Data" and "Manage Algorithms" permissions enabled
 - create an algorithm user name
 
-```
+```python
 trained_model is the output of run_experiment() function
 microservice_design = {
     "microservice_name": "<Name of your microservice>",

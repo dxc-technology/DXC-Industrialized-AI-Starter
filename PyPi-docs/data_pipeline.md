@@ -12,22 +12,32 @@ Pipelines are a standard way to process your data towards modeling and interpret
 __Note:__ When you configure the IP whitelist for your cluster, choose to allow a connection from anywhere. When creating the database connection string, choose the Python driver version 3.4 or later.
 
 Example:
-```
+```python
 data_layer = {
     "connection_string": "<your connection_string>",
     "collection_name": "<your collection_name>",
-    "database_name": "<your database_name>"
+    "database_name": "<your database_name>",
+    "data_source":"<Source of your datset>",
+    "cleaner":"<whether applied cleaner yes/no >"
 }
 
 wrt_raw_data = ai.write_raw_data(data_layer, raw_data, date_fields = [])
 ```
 
 
-- __write_raw_data(data_layer, raw_data, date_fields = [ ]):__ 
+__ai.write_raw_data(data_layer, raw_data, date_fields = [ ]):__ 
 
-    - This function handles Mongo DB Atlas automatically.
-    - Use write_raw_data function from ai library to convert Arrow dates to Strings data types
-    - It also transfers the raw data into the database and collection.
+- This function handles Mongo DB Atlas automatically.
+- Use write_raw_data function from ai library to convert Arrow dates to Strings data types
+- It also transfers the raw data into the database and collection.
+- It also stores meta data details, which is created as a seperate collection, and it stores the information about the each version along with their time of insertion.
+
+__Version control in Mongo DB:__
+
+DXC AI Starter is being equipped with the version control functionality, wherein the documents(dataframes) inserted into the mongo are saved automatically as versions. The latest version is always in sync with the retrieved document. The versions are made with underscore(_) and a number which is directly proportional to the number of times the document is changed. This helps in retrieving back the previous versions of the data.
+
+
+
 
 ## Build Pipeline
 ---
@@ -57,4 +67,4 @@ pipeline = [
 df = ai.access_data_from_pipeline(wrt_raw_data, pipeline)
 ```
 
-- __access_data_from_pipeline(write_raw_data, pipeline):__ This function instructs the data store on how to refine the output of raw data into something that can be used to train a machine-learning model. The refined data will be stored in the df Pandas dataframe. Make sure the output is what you want before continuing.
+- __ai.access_data_from_pipeline(write_raw_data, pipeline):__ This function instructs the data store on how to refine the output of raw data into something that can be used to train a machine-learning model. The refined data will be stored in the df Pandas dataframe. Make sure the output is what you want before continuing.
