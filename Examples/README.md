@@ -17,3 +17,9 @@ This notebook helps in understanding how to use the model interpretation of a Bi
 
 ### Interpretation of a regression model.ipynb
 This notebook helps in understanding how to use the model interpretation of a regression Model from DXC Industrialized AI Starter Library.
+
+### datasets_in_DXC_Industrialized_AI_Starter.ipynb
+This notebook helps in understanding on datasets available in DXC Industrialized AI Starter Library and also how to import dataset and its details.
+
+### logging_functionality.ipynb
+This notebook helps in understanding the logging functionality available in DXC Industrialized AI Starter Library.
