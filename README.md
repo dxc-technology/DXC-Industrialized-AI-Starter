@@ -37,12 +37,14 @@ df = ai.read_data_frame_from_local_excel_file()
 #Clean data: Imputes missing data, removes empty rows and columns, anonymizes text.
 raw_data = ai.clean_dataframe(df)
 
+#Explore complete data as a HTML interactive report
+report = ai.explore_complete_data(df)
+report.to_notebook_iframe()
+
 #Explore raw data: 
 ai.visualize_missing_data(raw_data) #visualizes relationships between all features in data.
 ai.explore_features(raw_data) #creates a visual display of missing data.
 ai.plot_distributions(raw_data) #creates a distribution graph for each column.
-
-
 ```
 [Click here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/access_clean/) for details about Acess,clean,explore raw data.
 ### Build Data Pipelines
@@ -137,15 +139,7 @@ print("api url: " + api_url)
 
 For detailed and complete documentation, please <a href="https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/" target="_blank">click here</a>
 
-### Example of colab notebook
-
-<a href="https://colab.research.google.com/drive/1EV_Q09B-bppGbEehBgCvsv_JIM87T_n1" target="_blank">Here</a> is an detailed and in-depth example of DXC Indusrialized AI Starter library usage.
-
-Below is the screen for collab notebook.
-
-<a href="https://colab.research.google.com/drive/1EV_Q09B-bppGbEehBgCvsv_JIM87T_n1" target="_blank">![aistaterscreen](https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/aistarterscreen.png) </a>
-
-### Example of colab notebook for each model
+### Example notebooks
 
 <a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/tree/master/Examples" target="_blank">Here</a> are example notebooks for individual models. These sample notebooks help to understand on how to use each function, what parameters are expected for each function and what will be the output of each function in a model.
 
