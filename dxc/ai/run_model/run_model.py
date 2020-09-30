@@ -11,6 +11,9 @@ import io
 from dxc.ai.global_variables import globals_file
 from .TimeSeriesModels import getBestForcastingModel
 from dxc.ai.logging import experiment_design_logging
+from .model_pipeline import regressor
+from .model_pipeline import train_model
+from .model_pipeline import classifier
 
 
 # define the general class of models
@@ -38,29 +41,44 @@ class prediction(model):
     def estimator(self):
         raise NotImplementedError()
 
-    def build(self, meta_data):
-        self.__model = Predictor(type_of_estimator=self.estimator, column_descriptions=meta_data)
+    def build(self, meta_data, verbose, max_time_mins, max_eval_time_mins, config_dict, warm_start, scoring):
+        if self.estimator == 'TPOTRegressor':
+            if globals_file.run_experiment_warm_start == False or warm_start == False:
+                self.__model = regressor(verbose, max_time_mins, max_eval_time_mins, config_dict, warm_start, scoring)
+            else:
+                self.__model = globals_file.run_experiment_model
+        elif self.estimator == 'TPOTClassifier':
+            if globals_file.run_experiment_warm_start == False or warm_start == False:
+                self.__model = classifier(verbose, max_time_mins, max_eval_time_mins, config_dict, warm_start, scoring)
+            else:
+                self.__model = globals_file.run_experiment_model
+        else:    
+            self.__model = Predictor(type_of_estimator=self.estimator, column_descriptions=meta_data)
         self.__label = self.meta_data_key(meta_data, "output")
 
-    def train_and_score(self, data, labels, verbose):
-    # create training and test data
-        training_data, test_data = train_test_split(data, test_size=0.2)
-
-    # train the model
-        if verbose == False:
-            warnings.filterwarnings('ignore')
-            text_trap = io.StringIO()
-            with redirect_stdout(text_trap):
-                self.__model.train(training_data, verbose=False, ml_for_analytics= False)
+    def train_and_score(self, data, labels, verbose, interpret, warm_start, export_pipeline):
+        ##Train and score 
+        if self.estimator == 'TPOTRegressor' or self.estimator == 'TPOTClassifier':
+            self.__model = train_model(data, self.__label, self.__model, self.estimator, interpret, warm_start, export_pipeline)
         else:
-            warnings.filterwarnings('ignore')
-            self.__model.train(training_data, verbose=True, ml_for_analytics=False)
+            # create training and test data
+            training_data, test_data = train_test_split(data, test_size=0.2)
 
-    # score the model
-        if verbose == False:
-            self.__model.score(test_data, test_data[self.__label], verbose=0)
-        else:
-            self.__model.score(test_data, test_data[self.__label], verbose=1)
+        # train the model
+            if verbose == False:
+                warnings.filterwarnings('ignore')
+                text_trap = io.StringIO()
+                with redirect_stdout(text_trap):
+                    self.__model.train(training_data, verbose=False, ml_for_analytics= False)
+            else:
+                warnings.filterwarnings('ignore')
+                self.__model.train(training_data, verbose=True, ml_for_analytics=False)
+
+        # score the model
+            if verbose == False:
+                self.__model.score(test_data, test_data[self.__label], verbose=0)
+            else:
+                self.__model.score(test_data, test_data[self.__label], verbose=1)
 
     def interpret(self):
         pass
@@ -79,15 +97,27 @@ class classification(prediction):
     @property
     def estimator(self):
         return("classifier")
+    
+# define a tpot classification model
+class tpot_classification(prediction):
+    @property
+    def estimator(self):
+        return("TPOTClassifier")
+    
+# define a Tpot regressor model
+class tpot_regression(prediction):
+    @property
+    def estimator(self):
+        return("TPOTRegressor")
 
-def run_experiment(design, verbose = False):
+def run_experiment(design, verbose = False, interpret = False, max_time_mins = 5, max_eval_time_mins = 0.04 , config_dict = None, warm_start = False, export_pipeline = False, scoring = None):
     experiment_design_logging.experiment_design_log(design)
     if design["model"] == 'timeseries':
         trained_model = getBestForcastingModel(design['labels'], no_predictions=7, debug=verbose, visualize = False)
         return trained_model
     globals_file.run_experiment_used = True
-    design["model"].build(design["meta_data"])
-    design["model"].train_and_score(design["data"], design["labels"], verbose)
+    design["model"].build(design["meta_data"], verbose, max_time_mins, max_eval_time_mins, config_dict,warm_start, scoring)
+    design["model"].train_and_score(design["data"], design["labels"], verbose, interpret, warm_start, export_pipeline)
     design["model"].interpret()
     return design["model"].python_object()
     
