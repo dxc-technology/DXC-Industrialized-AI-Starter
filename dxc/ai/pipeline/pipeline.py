@@ -92,4 +92,5 @@ def access_data_from_pipeline(db, pipe):
     data = db.aggregate(pipeline=pipe)
     data = list(data)
     df = pd.io.json.json_normalize(data)
+    globals_file.run_experiment_warm_start = False
     return df
