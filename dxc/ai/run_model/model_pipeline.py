@@ -46,7 +46,7 @@ def classifier(verbosity, max_time_mins, max_eval_time_mins, config_dict, warm_s
     return model_def
 
 ###Train the model 
-def train_model(data, target, model_def, model_type, interpret = False, warm_start = False, export_pipeline = False):
+def train_model(data, target, model_def, model_type, interpret = False, warm_start = False, export_pipeline = True):
     if warm_start == False:  
        globals_file.run_experiment_warm_start = False
        data_transformed, label_data = categorical_encoding(data,target)

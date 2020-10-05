@@ -110,7 +110,7 @@ class tpot_regression(prediction):
     def estimator(self):
         return("TPOTRegressor")
 
-def run_experiment(design, verbose = False, interpret = False, max_time_mins = 5, max_eval_time_mins = 0.04 , config_dict = None, warm_start = False, export_pipeline = False, scoring = None):
+def run_experiment(design, verbose = False, interpret = False, max_time_mins = 5, max_eval_time_mins = 0.04 , config_dict = None, warm_start = False, export_pipeline = True, scoring = None):
     experiment_design_logging.experiment_design_log(design)
     if design["model"] == 'timeseries':
         trained_model = getBestForcastingModel(design['labels'], no_predictions=7, debug=verbose, visualize = False)
