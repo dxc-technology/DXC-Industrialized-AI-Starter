@@ -7,7 +7,7 @@ import scrubadub #data cleaning
 import arrow #normalizing dates
 import numpy as np
 from sklearn.base import TransformerMixin
-from fancyimpute import KNN ##using KNN as imputer for categorical fields
+from sklearn.impute import KNNImputer ##using KNN as imputer for categorical fields
 from sklearn.preprocessing import OrdinalEncoder ##Ordinal encoder is being used for encoding categorical objects
 from dxc.ai.global_variables import globals_file
 
@@ -29,7 +29,7 @@ def encode(data):
 
 def impute_df(df):
     # imputer = KNN()
-    imputer = KNN(k=2)
+    imputer = KNNImputer(n_neighbors=2)
     object_types = list(df.select_dtypes(include=['object']).columns)
     num_types = list(set(df.columns) - set(object_types))
     encoders_store={}
@@ -47,9 +47,9 @@ def impute_df(df):
     for columns in object_types:
         imputed_data[columns]=encoders_store[columns].inverse_transform(np.array(imputed_data[columns]).reshape(-1,1))
     return imputed_data
-    
+
 #CLEANING FILE
-def clean_dataframe(df, impute = False, text_fields = [], date_fields = [], numeric_fields = [], categorical_fields = []):   
+def clean_dataframe(df, impute = False, text_fields = [], date_fields = [], numeric_fields = [], categorical_fields = []):
     clean_df = (
       df
       #make the column names lower case and remove spaces
@@ -68,7 +68,7 @@ def clean_dataframe(df, impute = False, text_fields = [], date_fields = [], nume
         clean_df[field] = clean_df[field].fillna(' ').apply(fix_text)
         clean_df[field] = clean_df[field].apply(scrubadub.clean, replace_with='identifier')
         clean_df[field] = clean_df[field].str.lower()
-  
+
     #impute missing values
     if impute:
         clean_df = impute_df(clean_df)
@@ -82,15 +82,14 @@ def clean_dataframe(df, impute = False, text_fields = [], date_fields = [], nume
     for field in numeric_fields:
         field = '_'.join(field.split()).lower()
         clean_df[field] = pd.to_numeric(clean_df[field])
-  
+
     #make sure all categorical variables have the proper data type
     for field in categorical_fields:
         field = '_'.join(field.split()).lower()
         clean_df[field] = clean_df[field].astype('category')
-    
+
     clean_df=clean_df.clean_names()
-    
+
     globals_file.clean_data_used = True
 
     return(clean_df)
-
