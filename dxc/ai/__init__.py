@@ -38,6 +38,8 @@ from .run_model.run_model import model
 from .run_model.run_model import prediction
 from .run_model.run_model import regression
 from .run_model.run_model import classification
+from .run_model.run_model import tpot_regression
+from .run_model.run_model import tpot_classification
 from .run_model.interpret_model import Global_Model_Explanation
 from .run_model.interpret_model import Explanation_Dashboard
 from .run_model.clustering import Clustering
