@@ -8,7 +8,7 @@ def readme():
 
 setup(
     name="DXC-Industrialized-AI-Starter",
-    version="2.2.1",
+    version="2.3.0",
     description="Python library which is extensively used for all AI projects",
     long_description=readme(),
     long_description_content_type="text/markdown",
