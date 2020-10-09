@@ -101,7 +101,7 @@ df = ai.read_data_frame_from_local_excel_file()
 #Clean data: Imputes missing data, removes empty rows and columns, anonymizes text.
 raw_data = ai.clean_dataframe(df)
 
-#Explore raw data: 
+#Explore raw data:
 ai.visualize_missing_data(raw_data) #visualizes relationships between all features in data.
 ai.explore_features(raw_data) #creates a visual display of missing data.
 ai.plot_distributions(raw_data) #creates a distribution graph for each column.
@@ -150,10 +150,10 @@ df = ai.access_data_from_pipeline(wrt_raw_data, pipeline) #refined data will be 
 
 <p><a href= "https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/data_pipeline/" target="_blank">Click here</a> for details about building data pipeline.</p>
 <h3 id="run-ai-experiments">Run AI Experiments</h3>
-<p>Use the DXC AI Starter to build and test algorithms. This code executes an experiment by running run_experiment() on an experiment design. </p>
+<p>Use the DXC AI Starter to build and test algorithms. This code executes an experiment by running run_experiment() on an experiment design.</p>
 <pre><code class="python">experiment_design = {
-    #model options include ['regression()', 'classification()']
-    &quot;model&quot;: ai.regression(),
+    #model options include ['tpot_regression()', 'tpot_classification()', 'timeseries']
+    &quot;model&quot;: ai.tpot_regression(),
     &quot;labels&quot;: df.avg_est_unit_cost_error,
     &quot;data&quot;: df,
     #Tell the model which column is 'output'
@@ -170,12 +170,12 @@ df = ai.access_data_from_pipeline(wrt_raw_data, pipeline) #refined data will be 
   }
 }
 
-trained_model = ai.run_experiment(experiment_design)
+trained_model = ai.run_experiment(experiment_design, verbose = False, max_time_mins = 5, max_eval_time_mins = 0.04, config_dict = None, warm_start = False, export_pipeline = True, scoring = None)
 </code></pre>
 
 <p><a href="https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/experiment/">Click here</a> for details about run AI experiments.</p>
 <h3 id="publish-microservice">Publish Microservice</h3>
-<p>The DXC AI Starter library makes it easy to publish your models as working microservices. By default, the DXC AI Starter library uses  free tier of <a href="https://algorithmia.com/signup">Algorithmia</a> to publish models as microservices. You must create an <a href="https://algorithmia.com/signup">Algorithmia</a>  account to use. Below is the example for publishing a microservice. </p>
+<p>The DXC AI Starter library makes it easy to publish your models as working microservices. By default, the DXC AI Starter library uses  free tier of <a href="https://algorithmia.com/signup">Algorithmia</a> to publish models as microservices. You must create an <a href="https://algorithmia.com/signup">Algorithmia</a>  account to use. Below is the example for publishing a microservice.</p>
 <pre><code class="python">#trained_model is the output of run_experiment() function
 microservice_design = {
     &quot;microservice_name&quot;: &quot;&lt;Name of your microservice&gt;&quot;,
