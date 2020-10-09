@@ -5,8 +5,8 @@ An experiment trains and tests a machine-learning model. The code in this sectio
 Below is a example for run_experiment() function.
 ```python
 experiment_design = {
-    #model options include ['regression()', 'classification()', 'timeseries']
-    "model": ai.regression(),
+    #model options include ['tpot_regression()', 'tpot_classification()', 'timeseries']
+    "model": ai.tpot_regression(),
     "labels": df.avg_est_unit_cost_error,
     "data": df,
     #Tell the model which column is 'output'
@@ -23,7 +23,7 @@ experiment_design = {
   }
 }
 
-trained_model = ai.run_experiment(experiment_design)
+trained_model = ai.run_experiment(experiment_design, verbose = False, max_time_mins = 5, max_eval_time_mins = 0.04, config_dict = None, warm_start = False, export_pipeline = True, scoring = None)
 ```
 
 - __ai.run_experiment(experiment_design):__
@@ -39,13 +39,42 @@ __Further Information on Model__
 
 Machine learning model provides the intelligent behavior that you will publish as a microservice. The code in this section provides you with options for the model. You must select a model capable of using df to learn the behavior specified in the design section of the datastory. Run this function by defining each model type, then choose the model most appropriate for your data story. Each model adheres to the specifications of a model. This allows any of the models to run according to the standard model lifecycle defined in run_experiment.
 
-- __Regressor model:__ The regressor model makes a numeric prediction. Use this model when the design specification of the data story requires the AI microservice to give a numerical output prediction.
+## TPOT Classification/Regression:
+Machine learning is  typically a very time-consuming and knowledge-intensive part of a data science problem. Auto-ml is not designed to replace the data scientist, but rather free her to work on more important aspects of the complete problem, such as acquiring data and interpreting the model results.[TPOT](https://epistasislab.github.io/tpot) is a Python library developed for automatic machine learning feature preprocessing, model selection, and hyperparameter tuning. AI Starter has integrated TPOT as one of its Auto Ml libraries.
 
-- __Classification model:__ The classification model makes a classification prediction. Use this model when the design specification of the data story requires the AI microservice to give a categorical (text-based) output prediction.
+Please refer the below parameter description for best utilization of Tpot classification and regression methods with AI Starter.<br>
 
-- __Timeseries model:__ The timeseries model automated the process for predicting future values of a signal using a machine learning approach. It allows forecasting a time series (or a signal) for future values in a fully automated way. Use this model when design specification of the data story requires to predict future values based on the time. [Here](https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/Examples/Time_series_Model.ipynb) is an example notebook for timeseries model.
+**<code>verbose: True/False </code>** True - Prints more information and provide a progress bar; False - Prints nothing. <br>
 
-- __Prediction:__ This section defines a new type of model by creating a subclass of model. The prediction model learns to predict a particular outcome. It automatically optimizes parameters, selects features, selects an algorithm, and scores the results.
+**<code>max_time_mins:</code>** How many minutes the pipeline has to be optimized. The default value is 5 minutes. The maximum time better the results.<br>
+
+**<code>max_eval_time_mins:</code>**How many minutes a single pipeline has to be evaluated. Setting this parameter to higher values will allow Auto_ml to evaluate more complex pipelines, but will also allow Auto_ml to run longer. Use this parameter to help prevent Auto_ml from wasting time on evaluating time-consuming pipelines.<br>
+
+**<code>config_dict:</code>** Beyond the default configurations that come with Auto_ml, in some cases, it is useful to limit the algorithms and parameters that Auto_ml considers. For that reason, we allow users to provide Auto_ml with a custom configuration for its operators and parameters.<br>
+
+ For example: config_dict = {'sklearn.ensemble.GradientBoostingRegressor':{}} <br> For more detailed examples and different configurations check [here](https://epistasislab.github.io/tpot/using/#customizing-tpots-operators-and-parameters). <br>
+
+**<code>warm_start: True/False</code>** This parameter lets you restart and continue to evaluate pipelines from where it left off in previous execution. <br>
+
+**<code>export_pipeline: True/False</code>** This parameter automatically exports the corresponding Python code for the optimized pipeline to a python file and saves the python file and encoded data_file in your current directory. <code>best_pipeline.py</code> will contain the Python code for the optimized pipeline. The default value for this parameter is 'True'. We suggest not changing the value as the optimized pipeline code will help to evaluate your model using model explainability which will be one of the tasks to achieve the AI Forensics badge.
+
+**<code>scoring:</code>** This parameter is used to evaluate the quality of a given pipeline for the problem. By default, 'accuracy' is used for classification, and 'mean squared error' (MSE) is used for regression.
+
+The following built-in scoring functions can be used for **Classification** Problem:
+
+- accuracy, adjusted_rand_score, average_precision, balanced_accuracy,
+- f1, f1_macro, f1_micro, f1_samples, f1_weighted
+- neg_log_loss, precision etc. (suffixes apply as with ‘f1’)
+- recall etc. (suffixes apply as with ‘f1’), ‘jaccard’ etc. (suffixes apply as with ‘f1’)
+- roc_auc, roc_auc_ovr, roc_auc_ovo, roc_auc_ovr_weighted, roc_auc_ovo_weighted
+
+The following built-in scoring functions can be used for **Regression** Problem:
+
+- neg_median_absolute_error, neg_mean_absolute_error, neg_mean_squared_error, r2
+
+If you need more knowledge on how to create custom scores please check [here](https://epistasislab.github.io/tpot/using/#scoring-functions)
+
+__Timeseries model:__ The timeseries model automated the process for predicting future values of a signal using a machine learning approach. It allows forecasting a time series (or a signal) for future values in a fully automated way. Use this model when design specification of the data story requires to predict future values based on the time. [Here](https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/Examples/Time_series_Model.ipynb) is an example notebook for timeseries model.
 
 ## Deep Learning Model
 
