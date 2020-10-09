@@ -85,6 +85,11 @@ def train_model(data, target, model_def, model_type, interpret = False, warm_sta
         score_nmse = SCORERS['neg_mean_squared_error'](best_pipeline, x_test, y_test)
         print('Negative mean square error:', score_nmse)
         print()
+        
+        # neg_root_mean_squared_error
+        score_nrmse = SCORERS['neg_root_mean_squared_error'](best_pipeline, x_test, y_test)
+        print('Negative root mean square error:', score_nrmse)
+        print()
     
         # explained variance
         score_var = SCORERS['explained_variance'](best_pipeline, x_test, y_test)
@@ -108,20 +113,32 @@ def train_model(data, target, model_def, model_type, interpret = False, warm_sta
         print("Accuracy:", score_acc)
         print()
         
+        #ROC_AUC_OVR
+        score_roc_ovr = SCORERS['roc_auc_ovr'](best_pipeline, x_test, y_test)
+        print("ROC_AUC_OVR:", score_roc_ovr)
+        print()
+        
+        #ROC_AUC_OVO
+        score_roc_ovo = SCORERS['roc_auc_ovo'](best_pipeline, x_test, y_test)
+        print("ROC_AUC_OVO:", score_roc_ovo)
+        print()
+
+        
         # Recall
-        score_rec = SCORERS['recall'](best_pipeline, x_test, y_test)
-        print("Recall:", score_rec)
+        score_rec_macro = SCORERS['recall_macro'](best_pipeline, x_test, y_test)
+        print("Recall:", score_rec_macro)        
         print()
         
         # Precision
-        score_pre = SCORERS['precision'](best_pipeline, x_test, y_test)
-        print("Precision:", score_pre)
+        score_pre_macro = SCORERS['precision_macro'](best_pipeline, x_test, y_test)
+        print("Precision:", score_pre_macro)        
         print()
         
-        #ROC_AUC
-        score_roc = SCORERS['roc_auc'](best_pipeline, x_test, y_test)
-        print("ROC_AUC Score:", score_roc)
-        print()
+        #F1
+        score_f1_macro = SCORERS['f1_macro'](best_pipeline, x_test, y_test)
+        print("F1 Score:", score_f1_macro)        
+        print()        
+        
     
     ##Save the pipeline and data 
     if export_pipeline == True:
