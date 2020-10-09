@@ -5,7 +5,7 @@
 
 # DXC Industrialized AI Starter
 
-DXC Indusrialized AI Starter makes it easy for you to deploy your AI algorithms (Industrialize). If you are a data scientist, working on an algorithm that you would like to deploy across the enterprise, DXC's Industrialized AI starter makes it easier for you to:
+DXC Industrialized AI Starter makes it easy for you to deploy your AI algorithms (Industrialize). If you are a data scientist, working on an algorithm that you would like to deploy across the enterprise, DXC's Industrialized AI starter makes it easier for you to:
 
 - Access, clean, and explore raw data
 - Build data pipelines
@@ -94,8 +94,8 @@ Use the DXC AI Starter to build and test algorithms. This code executes an exper
 
 ```python
 experiment_design = {
-    #model options include ['regression()', 'classification()']
-    "model": ai.regression(),
+    #model options include ['tpot_regression()', 'tpot_classification()', 'timeseries']
+    "model": ai.tpot_regression(),
     "labels": df.avg_est_unit_cost_error,
     "data": df,
     #Tell the model which column is 'output'
@@ -112,7 +112,7 @@ experiment_design = {
   }
 }
 
-trained_model = ai.run_experiment(experiment_design)
+trained_model = ai.run_experiment(experiment_design, verbose = False, max_time_mins = 5, max_eval_time_mins = 0.04, config_dict = None, warm_start = False, export_pipeline = True, scoring = None)
 ```
  [Click here](https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/experiment/) for details about run AI experiments.
 
