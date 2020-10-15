@@ -7,7 +7,7 @@ DXC Indusrialized AI Starter makes it easy for you to deploy your AI algorithms 
 - Run AI experiments
 - Publish microservices
 
-Here is short visual represtion about DXC Indusrialized AI Starter.
+Here is short visual representation about DXC Indusrialized AI Starter.
 
 ![Animation](img/Industrialized_AI_Animation.gif)
 
