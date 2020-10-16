@@ -1,7 +1,7 @@
 
 # How to contribute
 
-We want to keep it as easy as possible to contribute changes that get things
+We want to keep it as easy as possible to contribute to changes that get things
 working in your environment. There are a few guidelines that we need
 contributors to follow so that we can have a chance of keeping on top
 of things.
@@ -15,8 +15,7 @@ of things.
 		any bug.
 	  * Please include the story of "why" you want to do something.
 3. Fork the repository on GitHub.
-4. Glance at the [Git Best Practices][best-practice] document, even if you
-  don't read it all yet.
+4. Glance at the [Git Best Practices][best-practice] document, even if you don't read it all yet.
 
 ## Making Changes
 
@@ -26,7 +25,7 @@ of things.
 	  * Generally, the type is `bug`, or `feature`, but if they don't fit pick something sensible.
 	  * To create a topic branch based on master:
 		`git checkout master && git pull && git checkout -b bug/master/my_contribution`	
-2. Don't work directly on the `master` branch, or any other core branch.
+2. Don't work directly on the `master` branch or any other core branch.
   Your pull request will be rejected unless it is on a topic branch.
 3. Every commit should do one thing, and only one thing.
 4. Having too many commits is better than having too few commits.
@@ -48,7 +47,7 @@ Until a stable version of DXC Industrialized AI Starter is shipped, there is onl
 
 ### Branch and Version Compatibility
 
-Any change to  DXC Industrialized AI Starter branch should strive as much as possible to be compatible
+Any change to the DXC Industrialized AI Starter branch should strive as much as possible to be compatible
 with all released versions of DXC Industrialized AI Starter.  We want to avoid multiple incompatible
 versions existing as much as possible.
 
@@ -64,15 +63,14 @@ Right now any change committed to `master` must be considered "live".
 1. Unless your contribution is [trivial][exemption], ensure you have signed the
   [Contributor License Agreement][cla].
 2. Push your changes to a topic branch in your fork of the repository.
-3. Submit a pull request to the repository in the Dxc organization.
-4. Update your ticket to mark that you have submitted code and are ready to be
-  reviewed.
+3. Submit a pull request to the repository in the DXC organization.
+4. Update your ticket to mark that you have submitted code and are ready to be reviewed.
 	  * Mentioning the issue number in the subject will make this happen through GitHub magic.
-5. A committer checks that the pull request is well formed.  If not, they will
+5. A committer checks that the pull request is well-formed.  If not, they will
   ask that it is fixed:
 	  - It is on its own, appropriately named, branch.
 	  - It was submitted to an appropriate target branch.
-	  - It only has commits relevant to the specific issue.
+	  - It only has committed relevant to the specific issue.
 	  - It has appropriate, clear, and effective commit messages.
 6. A committer can start a pull request specific discussion; at this point that covers:
 	  - Reviewing the code for any obvious problems.
@@ -96,7 +94,7 @@ code before any discussion happened.
 	  * Good to merge with minor changes (which are specified, or line comments).
 	  * Not good to merge without major changes (which are specified).
 3. Any committer can merge after there is a vote of "good to merge".
-	   * Committers are trusted to do the right thing - you can merge your own code, but you should make sure you get appropriate independent review.
+	   * Committers are trusted to do the right thing - you can merge your own code, but you should make sure you get an appropriate independent review.
 	   * Most changes should not merge unless a code review has been completed.
 4. If the pull request is not reviewed within 14 days, you can ask any committer to execute the merge regardless:
 	  * This can be blocked at any time by a single constructive vote against merging ("Don't merge this, until you change...")
@@ -111,18 +109,16 @@ community, and the effectiveness, of the DXC Industrialized AI Starter project. 
 invest more, and produce less, as a committer than a regular developer
 submitting pull requests.
 
-As a committer your code is subject to the same review and commit restrictions
-as regular committers. You must exercise greater caution that most people in
+As a committer, your code is subject to the same review and commit restrictions
+as regular committers. You must exercise greater caution than most people in
 what you submit and include in the project.
 
-On the other hand you have several additional responsibilities over and above
+On the other hand, you have several additional responsibilities over and above
 those of a regular developer:
-1. You are responsible for reviewing and voting on inclusion of code from
-   other developers.
+1. You are responsible for reviewing and voting on the inclusion of code from other developers.
 	* You are responsible for giving constructive feedback that action can be taken on when code isn't quite there yet
 2. You are responsible for ensuring that quality, tested code is committed.
-3. You are responsible for ensuring that code merges into the
-   appropriate branch.
+3. You are responsible for ensuring that code merges into the appropriate branch.
 4. You are responsible for ensuring that our community is diverse, accepting,
    and friendly.
 5. You are responsible for voting in a timely fashion, where required.
@@ -132,11 +128,9 @@ community, so that it is clear that approving you is just a formality.
 
 The process for adding a committer is:
 
-1. A candidate has demonstrated familiarity with the quality guidelines and
-   coding standards by submitting at least two pull requests that are accepted
-   without modification.
+1. A candidate has demonstrated familiarity with the quality guidelines and coding standards by submitting at least two pull requests that are accepted without modification.
 2. The candidate is proposed by an existing committer.
-3. A formal vote is held on the project private mailing list.
+3. A formal vote is held on the project's private mailing list.
 5. Existing committers vote on the candidate:
 	   * yes, accept them as a committer.
 	   * no, do not accept them as a committer.
@@ -160,7 +154,7 @@ leader.  The details of why are private, and will not be shared.
 
 
 ### Security issue notifications
-If you discover a potential security issue in this project we ask that you notify DXC Technology Security via email. Please do **not** create a public github issue
+If you discover a potential security issue in this project we ask that you notify DXC Technology Security via email. Please do **not** create a public GitHub issue.
 
 
 

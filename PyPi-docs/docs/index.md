@@ -1,19 +1,19 @@
 # DXC Industrialized AI Starter
 
-DXC Indusrialized AI Starter makes it easy for you to deploy your AI algorithms (Industrialize). If you are a data scientist, working on an algorithm that you would like to deploy across the enterprise, DXC's Industrialized AI starter makes it easier for you to:
+DXC Industrialized AI Starter makes it easy for you to deploy your AI algorithms (Industrialize). If you are a data scientist, working on an algorithm that you would like to deploy across the enterprise, DXC's Industrialized AI starter makes it easier for you to:
 
 - Access, clean, and explore raw data
 - Build data pipelines
 - Run AI experiments
 - Publish microservices
 
-Here is short visual representation about DXC Indusrialized AI Starter.
+Here is a short visual representation of the DXC Industrialized AI Starter.
 
 ![Animation](img/Industrialized_AI_Animation.gif)
 
 ## Installation
 
-In order to  install and use the DXC AI Starter library, please use the below code snippet:
+To install and use the DXC AI Starter library, please use the below code snippet:
 ```python
 1. pip install DXC-Industrialized-AI-Starter
 2. from dxc import ai
@@ -62,7 +62,7 @@ data_layer = {
 }
 wrt_raw_data = ai.write_raw_data(data_layer, raw_data, date_fields = [])
 ```
-Once raw data is stored, you can run pipelines to transform the data. This code instructs the data store on how to refine the output of raw data into something that can be used to train a machine-learning model. Please refer to the syntax of [MongDB pipelines](https://docs.mongodb.com/manual/core/aggregation-pipeline/) for the details of how to write a pipeline. Below is an example of creating and executing a pipeline.
+Once raw data is stored, you can run pipelines to transform the data. This code instructs the datastore on how to refine the output of raw data into something that can be used to train a machine-learning model. Please refer to the syntax of [MongDB pipelines](https://docs.mongodb.com/manual/core/aggregation-pipeline/) for the details of how to write a pipeline. Below is an example of creating and executing a pipeline.
 ```python
 pipeline = [
         {
@@ -89,7 +89,7 @@ df = ai.access_data_from_pipeline(wrt_raw_data, pipeline) #refined data will be 
 
 ### Run AI Experiments
 
-Use the DXC AI Starter to build and test algorithms. This code executes an experiment by running run_experiment() on an experiment design.
+Use the DXC AI Starter to build and test algorithms. This code executes an experiment by running run_experiment() on experiment design.
 
 ```python
 experiment_design = {
@@ -137,7 +137,7 @@ print("api url: " + api_url)
 
 ## Example Notebooks
 
-<a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/tree/master/Examples" target="_blank">Here</a> are example notebooks for individual models. These sample notebooks help to understand on how to use each function, what parameters are expected for each function and what will be the output of each function in a model.
+<a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/tree/master/Examples" target="_blank">Here</a> are example notebooks for individual models. These sample notebooks help to understand how to use each function, what parameters are expected for each function, and what will be the output of each function in a model.
 
 
 ### Reporting Issues

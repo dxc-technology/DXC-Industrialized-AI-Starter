@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <title>Model Explainability &mdash; DXC Industrialized AI Starter</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href=".." class="site-name"> DXC Industrialized AI Starter</a>
+                </div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="..">DXC Industrialized AI Starter</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../access_clean/">Access and Clean</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../explore/">Explore Data</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../data_pipeline/">Build Data Pipelines</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../experiment/">Run AI Experiments</a></li>
+                    <li class="toctree-l1 current"><a class="nav-item current" href="./">Model Explainability</a>
+<ul class="subnav">
+<li class="toctree-l2"><a class="nav-item toc" href="#shap-explainer">SHAP explainer</a></li>
+</ul></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../publish_microservice/">Publish Microservice</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../logging/">Logging Functionality</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../data_sets/">Load Data</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../contributing_guide/">How to contribute</a></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="previous"><a href="../experiment/">&laquo; Previous</a></div>
+    <div class="next"><a href="../publish_microservice/">Next &raquo;</a></div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href=".." class="site-name"> DXC Industrialized AI Starter</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    
+</ul>
+</nav>
+                <div id="content"><h1 id="model-explainability">Model Explainability</h1>
+<p>In the context of machine learning and artificial intelligence, Explainability is the extent to which the internal mechanics of a machine or deep learning system can be explained in human terms. Model explainability is one of the most important problems in machine learning today.</p>
+<p>DXC Industrialized AI Starter helps you to understand the model explainability using interactive dashboards via SHAP - based explainer.</p>
+<pre><code class="python">global_explanation = ai.Global_Model_Explanation(model,x_train,x_test,feature_names = None,classes = None, explantion_data = None)
+ai.Explanation_Dashboard(global_explanation, model, x_train, x_test, explantion_data = None)
+</code></pre>
+
+<p>To generate the model explainability, you need to pass your model, training data, test data to the functions. You can also optionally pass in feature names and output class names(classification) which will be used to make the explanations and visualizations more informative. Explanations will be generated default on the test data. If you pass the value of the explantion_data parameter as 'Training', then the explanation will be generated on training data. But with more examples, explanations will take longer although they may be more accurate.</p>
+<ul>
+<li>
+<p><strong>ai.Global_Model_Explanation:</strong> This function generates the overall model predictions and generates a dictionary of sorted feature importance names and values.</p>
+</li>
+<li>
+<p><strong>ai.Explanation_Dashboard:</strong>  This will generate an interactive visualization dashboard, you can investigate different aspects of your dataset and trained model via below four tab views:</p>
+<ul>
+<li>Model Performance</li>
+<li>Data Explorer</li>
+<li>Aggregate Feature Importance</li>
+<li>Individual Feature Importance</li>
+</ul>
+</li>
+</ul>
+<h4 id="shap-explainer">SHAP explainer</h4>
+<p>SHAP (SHapley Additive exPlanations) is a game-theoretic approach to explain the output of any machine learning model. It connects optimal credit allocation with local explanations using the classic Shapley values from game theory and their related extensions. Depending on the model, Model Explainer uses one of the below supported SHAP explainers.</p>
+<ul>
+<li>SHAP TreeExplainer</li>
+<li>SHAP DeepExplainer</li>
+<li>SHAP LinearExplainer</li>
+<li>SHAP KernelExplainer</li>
+</ul>
+<p>To know more details about SHAP explainer <a href="https://github.com/slundberg/shap">click here</a>.</p>
+<p>Check out <a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/tree/master/Examples">Examples</a> to understand how to use each function, what parameters are expected for each function. Also check out <a href="https://github.com/slundberg/shap">shap</a>, <a href="https://github.com/marcotcr/lime">lime</a>, <a href="https://github.com/interpretml/interpret-community">interpret-community</a> libraries to learn more about the Model explainability and its usage.</p>
+<p><strong>Note:</strong> In the present version, Model Explainability supports only the custom models. We are implementing the explainability changes for Auto_ml models. Changes will be published soon.</p></div>
+                <footer>
+    <div class="footer-buttons">
+        <div class="previous"><a href="../experiment/" title="Experiment"><span>Previous</span></a></div>
+        <div class="next"><a href="../publish_microservice/" title="Publish Microservice"><span>Next</span></a></div>
+    </div>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+    <script src="../search/main.js"></script>
+</body>
+
+</html>

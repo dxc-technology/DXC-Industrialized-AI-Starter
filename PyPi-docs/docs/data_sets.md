@@ -1,8 +1,8 @@
 # Load Data
 
-Finding right or sample data set is one of the important tasks for those who are starting to work on Machine learning and AI. Though we have many datesets readily available finding right dataset, loading and using it can always be challangeing specically for beginners. DXC Industrialized AI Starter make this easy by providing few data sets and functions to load them easily without any difficulties.
+Finding the right or sample dataset is one of the important tasks for those who are starting to work on Machine learning and AI. Though we have many datasets readily available finding the right dataset, loading, and using it can always be challenging especially for beginners. DXC Industrialized AI Starter makes this easy by providing a few data sets and functions to load them easily without any difficulties.
 
-Below code sinpet helps you to load and view the datsets from this library.
+Below code, snippet helps you to load and view the datasets from this library.
 
 ```python
 # To know more details about the dataset
@@ -15,16 +15,16 @@ df.head()
 
 For loading the datasets from this library we use below two functions.
 
-1. __ai.load_data(filename):__ It takes filename as input and loads that particular datset into your notebook and return a pandas dataframe.
-2. __ai.load_data_details(filename):__ This function loads the dataset details and print  information. This function takes filename as input. The information retrieved helps user to understand the dataset and significance of those columns in dataset.
+1. __ai.load_data(filename):__ It takes a filename as input and loads that particular dataset into your notebook and return a pandas data frame.
+2. __ai.load_data_details(filename):__ This function loads the dataset details and print  information. This function takes a filename as input. The information retrieved helps the user to understand the dataset and the significance of those columns in the dataset.
 
-List of datasets available in AI Starter are provided below.
+A list of datasets available in AI Starter is provided below.
 
-Example note on how to use this functions is placed under “Examples” folder in git repository.
+An example note on how to use these functions is placed under the “Examples” folder in the git repository.
 
 #### Available Datasets
 
-Below datasets are availabe in DXC Industrialized AI Starter library.
+Below datasets are available in the DXC Industrialized AI Starter library.
 
 |Dataset Name | Filename to load|
 |------------- |----------------|
@@ -48,6 +48,3 @@ Below datasets are availabe in DXC Industrialized AI Starter library.
 | Wheat seeds data | wheat_seeds |
 | Wine quality red | winequality_red |
 | MNIST data | mnist |
-
-
- 
