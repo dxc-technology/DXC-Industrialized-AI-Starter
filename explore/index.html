@@ -43,7 +43,7 @@
                     <li class="toctree-l1 current"><a class="nav-item current" href="./">Explore Data</a>
 <ul class="subnav">
 <li class="toctree-l2"><a class="nav-item toc" href="#explore-raw-data">Explore raw data</a></li>
-<li class="toctree-l2"><a class="nav-item toc" href="#visualize-complete-data">Visualize complete data:</a></li>
+<li class="toctree-l2"><a class="nav-item toc" href="#visualize-complete-data">Visualize complete data</a></li>
 </ul></li>
                     <li class="toctree-l1"><a class="nav-item" href="../data_pipeline/">Build Data Pipelines</a></li>
                     <li class="toctree-l1"><a class="nav-item" href="../experiment/">Run AI Experiments</a></li>
@@ -74,7 +74,7 @@
                 <div id="content"><h1 id="explore-data">Explore Data</h1>
 <hr />
 <h2 id="explore-raw-data">Explore raw data</h2>
-<p>Below code snippet helps to explore and visualize raw data.</p>
+<p>Below code, snippet helps to explore and visualize raw data.</p>
 <pre><code>    ai.visualize_missing_data(raw_data)
     ai.explore_features(raw_data)
     ai.plot_distributions(raw_data)
@@ -86,7 +86,7 @@
 <ul>
 <li>It visualizes the relationships between all features in a given data frame. Areas of heat show closely-related features.</li>
 <li>This visualization is useful when trying to determine which features can be predicted and which features are needed to make the prediction.</li>
-<li>It is useful to explore the correlations between features in the raw data. Use this visualization to form a hypothesis about how the raw data can be used. It may be necessary to enrich raw data with other features to increase the number and strength of correlations.</li>
+<li>It is useful to explore the correlations between features in the raw data. Use this visualization to form a hypothesis about how raw data can be used. It may be necessary to enrich raw data with other features to increase the number and strength of correlations.</li>
 </ul>
 </li>
 <li>
@@ -107,12 +107,12 @@
 </ul>
 </li>
 </ul>
-<h2 id="visualize-complete-data">Visualize complete data:</h2>
+<h2 id="visualize-complete-data">Visualize complete data</h2>
 <pre><code class="python">report = ai.explore_complete_data(df)
 report.to_notebook_iframe()
 </code></pre>
 
-<p><strong>ai.explore_complete_data(df):</strong> This function generates a profile reports from a pandas DataFrame for exploratory data analysis. For each column the following statistics are presented in an interactive HTML report. You can download that as an HTML report and share to others easily.</p>
+<p><strong>ai.explore_complete_data(df):</strong> This function generates profile reports from a pandas DataFrame for exploratory data analysis. For each column, the following statistics are presented in an interactive HTML report. You can download that as an HTML report and share it with others easily.</p>
 <ul>
 <li><strong>Type inference:</strong> detect the types of columns in a DataFrame.</li>
 <li><strong>Essentials:</strong> type, unique values, missing values</li>
@@ -120,10 +120,10 @@ report.to_notebook_iframe()
 <li>Descriptive statistics like mean, mode, standard deviation, sum, median absolute deviation, coefficient of variation, kurtosis, skewness</li>
 <li>Most frequent values</li>
 <li>Histogram</li>
-<li>Correlations highlighting of highly correlated variables, Spearman, Pearson and Kendall matrices</li>
-<li>Missing values matrix, count, heatmap and dendrogram of missing values</li>
-<li>Text analysis learn about categories (Uppercase, Space), scripts (Latin, Cyrillic) and blocks (ASCII) of text data.</li>
-<li>File and Image analysis extract file sizes, creation dates and dimensions and scan for truncated images or those containing EXIF information.</li>
+<li>Correlations highlighting of highly correlated variables, Spearman, Pearson, and Kendall matrices</li>
+<li>Missing values matrix, count, heatmap, and dendrogram of missing values</li>
+<li>Text analysis learn about categories (Uppercase, Space), scripts (Latin, Cyrillic), and blocks (ASCII) of text data.</li>
+<li>File and Image analysis extract file sizes, creation dates, and dimensions and scan for truncated images or those containing EXIF information.</li>
 </ul></div>
                 <footer>
     <div class="footer-buttons">

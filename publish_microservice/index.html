@@ -71,7 +71,7 @@
 </nav>
                 <div id="content"><h1 id="publish-microservice">Publish Microservice</h1>
 <hr />
-<p>The DXC AI Starter library makes it easy to publish your models as working microservices. By default, the DXC AI Starter library uses  free tier of <a href="https://algorithmia.com/signup">Algorithmia</a> to publish models as microservices. In order to provide the information required to design the microservice, you must:</p>
+<p>The DXC AI Starter library makes it easy to publish your models as working microservices. By default, the DXC AI Starter library uses free tier of <a href="https://algorithmia.com/signup">Algorithmia</a> to publish models as microservices. To provide the information required to design the microservice, you must:</p>
 <ul>
 <li>create an <a href = "https://algorithmia.com/signin#credentials" target="_blank"> Algorithmia</a> account </li>
 <li>create an API key with BOTH "Read &amp; Write Data" and "Manage Algorithms" permissions enabled</li>
@@ -97,13 +97,13 @@ print(&quot;api url: &quot; + api_url)
 <p><strong>publish_microservice(microservice_design, trained_model):</strong></p>
 <ul>
 <li>
-<p>The code in this section prepares an execution environment for the microservice, builds a microservice using the machine-learning model, deploys the microservice into the execution environment, and publishes an API enpoint for the microservice.</p>
+<p>The code in this section prepares an execution environment for the microservice, builds a microservice using the machine-learning model, deploys the microservice into the execution environment, and publishes an API endpoint for the microservice.</p>
 </li>
 <li>
-<p>The work of creating the microservice and deploying it will be done automatically. The code will also automatically handle the source code reposity management.</p>
+<p>The work of creating the microservice and deploying it will be done automatically. The code will also automatically handle the source code repository management.</p>
 </li>
 <li>
-<p>This code defines the parameters needed to build and delpoy a microservice based on the trained model.</p>
+<p>This code defines the parameters needed to build and deploy a microservice-based on the trained model.</p>
 </li>
 <li>Update microservice_design with parameters appropriate for your project. The parameters must contain valid keys, namespaces, and model paths from Algorithmia.</li>
 </ul>

@@ -73,17 +73,17 @@
 </ul>
 </nav>
                 <div id="content"><h1 id="dxc-industrialized-ai-starter">DXC Industrialized AI Starter</h1>
-<p>DXC Indusrialized AI Starter makes it easy for you to deploy your AI algorithms (Industrialize). If you are a data scientist, working on an algorithm that you would like to deploy across the enterprise, DXC's Industrialized AI starter makes it easier for you to:</p>
+<p>DXC Industrialized AI Starter makes it easy for you to deploy your AI algorithms (Industrialize). If you are a data scientist, working on an algorithm that you would like to deploy across the enterprise, DXC's Industrialized AI starter makes it easier for you to:</p>
 <ul>
 <li>Access, clean, and explore raw data</li>
 <li>Build data pipelines</li>
 <li>Run AI experiments</li>
 <li>Publish microservices</li>
 </ul>
-<p>Here is short visual representation about DXC Indusrialized AI Starter.</p>
+<p>Here is a short visual representation of the DXC Industrialized AI Starter.</p>
 <p><img alt="Animation" src="img/Industrialized_AI_Animation.gif" /></p>
 <h2 id="installation">Installation</h2>
-<p>In order to  install and use the DXC AI Starter library, please use the below code snippet:</p>
+<p>To install and use the DXC AI Starter library, please use the below code snippet:</p>
 <pre><code class="python">1. pip install DXC-Industrialized-AI-Starter
 2. from dxc import ai
 </code></pre>
@@ -125,7 +125,7 @@ data_layer = {
 wrt_raw_data = ai.write_raw_data(data_layer, raw_data, date_fields = [])
 </code></pre>
 
-<p>Once raw data is stored, you can run pipelines to transform the data. This code instructs the data store on how to refine the output of raw data into something that can be used to train a machine-learning model. Please refer to the syntax of <a href="https://docs.mongodb.com/manual/core/aggregation-pipeline/">MongDB pipelines</a> for the details of how to write a pipeline. Below is an example of creating and executing a pipeline.</p>
+<p>Once raw data is stored, you can run pipelines to transform the data. This code instructs the datastore on how to refine the output of raw data into something that can be used to train a machine-learning model. Please refer to the syntax of <a href="https://docs.mongodb.com/manual/core/aggregation-pipeline/">MongDB pipelines</a> for the details of how to write a pipeline. Below is an example of creating and executing a pipeline.</p>
 <pre><code class="python">pipeline = [
         {
             '$group':{
@@ -150,7 +150,7 @@ df = ai.access_data_from_pipeline(wrt_raw_data, pipeline) #refined data will be 
 
 <p><a href= "https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/data_pipeline/" target="_blank">Click here</a> for details about building data pipeline.</p>
 <h3 id="run-ai-experiments">Run AI Experiments</h3>
-<p>Use the DXC AI Starter to build and test algorithms. This code executes an experiment by running run_experiment() on an experiment design.</p>
+<p>Use the DXC AI Starter to build and test algorithms. This code executes an experiment by running run_experiment() on experiment design.</p>
 <pre><code class="python">experiment_design = {
     #model options include ['tpot_regression()', 'tpot_classification()', 'timeseries']
     &quot;model&quot;: ai.tpot_regression(),
@@ -193,7 +193,7 @@ print(&quot;api url: &quot; + api_url)
 
 <p><a href="https://dxc-technology.github.io/DXC-Industrialized-AI-Starter/publish_microservice/">Click here</a> for details about publishing microservice.</p>
 <h2 id="example-notebooks">Example Notebooks</h2>
-<p><a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/tree/master/Examples" target="_blank">Here</a> are example notebooks for individual models. These sample notebooks help to understand on how to use each function, what parameters are expected for each function and what will be the output of each function in a model.</p>
+<p><a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/tree/master/Examples" target="_blank">Here</a> are example notebooks for individual models. These sample notebooks help to understand how to use each function, what parameters are expected for each function, and what will be the output of each function in a model.</p>
 <h3 id="reporting-issues">Reporting Issues</h3>
 <p>If you find any issues, feel free to report them <a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/issues" target="_blank">here</a> with clear description of your issue.</p></div>
                 <footer>
