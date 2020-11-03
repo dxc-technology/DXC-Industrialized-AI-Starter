@@ -141,7 +141,7 @@ For detailed and complete documentation, please <a href="https://dxc-technology.
 
 ### Example notebooks
 
-<a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/tree/master/Examples" target="_blank">Here</a> are example notebooks for individual models. These sample notebooks help to understand on how to use each function, what parameters are expected for each function and what will be the output of each function in a model.
+<a href="https://nbviewer.jupyter.org/github/dxc-technology/DXC-Industrialized-AI-Starter/tree/c58754247060262ac0949396e48f71861cb79d4e/Examples/" target="_blank">Here</a> are example notebooks for individual models. These sample notebooks help to understand on how to use each function, what parameters are expected for each function and what will be the output of each function in a model.
 
 ### Contributing Guide
 
