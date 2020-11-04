@@ -144,7 +144,7 @@ trained_model = ai.run_experiment(experiment_design, verbose = False, max_time_m
 <li>Double exponential smoothing model</li>
 <li>ARIMA model</li>
 </ul>
-<p>The best model will be selected based on the RMSE value. Use this model when the design specification of the data story requires to predict future values based on time. <a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/Examples/Time_series_Model.ipynb">Here</a> is an example notebook for the time series model. </p>
+<p>The best model will be selected based on the RMSE value. Use this model when the design specification of the data story requires to predict future values based on time. <a href="https://nbviewer.jupyter.org/github/dxc-technology/DXC-Industrialized-AI-Starter/blob/c58754247060262ac0949396e48f71861cb79d4e/Examples/Time_series_Model.ipynb">Here</a> is an example notebook for the time series model. </p>
 <h2 id="deep-learning-model">Deep Learning Model</h2>
 <p>DXC Industrialized AI starter has a Deep Learning model for image classification.</p>
 <p>Image classification is a supervised learning problem. A set of target classes are defined, and a model is trained with labeled images (train set). This trained model will identify and classifies new input into one of the target classes.</p>
@@ -157,7 +157,7 @@ trained_model = ai.run_experiment(experiment_design, verbose = False, max_time_m
 <p><strong>ai.create_training_data:</strong> This function reads each folder and each image from the path provided and will convert the image to an array. It will also resize your image to the size provided, the default size is 100. This function takes a list of image categories, image folder directory/path, and resizes size. This function return features and labels.</p>
 <p><strong>ai.split_normalize_data:</strong> This function splits the data into train and test based on the size of the text provided. The default test size will be 0.20. Along with splitting the data to train and test, this function will also normalize the data. This function takes features, labels, test size (default 0.20), category count, and image size (default 100). This function returns the train and test sets.</p>
 <p><strong>ai.image_classifier:</strong> This function compiles the model with the image size and number of categories provided. It adds the input, hidden, and output layers and compiles the model. Here returned model is trained with train data sets and further used for prediction.</p>
-<p>This <a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/Examples/DL_Image_classifier.ipynb">example notebook</a> helps you to understand how to use this model from the AI starter library.</p>
+<p>This <a href="https://nbviewer.jupyter.org/github/dxc-technology/DXC-Industrialized-AI-Starter/blob/c58754247060262ac0949396e48f71861cb79d4e/Examples/DL_Image_classifier.ipynb">example notebook</a> helps you to understand how to use this model from the AI starter library.</p>
 <h2 id="clustering-model">Clustering Model</h2>
 <p>The clustering model is an unsupervised technique, which performs the clustering on the dataset depending on the attributes without knowing any information about the output. We aim to retrieve the hidden clusters from the data, our model performs the basic auto clustering based on the silhouette score. The Clustering models that are used in the library are:</p>
 <ul>
@@ -165,7 +165,7 @@ trained_model = ai.run_experiment(experiment_design, verbose = False, max_time_m
 <li>K-Means</li>
 <li>DBSCAN</li>
 </ul>
-<p>The best method out of this is being selected based on the scores and the trained model of the same is returned as the output. <a href="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/Examples/Clustering_ipynb.ipynb">Here</a> is the example notebook for the clustering model.</p></div>
+<p>The best method out of this is being selected based on the scores and the trained model of the same is returned as the output. <a href="https://nbviewer.jupyter.org/github/dxc-technology/DXC-Industrialized-AI-Starter/blob/c58754247060262ac0949396e48f71861cb79d4e/Examples/Clustering_ipynb.ipynb">Here</a> is the example notebook for the clustering model.</p></div>
                 <footer>
     <div class="footer-buttons">
         <div class="previous"><a href="../data_pipeline/" title="Data Pipeline"><span>Previous</span></a></div>
