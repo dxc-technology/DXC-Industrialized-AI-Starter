@@ -83,7 +83,7 @@ If you need more knowledge on how to create custom scores please check [here](ht
  - Double exponential smoothing model
  - ARIMA model
  
- The best model will be selected based on the RMSE value. Use this model when the design specification of the data story requires to predict future values based on time. [Here](https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/Examples/Time_series_Model.ipynb) is an example notebook for the time series model. 
+ The best model will be selected based on the RMSE value. Use this model when the design specification of the data story requires to predict future values based on time. [Here](https://nbviewer.jupyter.org/github/dxc-technology/DXC-Industrialized-AI-Starter/blob/c58754247060262ac0949396e48f71861cb79d4e/Examples/Time_series_Model.ipynb) is an example notebook for the time series model. 
  
 
 ## Deep Learning Model
@@ -104,7 +104,7 @@ __ai.split_normalize_data:__ This function splits the data into train and test b
 
 __ai.image_classifier:__ This function compiles the model with the image size and number of categories provided. It adds the input, hidden, and output layers and compiles the model. Here returned model is trained with train data sets and further used for prediction.
 
-This [example notebook](https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/Examples/DL_Image_classifier.ipynb) helps you to understand how to use this model from the AI starter library.
+This [example notebook](https://nbviewer.jupyter.org/github/dxc-technology/DXC-Industrialized-AI-Starter/blob/c58754247060262ac0949396e48f71861cb79d4e/Examples/DL_Image_classifier.ipynb) helps you to understand how to use this model from the AI starter library.
 
 ## Clustering Model
 
@@ -114,4 +114,4 @@ The clustering model is an unsupervised technique, which performs the clustering
 - K-Means
 - DBSCAN
 
-The best method out of this is being selected based on the scores and the trained model of the same is returned as the output. [Here](https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/Examples/Clustering_ipynb.ipynb) is the example notebook for the clustering model.
+The best method out of this is being selected based on the scores and the trained model of the same is returned as the output. [Here](https://nbviewer.jupyter.org/github/dxc-technology/DXC-Industrialized-AI-Starter/blob/c58754247060262ac0949396e48f71861cb79d4e/Examples/Clustering_ipynb.ipynb) is the example notebook for the clustering model.

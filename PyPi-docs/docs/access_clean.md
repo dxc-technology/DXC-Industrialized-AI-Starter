@@ -41,3 +41,4 @@ The above function performs the following process:
 - For object field types(categorical field), the KNN model is implemented with a default value of K as 2 to fill the missing values. KNN model imputes the missing values with the prediction based on all the other attributes. This makes data more reliable and meaningful as all the values are implemented using a prediction model against all the attributes.
 - For the KNN model to run, the object datatypes are encoded into numerical values, and predictions are calculated based on the encoded values and after the predictions are made, values are decoded and converted back to original values for user convenience.
 - For Numerical field types, the skewness of the column is calculated. If the skewness is within the range of -1 to 1, the mean of the column is used to impute the missing values otherwise median is used to impute the missing values.
+

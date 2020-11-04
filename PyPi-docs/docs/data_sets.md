@@ -20,7 +20,7 @@ For loading the datasets from this library we use below two functions.
 
 A list of datasets available in AI Starter is provided below.
 
-An example note on how to use these functions is placed under the “Examples” folder in the git repository.
+An [example note](https://nbviewer.jupyter.org/github/dxc-technology/DXC-Industrialized-AI-Starter/blob/c58754247060262ac0949396e48f71861cb79d4e/Examples/datasets_in_DXC_Industrialized_AI_Starter.ipynb) on how to use these functions is placed under the “Examples” folder in the git repository.
 
 #### Available Datasets
 

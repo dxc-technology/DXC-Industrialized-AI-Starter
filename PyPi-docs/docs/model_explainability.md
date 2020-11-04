@@ -31,6 +31,6 @@ SHAP (SHapley Additive exPlanations) is a game-theoretic approach to explain the
 To know more details about SHAP explainer [click here](https://github.com/slundberg/shap).
 
 
-Check out [Examples](https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/tree/master/Examples) to understand how to use each function, what parameters are expected for each function. Also check out [shap](https://github.com/slundberg/shap), [lime](https://github.com/marcotcr/lime), [interpret-community](https://github.com/interpretml/interpret-community) libraries to learn more about the Model explainability and its usage.
+Check out [Examples](https://nbviewer.jupyter.org/github/dxc-technology/DXC-Industrialized-AI-Starter/blob/c58754247060262ac0949396e48f71861cb79d4e/Examples/Interpretation%20of%20a%20regression%20model.ipynb) to understand how to use each function, what parameters are expected for each function. Also check out [shap](https://github.com/slundberg/shap), [lime](https://github.com/marcotcr/lime), [interpret-community](https://github.com/interpretml/interpret-community) libraries to learn more about the Model explainability and its usage.
 
-__Note:__ In the present version, Model Explainability supports only the custom models. We are implementing the explainability changes for Auto_ml models. Changes will be published soon.
+

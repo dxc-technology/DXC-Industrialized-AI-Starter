@@ -33,7 +33,7 @@ report = ai.explore_complete_data(df)
 report.to_notebook_iframe()
 ```
 
-__ai.explore_complete_data(df):__ This function generates profile reports from a pandas DataFrame for exploratory data analysis. For each column, the following statistics are presented in an interactive HTML report. You can download that as an HTML report and share it with others easily.
+__ai.explore_complete_data(df):__ This function generates profile reports from a pandas DataFrame for exploratory data analysis. For each column, the following statistics are presented in an interactive HTML report. You can download that as an HTML report and share it with others easily. [Here](https://nbviewer.jupyter.org/github/dxc-technology/DXC-Industrialized-AI-Starter/blob/c58754247060262ac0949396e48f71861cb79d4e/Examples/Complete_Data_Visualization.ipynb) is the example notebook to know the usage of this function. 
 
 - __Type inference:__ detect the types of columns in a DataFrame.
 - __Essentials:__ type, unique values, missing values
