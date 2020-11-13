@@ -22,11 +22,15 @@ def categorical_encoding(data,target):
     else:
         if data_1[target].dtype == 'object':      
             le = preprocessing.LabelEncoder()           
-            data_1[target] = le.fit_transform(data_1[target].astype(str))    
+            data_1[target] = le.fit_transform(data_1[target].astype(str))
+            globals_file.run_experiment_target_encoder = le
+            globals_file.run_experiment_target_encoder_used = True
         data_2 = data_1.drop([target], axis = 1)
         encoder = ce.OrdinalCategoricalEncoder(encoding_method='ordered')
         encoder.fit(data_2, data_1[target])
         data_3 = encoder.transform(data_2)
+        globals_file.run_experiment_encoder = encoder
+        globals_file.run_experiment_encoder_used = True
         return data_3, data_1[target]
 
 ##Define Tpot regressor 
@@ -47,12 +51,20 @@ def classifier(verbosity, max_time_mins, max_eval_time_mins, config_dict, warm_s
 
 ###Train the model 
 def train_model(data, target, model_def, model_type, interpret = False, warm_start = False, export_pipeline = True):
-    if warm_start == False:  
-       globals_file.run_experiment_warm_start = False
-       data_transformed, label_data = categorical_encoding(data,target)
-       x_train, x_test, y_train, y_test = train_test_split(data_transformed, label_data, test_size=0.2, random_state=0)
+    if warm_start == False:
+        globals_file.run_experiment_encoder = None
+        globals_file.run_experiment_target_encoder = None
+        globals_file.run_experiment_target_encoder_used = False
+        globals_file.run_experiment_encoder_used = False
+        globals_file.run_experiment_warm_start = False
+        data_transformed, label_data = categorical_encoding(data,target)
+        x_train, x_test, y_train, y_test = train_test_split(data_transformed, label_data, test_size=0.2, random_state=0)
     ##Save the data for first time execution with warm start.
-    if warm_start == True and globals_file.run_experiment_warm_start == False:    
+    if warm_start == True and globals_file.run_experiment_warm_start == False:
+        globals_file.run_experiment_encoder = None
+        globals_file.run_experiment_target_encoder = None
+        globals_file.run_experiment_target_encoder_used = False
+        globals_file.run_experiment_encoder_used = False
         data_transformed, label_data = categorical_encoding(data,target)
         x_train, x_test, y_train, y_test = train_test_split(data_transformed, label_data, test_size=0.2, random_state=0)
         globals_file.run_experiment_warm_start = True
