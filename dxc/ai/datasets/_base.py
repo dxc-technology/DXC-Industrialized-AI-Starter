@@ -40,3 +40,5 @@ def load_data_details(filename):
     except:
         message = "No Details found for " + filename + " data set"
         return message
+    
+ def get_date():
