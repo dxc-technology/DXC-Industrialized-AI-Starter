@@ -36,17 +36,17 @@ def categorical_encoding(data,target):
 ##Define Tpot regressor 
 def regressor(verbosity, max_time_mins , max_eval_time_mins, config_dict, warm_start, scoring):
     if verbosity == True:
-        model_def = TPOTRegressor(verbosity=2, max_time_mins=max_time_mins, max_eval_time_mins= max_eval_time_mins, config_dict = config_dict, warm_start = warm_start, scoring= scoring)
+        model_def = TPOTRegressor(verbosity=2, max_time_mins=max_time_mins, max_eval_time_mins= max_eval_time_mins, config_dict = config_dict, warm_start = warm_start, scoring= scoring, template = 'Regressor')
     else:
-        model_def = TPOTRegressor(verbosity=0, max_time_mins=max_time_mins, max_eval_time_mins= max_eval_time_mins, config_dict = config_dict, warm_start = warm_start, scoring= scoring)
+        model_def = TPOTRegressor(verbosity=0, max_time_mins=max_time_mins, max_eval_time_mins= max_eval_time_mins, config_dict = config_dict, warm_start = warm_start, scoring= scoring, template = 'Regressor')
     return model_def
 
 ##Define Tpot classifier
 def classifier(verbosity, max_time_mins, max_eval_time_mins, config_dict, warm_start, scoring):
     if verbosity == True:
-        model_def = TPOTClassifier(verbosity=2, max_time_mins=max_time_mins, max_eval_time_mins= max_eval_time_mins, config_dict = config_dict, warm_start = warm_start, scoring = scoring)
+        model_def = TPOTClassifier(verbosity=2, max_time_mins=max_time_mins, max_eval_time_mins= max_eval_time_mins, config_dict = config_dict, warm_start = warm_start, scoring = scoring, template = 'Classifier')
     else:
-        model_def = TPOTClassifier(verbosity=0, max_time_mins=max_time_mins, max_eval_time_mins= max_eval_time_mins, config_dict = config_dict, warm_start = warm_start, scoring = scoring)
+        model_def = TPOTClassifier(verbosity=0, max_time_mins=max_time_mins, max_eval_time_mins= max_eval_time_mins, config_dict = config_dict, warm_start = warm_start, scoring = scoring, template = 'Classifier')
     return model_def
 
 ###Train the model 
