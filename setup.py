@@ -8,7 +8,7 @@ def readme():
 
 setup(
     name="DXC-Industrialized-AI-Starter",
-    version="2.3.3",
+    version="2.3.4",
     description="Python library which is extensively used for all AI projects",
     long_description=readme(),
     long_description_content_type="text/markdown",
@@ -31,6 +31,6 @@ setup(
             "dxc=dxc.ai:main",
         ]
     },
-    package_data={'datasets/data': ['datasets/data/*'],},
+#     package_data={'datasets/data': ['datasets/data/*'],},
     include_package_data=True,
 )
