@@ -18,7 +18,8 @@ def get_file_path_csv():
 
 
 
-def read_data_frame_from_local_csv(col_names = [], delim_whitespace=False, header = 'infer'):
+def read_data_frame_from_local_csv(col_names = [], sep=',', delim_whitespace=False, header = 'infer', 
+                                   names=None, skiprows=None, error_bad_lines=True, encoding=None):
     try:
         from google.colab import files
         IN_COLAB = True
@@ -29,7 +30,8 @@ def read_data_frame_from_local_csv(col_names = [], delim_whitespace=False, heade
         
         uploaded = files.upload()
         csv_file_name = list(uploaded.keys())[0]
-        df = pd.read_csv(io.BytesIO(uploaded[csv_file_name]), delim_whitespace=delim_whitespace, header = header)
+        df = pd.read_csv(io.BytesIO(uploaded[csv_file_name]), sep=sep, delim_whitespace=delim_whitespace, header = header,
+                         names=names, skiprows=skiprows, error_bad_lines=error_bad_lines, encoding=encoding)
         if col_names != []:
             df.columns = col_names
         return(df)
