@@ -21,8 +21,12 @@ def categorical_encoding(data,target):
         return data_1.drop([target], axis = 1), data_1[target]
     else:
         if data_1[target].dtype == 'object':      
-            le = preprocessing.LabelEncoder()           
-            data_1[target] = le.fit_transform(data_1[target].astype(str))
+            le = preprocessing.LabelEncoder()
+            try:
+                data_1[target] = le.fit_transform(data_1[target].astype(str))
+            except:
+                data_1[target] = data_1[target].astype('category')
+                data_1[target] = le.fit_transform(data_1[target].astype(str))  
             globals_file.run_experiment_target_encoder = le
             globals_file.run_experiment_target_encoder_used = True
         data_2 = data_1.drop([target], axis = 1)
@@ -58,7 +62,10 @@ def train_model(data, target, model_def, model_type, interpret = False, warm_sta
         globals_file.run_experiment_encoder_used = False
         globals_file.run_experiment_warm_start = False
         data_transformed, label_data = categorical_encoding(data,target)
-        x_train, x_test, y_train, y_test = train_test_split(data_transformed, label_data, test_size=0.2, random_state=0)
+        try:
+            x_train, x_test, y_train, y_test = train_test_split(data_transformed, label_data, test_size=0.2, random_state=0, stratify = label_data)
+        except:
+            x_train, x_test, y_train, y_test = train_test_split(data_transformed, label_data, test_size=0.2, random_state=0) 
     ##Save the data for first time execution with warm start.
     if warm_start == True and globals_file.run_experiment_warm_start == False:
         globals_file.run_experiment_encoder = None
@@ -66,7 +73,10 @@ def train_model(data, target, model_def, model_type, interpret = False, warm_sta
         globals_file.run_experiment_target_encoder_used = False
         globals_file.run_experiment_encoder_used = False
         data_transformed, label_data = categorical_encoding(data,target)
-        x_train, x_test, y_train, y_test = train_test_split(data_transformed, label_data, test_size=0.2, random_state=0)
+        try:
+            x_train, x_test, y_train, y_test = train_test_split(data_transformed, label_data, test_size=0.2, random_state=0, stratify = label_data)
+        except:
+            x_train, x_test, y_train, y_test = train_test_split(data_transformed, label_data, test_size=0.2, random_state=0)
         globals_file.run_experiment_warm_start = True
         globals_file.run_experiment_x_train = x_train
         globals_file.run_experiment_x_test = x_test
@@ -126,16 +136,21 @@ def train_model(data, target, model_def, model_type, interpret = False, warm_sta
         print()
         
         #ROC_AUC_OVR
-        score_roc_ovr = SCORERS['roc_auc_ovr'](best_pipeline, x_test, y_test)
-        print("ROC_AUC_OVR:", score_roc_ovr)
-        print()
+        try:
+            score_roc_ovr = SCORERS['roc_auc_ovr'](best_pipeline, x_test, y_test)
+            print("ROC_AUC_OVR:", score_roc_ovr)
+            print()
+        except:
+            pass
         
         #ROC_AUC_OVO
-        score_roc_ovo = SCORERS['roc_auc_ovo'](best_pipeline, x_test, y_test)
-        print("ROC_AUC_OVO:", score_roc_ovo)
-        print()
+        try:
+            score_roc_ovo = SCORERS['roc_auc_ovo'](best_pipeline, x_test, y_test)
+            print("ROC_AUC_OVO:", score_roc_ovo)
+            print()
+        except:
+            pass
 
-        
         # Recall
         score_rec_macro = SCORERS['recall_macro'](best_pipeline, x_test, y_test)
         print("Recall:", score_rec_macro)        
