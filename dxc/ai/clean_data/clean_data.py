@@ -10,7 +10,7 @@ from sklearn.base import TransformerMixin
 from sklearn.impute import KNNImputer ##using KNN as imputer for categorical fields
 from sklearn.preprocessing import OrdinalEncoder ##Ordinal encoder is being used for encoding categorical objects
 from dxc.ai.global_variables import globals_file
-
+from datetime import datetime
 
 def encode(data):
 
@@ -76,7 +76,13 @@ def clean_dataframe(df, impute = False, text_fields = [], date_fields = [], nume
     #standardize the format of all date fields
     for field in date_fields:
         field = '_'.join(field.split()).lower()
-        clean_df[field] = clean_df[field].apply(arrow.get)
+        try:
+          clean_df[field] = clean_df[field].apply(arrow.get)
+        except ParserError:
+          try:
+            clean_df[field] = clean_df[field].apply(lambda x: arrow.get(datetime.strptime(x,'%m/%d/%Y')))
+          except ValueError:
+            clean_df[field] = clean_df[field].apply(lambda x: arrow.get(datetime.strptime(x,'%m/%d/%y')))
 
     #make sure all numeric fields have the proper data type
     for field in numeric_fields:
