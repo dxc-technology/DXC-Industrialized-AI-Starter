@@ -59,3 +59,4 @@ from .datasets._base import load_data
 from .datasets._base import load_data_details
 # from .datasets._base import get_data
 
+from .facial_detection.attention_detector import detect_attentiveness
