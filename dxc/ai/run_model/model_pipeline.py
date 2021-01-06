@@ -2,7 +2,7 @@ import pandas as pd
 from tpot import TPOTRegressor
 from tpot import TPOTClassifier
 from sklearn.model_selection import train_test_split
-from feature_engine import categorical_encoders as ce
+from feature_engine import encoding as ce
 from .interpret_model import Global_Model_Explanation
 from .interpret_model import Explanation_Dashboard
 from sklearn import preprocessing
@@ -30,7 +30,7 @@ def categorical_encoding(data,target):
             globals_file.run_experiment_target_encoder = le
             globals_file.run_experiment_target_encoder_used = True
         data_2 = data_1.drop([target], axis = 1)
-        encoder = ce.OrdinalCategoricalEncoder(encoding_method='ordered')
+        encoder = ce.OrdinalEncoder(encoding_method='ordered')
         encoder.fit(data_2, data_1[target])
         data_3 = encoder.transform(data_2)
         globals_file.run_experiment_encoder = encoder
