@@ -1,6 +1,7 @@
 import json
 import pandas as pd
 import urllib.parse #input data
+from io import BytesIO
 from tkinter import Tk
 from tkinter import filedialog
 from enum import Enum
@@ -27,7 +28,7 @@ def read_data_frame_from_local_excel_file():
         
         uploaded = files.upload()
         excel_file_name = list(uploaded.keys())[0]
-        df = pd.read_excel(io.BytesIO(uploaded[excel_file_name]))
+        df = pd.read_excel(BytesIO(uploaded[excel_file_name]))
         return(df)
     else:
         excel_path = get_file_path_excel()
