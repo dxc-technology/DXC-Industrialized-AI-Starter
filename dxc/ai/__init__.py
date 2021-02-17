@@ -59,6 +59,6 @@ from .logging.experiment_design_logging import experiment_design_log
 from .logging.microservice_logging      import microservice_design_log
 
 from .datasets._base import load_data
-from .datasets._base import load_data_details
+# from .datasets._base import load_data_details
 # from .datasets._base import get_data
 

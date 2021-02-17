@@ -32,6 +32,6 @@ setup(
             "dxc=dxc.ai:main",
         ]
     },
-    package_data={'datasets/data': ['datasets/data/*'],},
+#     package_data={'datasets/data': ['datasets/data/*'],},
     include_package_data=True,
 )
