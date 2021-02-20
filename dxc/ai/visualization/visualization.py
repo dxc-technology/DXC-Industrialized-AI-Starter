@@ -70,7 +70,7 @@ def plot_distributions(df):
 
         #create a plot for numeric values
         if is_numeric_dtype(df[col]):
-            sns.histplot(df[col], ax = f1_ax1).set_xlabel('')
+            sns.histplot(df[col], ax = f1_ax1, kde = True).set_xlabel('')
     
         #creare a plot for categorical values
         if df[col].dtype.name == "category":
