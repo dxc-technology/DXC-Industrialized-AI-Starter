@@ -1,5 +1,5 @@
 import pandas as pd
-import janitor #data cleaning
+# import janitor #data cleaning
 from ftfy import fix_text #data cleaning
 import nltk #data cleaning
 nltk.download('punkt') #data cleaning
