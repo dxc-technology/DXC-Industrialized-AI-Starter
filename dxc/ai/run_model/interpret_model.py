@@ -1,8 +1,9 @@
 from interpret_community import TabularExplainer
-from interpret_community.widget import ExplanationDashboard
+from raiwidgets import ExplanationDashboard
+#from interpret_community.widget import ExplanationDashboard
 import warnings
 
-def Global_Model_Explanation(model,x_train,x_test,feature_names = None,classes = None, explantion_data = None):
+def Global_Model_Explanation(model,x_train,x_test,y_train,y_testfeature_names = None,classes = None, explantion_data = None):
     warnings.filterwarnings('ignore')
     #Using SHAP TabularExplainer
     explainer = TabularExplainer(model, 
@@ -19,10 +20,10 @@ def Global_Model_Explanation(model,x_train,x_test,feature_names = None,classes =
     #Return Generated Explanation dashboard
     return global_explanation
 
-def Explanation_Dashboard(global_explanation, model, x_train, x_test, explantion_data = None):
+def Explanation_Dashboard(global_explanation, model, x_train, x_test, y_train, y_test, explantion_data = None):
     if explantion_data == 'Training':
-        ExplanationDashboard(global_explanation, model, datasetX=x_train)
+        ExplanationDashboard(global_explanation, model, datasetX=x_train, true_y=y_train)
     else:
-        ExplanationDashboard(global_explanation, model, datasetX=x_test)
+        ExplanationDashboard(global_explanation, model, datasetX=x_test, true_y=y_test)
 
     
