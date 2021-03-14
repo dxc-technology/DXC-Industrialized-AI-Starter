@@ -22,8 +22,8 @@ def Global_Model_Explanation(model,x_train,x_test,y_train,y_test,feature_names =
 
 def Explanation_Dashboard(global_explanation, model, x_train, x_test, y_train, y_test, explantion_data = None):
     if explantion_data == 'Training':
-        ExplanationDashboard(global_explanation, model, datasetX=x_train, true_y=y_train)
+        ExplanationDashboard(global_explanation, model, dataset=x_train, true_y=y_train)
     else:
-        ExplanationDashboard(global_explanation, model, datasetX=x_test, true_y=y_test)
+        ExplanationDashboard(global_explanation, model, dataset=x_test, true_y=y_test)
 
     
