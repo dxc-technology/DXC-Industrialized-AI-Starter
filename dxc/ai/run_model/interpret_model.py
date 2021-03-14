@@ -3,7 +3,7 @@ from raiwidgets import ExplanationDashboard
 #from interpret_community.widget import ExplanationDashboard
 import warnings
 
-def Global_Model_Explanation(model,x_train,x_test,y_train,y_testfeature_names = None,classes = None, explantion_data = None):
+def Global_Model_Explanation(model,x_train,x_test,y_train,y_test,feature_names = None,classes = None, explantion_data = None):
     warnings.filterwarnings('ignore')
     #Using SHAP TabularExplainer
     explainer = TabularExplainer(model, 
