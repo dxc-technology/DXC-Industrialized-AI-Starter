@@ -29,13 +29,18 @@ def categorical_encoding(data,target):
                 data_1[target] = le.fit_transform(data_1[target].astype(str))  
             globals_file.run_experiment_target_encoder = le
             globals_file.run_experiment_target_encoder_used = True
-        data_2 = data_1.drop([target], axis = 1)
-        encoder = ce.OrdinalEncoder(encoding_method='ordered')
-        encoder.fit(data_2, data_1[target])
-        data_3 = encoder.transform(data_2)
-        globals_file.run_experiment_encoder = encoder
-        globals_file.run_experiment_encoder_used = True
-        return data_3, data_1[target]
+        objFeatures_1 = data_1.select_dtypes(include="object").columns
+        objlen_1 = len(list(objFeatures_1))
+        if objlen_1 == 0:
+            return data_1.drop([target], axis = 1), data_1[target]
+        else:
+            data_2 = data_1.drop([target], axis = 1)
+            encoder = ce.OrdinalEncoder(encoding_method='ordered')
+            encoder.fit(data_2, data_1[target])
+            data_3 = encoder.transform(data_2)
+            globals_file.run_experiment_encoder = encoder
+            globals_file.run_experiment_encoder_used = True
+            return data_3, data_1[target]
 
 ##Define Tpot regressor 
 def regressor(verbosity, max_time_mins , max_eval_time_mins, config_dict, warm_start, scoring):
