@@ -243,6 +243,58 @@ def load_model():
 \t\tmodel = pickle.load(f)
 \t\treturn model
 trained_model = load_model()
+def load_target_encode():
+    # Get file by name
+    # Open file and load target encoder
+\ttarget_encodefile_path = {target_encodefile_path}
+\ttarget_encode_path = client.file(target_encodefile_path).getFile().name
+    # Open file and load target encoder
+\twith open(target_encode_path, 'rb') as f:
+\t\ttarget_encoder = pickle.load(f)
+\t\treturn target_encoder
+target_encode = load_target_encode()
+
+def default(obj):
+    if type(obj).__module__ == np.__name__:
+        if isinstance(obj, np.ndarray):
+            return obj.tolist()
+        else:
+            return obj.item()
+    raise TypeError('Unknown type:', type(obj))
+def apply(input):
+\tinput = pd.DataFrame([input])
+\ttry:
+\t\tinput = encode.transform(input)
+\texcept:
+\t\tpass
+\tprediction = trained_model.predict(input)
+\ttry:
+\t\tprediction = target_encode.inverse_transform(prediction)
+\t\tprediction = prediction[0]
+\texcept:
+\t\tprediction = json.dumps(prediction[0], default=default)
+\treturn {results}"""
+
+    ## source code for generalized tpot model
+    src_code_generalized_both_encode = """import Algorithmia
+import auto_ml
+import pandas as pd
+import pickle
+import json
+import numpy as np
+import feature_engine
+# create an Algorithmia client
+client = Algorithmia.client()
+def load_model():
+    # Get file by name
+    # Open file and load model
+\tfile_path = {file_path}
+\tmodel_path = client.file(file_path).getFile().name
+    # Open file and load model
+\twith open(model_path, 'rb') as f:
+\t\tmodel = pickle.load(f)
+\t\treturn model
+trained_model = load_model()
 def load_encode():
     # Get file by name
     # Open file and load encoder
@@ -287,10 +339,12 @@ def apply(input):
 
     if globals_file.run_experiment_used:
         src_code_content = src_code_generalized
-        if globals_file.run_experiment_encoder_used:
+        if globals_file.run_experiment_encoder_used and not globals_file.run_experiment_target_encoder_used:
             src_code_content = src_code_generalized_encode
-        if globals_file.run_experiment_target_encoder_used:
-            src_code_content = src_code_generalized_target_encode       
+        if globals_file.run_experiment_target_encoder_used and not globals_file.run_experiment_encoder_used:
+            src_code_content = src_code_generalized_target_encode  
+        if globals_file.run_experiment_encoder_used and globals_file.run_experiment_target_encoder_used:
+            src_code_content = src_code_generalized_both_encode 
 
     splitted=src_code_content.split('\n')
 
