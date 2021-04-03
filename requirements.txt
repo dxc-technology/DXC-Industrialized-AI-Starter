@@ -171,8 +171,8 @@ opencv-python==4.2.0.32
 openpyxl==3.0.0
 opt-einsum==3.2.1
 packaging==19.2
-pandas==0.25.1
-pandas-flavor==0.2.0
+pandas>=1.2.3
+pandas-flavor>=0.2.0
 pandocfilters==1.4.2
 parso==0.5.1
 partd==1.0.0
