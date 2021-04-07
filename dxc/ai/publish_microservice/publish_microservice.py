@@ -391,7 +391,19 @@ def apply(input):
     origin.push(progress=p)
 
     # publish/deploy our algorithm
-    client.algo(microservice_design["api_namespace"]).publish()
+    #client.algo(microservice_design["api_namespace"]).publish()
+    api.publish(
+    settings = {
+        "algorithm_callability": "private"
+    },
+    version_info = {
+        "release_notes": "Publishing Microservice",
+        "version_type": "revision"
+    },
+    details = {
+        "label": microservice_design["microservice_name"]
+    }
+    )
 
     #  code generates the api endpoint for the newly published microservice
     latest_version = client.algo(microservice_design["api_namespace"]).info().version_info.semantic_version
