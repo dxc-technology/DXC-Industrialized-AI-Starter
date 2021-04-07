@@ -46,6 +46,9 @@ from .run_model.clustering import Clustering
 from .sentiment_analysis.sentiment_analysis import texts_from_df
 from .sentiment_analysis.sentiment_analysis import get_model_learner
 from .sentiment_analysis.sentiment_analysis import get_predictor
+from .unsupervised_sentiment_analysis.kmeans_sentiment_analysis import get_text_clean
+from .unsupervised_sentiment_analysis.kmeans_sentiment_analysis import kmeans_sentiment_analyzer
+from .unsupervised_sentiment_analysis.kmeans_sentiment_analysis import kmeans_sentiment_predictor
 
 from .publish_microservice.publish_microservice import publish_microservice
 
