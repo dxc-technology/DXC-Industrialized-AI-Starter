@@ -18,7 +18,7 @@ def get_file_path_csv():
 
 
 
-def read_data_frame_from_local_csv(col_names = [], sep=',', delim_whitespace=False, header = 'infer', 
+def read_data_frame_from_local_csv(col_names = [], sep=',', delim_whitespace=False, header = 'infer', names = None,
                                    skiprows=None, error_bad_lines=True, encoding=None):
     try:
         from google.colab import files
@@ -31,7 +31,7 @@ def read_data_frame_from_local_csv(col_names = [], sep=',', delim_whitespace=Fal
         uploaded = files.upload()
         csv_file_name = list(uploaded.keys())[0]
         df = pd.read_csv(io.BytesIO(uploaded[csv_file_name]), sep=sep, delim_whitespace=delim_whitespace, header = header,
-                         names=col_names, skiprows=skiprows, error_bad_lines=error_bad_lines, encoding=encoding)
+                         names=names, skiprows=skiprows, error_bad_lines=error_bad_lines, encoding=encoding)
         if col_names != []:
             df.columns = col_names
         return(df)
@@ -43,8 +43,8 @@ def read_data_frame_from_local_csv(col_names = [], sep=',', delim_whitespace=Fal
             df.columns = col_names
         return(df)
         
-def read_data_frame_from_remote_csv(csv_url, col_names = [], sep=',',  delim_whitespace=False, header = 'infer', skiprows=None, error_bad_lines=True, encoding=None):
-    df = pd.read_csv(csv_url, sep=sep, delim_whitespace=delim_whitespace, header = header, names=col_names, skiprows=skiprows, error_bad_lines=error_bad_lines, encoding=encoding)
+def read_data_frame_from_remote_csv(csv_url, col_names = [], names=None, sep=',',  delim_whitespace=False, header = 'infer', skiprows=None, error_bad_lines=True, encoding=None):
+    df = pd.read_csv(csv_url, sep=sep, delim_whitespace=delim_whitespace, header = header, names=names, skiprows=skiprows, error_bad_lines=error_bad_lines, encoding=encoding)
     if col_names != []:
         df.columns = col_names
     return(df)
