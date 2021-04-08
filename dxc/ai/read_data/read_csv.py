@@ -43,8 +43,8 @@ def read_data_frame_from_local_csv(col_names = [], sep=',', delim_whitespace=Fal
             df.columns = col_names
         return(df)
         
-def read_data_frame_from_remote_csv(csv_url, col_names = [], sep=',',  delim_whitespace=False, header = 'infer', skiprows=None, error_bad_lines=True, encoding=None):
-    df = pd.read_csv(csv_url, sep=sep, delim_whitespace=delim_whitespace, header = header, names=col_names, skiprows=skiprows, error_bad_lines=error_bad_lines, encoding=encoding)
+def read_data_frame_from_remote_csv(csv_url, col_names = [], sep=',',  delim_whitespace=False, header = 'infer'):
+    df = pd.read_csv(csv_url, sep=sep, delim_whitespace=delim_whitespace, header = header)
     if col_names != []:
         df.columns = col_names
     return(df)
