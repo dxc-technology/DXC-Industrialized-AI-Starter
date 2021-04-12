@@ -29,13 +29,13 @@ from rl.random import OrnsteinUhlenbeckProcess
 def rl_helper(env, model_name, saved_model_name="model", steps=50000, test_steps=5, visualize=False, hidden_layers=3, critic_hidden_layers=3):
     if (model_name == "DDPG"):
         tf.compat.v1.enable_eager_execution()
-        ddpg(env, saved_model_name)
+        tf_keras_ddpg(env, saved_model_name, steps)
     else:
         tf.compat.v1.disable_eager_execution()
-        not_ddpg(env, model_name, saved_model_name, steps, test_steps, visualize, hidden_layers, critic_hidden_layers)
+        keras_rl(env, model_name, saved_model_name, steps, test_steps, visualize, hidden_layers, critic_hidden_layers)
     
 
-def not_ddpg(env, model_name, saved_model_name="model", steps=50000, test_steps=5, visualize=False, hidden_layers=3, critic_hidden_layers=3):
+def keras_rl(env, model_name, saved_model_name="model", steps=50000, test_steps=5, visualize=False, hidden_layers=3, critic_hidden_layers=3):
     nb_actions = 0
     if (model_name == "DQN" or model_name == "SARSA"):
         nb_actions = env.action_space.n
@@ -66,7 +66,7 @@ def not_ddpg(env, model_name, saved_model_name="model", steps=50000, test_steps=
     model.save_weights('{}.h5f'.format(model_name), overwrite=True)
     model.test(env, nb_episodes=test_steps, visualize=visualize)
 
-def ddpg(env, saved_model_name):
+def tf_keras_ddpg(env, saved_model_name, steps=50000):
     num_states = env.observation_space.shape[0]
     print("Size of State Space ->  {}".format(num_states))
     num_actions = env.action_space.shape[0]
@@ -91,7 +91,6 @@ def ddpg(env, saved_model_name):
         outputs = outputs * upper_bound
         model = tf.keras.Model(inputs, outputs)
         return model
-
 
     def get_critic():
         # State as input
@@ -239,11 +238,7 @@ def ddpg(env, saved_model_name):
     @tf.function
     def update_target(target_weights, weights, tau):
         for (a, b) in zip(target_weights, weights):
-            a.assign(b * tau + a * (1 - tau))
-
-    
-
-    
+            a.assign(b * tau + a * (1 - tau))    
 
     std_dev = 0.2
     ou_noise = OUActionNoise(mean=np.zeros(1), std_deviation=float(std_dev) * np.ones(1))
@@ -265,7 +260,7 @@ def ddpg(env, saved_model_name):
     critic_optimizer = tf.keras.optimizers.Adam(critic_lr)
     actor_optimizer = tf.keras.optimizers.Adam(actor_lr)
 
-    total_episodes = 100
+    total_episodes = steps
     # Discount factor for future rewards
     gamma = 0.99
     # Used to update target networks
