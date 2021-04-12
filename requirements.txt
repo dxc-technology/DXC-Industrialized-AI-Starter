@@ -34,6 +34,7 @@ boto==2.49.0
 boto3==1.11.8
 botocore==1.14.8
 Bottleneck==1.2.1
+box2d-py==2.3.8
 cachetools==4.1.0
 catalogue==1.0.0
 certifi==2019.9.11
@@ -89,6 +90,7 @@ google-auth-oauthlib==0.4.1
 google-pasta==0.2.0
 greenlet==0.4.15
 grpcio==1.28.1
+gym[Box_2D]=1.4.1
 h5py==2.10.0
 HeapDict==1.0.1
 html5lib==1.0.1
