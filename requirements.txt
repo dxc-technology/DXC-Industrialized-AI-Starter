@@ -294,7 +294,7 @@ traitlets==4.3.3
 twine==3.1.1
 unicodecsv==0.14.1
 update-checker==0.16
-urllib3==1.24.2
+urllib3>=1.26.5
 wasabi==0.6.0
 wcwidth==0.1.7
 webencodings==0.5.1
