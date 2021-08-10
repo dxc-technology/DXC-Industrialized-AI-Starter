@@ -51,7 +51,7 @@ conda-build==3.18.9
 conda-package-handling==1.6.0
 conda-verify==3.4.2
 contextlib2==0.6.0
-cryptography>=3.2
+cryptography>==3.2
 cycler==0.10.0
 cymem==2.0.3
 Cython==0.29.13
@@ -90,7 +90,7 @@ google-auth-oauthlib==0.4.1
 google-pasta==0.2.0
 greenlet==0.4.15
 grpcio==1.28.1
-gym[Box_2D]=1.4.1
+gym[Box_2D]==1.4.1
 h5py==2.10.0
 HeapDict==1.0.1
 html5lib==1.0.1
