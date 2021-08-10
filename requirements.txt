@@ -69,7 +69,7 @@ DXC-Industrialized-AI-Starter==1.0.2
 en-core-web-sm==2.2.5
 entrypoints==0.3
 enum34==1.1.10
-et-xmlfile==1.0.1
+et-xmlfile==1.1.0
 fastcache==1.1.0
 filelock==3.0.12
 Flask==1.1.1
