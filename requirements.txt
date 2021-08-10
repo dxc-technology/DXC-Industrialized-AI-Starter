@@ -25,7 +25,7 @@ backports.shutil-get-terminal-size==1.0.0
 backports.tempfile==1.0
 backports.weakref==1.0.post1
 beautifulsoup4==4.8.0
-bitarray==1.0.1
+bitarray==2.2.5
 bkcharts==0.2
 bleach==3.3.0
 blis==0.4.1
