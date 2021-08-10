@@ -73,7 +73,7 @@ et-xmlfile==1.1.0
 fastcache==1.1.0
 filelock==3.0.12
 Flask==1.1.1
-flatten-json==0.1.7
+flatten-json==0.1.13
 fsspec==0.5.2
 ftfy==5.7
 future==0.17.1
