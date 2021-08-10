@@ -79,7 +79,7 @@ ftfy==5.7
 future==0.17.1
 gast==0.3.3
 gender-guesser==0.4.0
-gensim==3.8.1
+gensim==4.0.1
 geos==0.2.2
 gevent==1.4.0
 gitdb==4.0.2
