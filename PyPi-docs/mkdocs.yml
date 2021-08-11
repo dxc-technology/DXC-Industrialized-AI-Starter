@@ -1,7 +1,8 @@
 site_name: DXC Industrialized AI Starter
 nav:
     - Welcome: index.md
-    - Access and Clean: access_clean.md
+    - Access Data: access_data.md
+    - Clean Data: clean_data.md
     - Visualization: explore.md
     - Data Pipeline: data_pipeline.md
     - Experiment: experiment.md
@@ -9,5 +10,13 @@ nav:
     - Publish Microservice: publish_microservice.md
     - Logging: logging.md
     - Load Data: data_sets.md
+    - Reinforcement Learning: reinforcement_learning.md
     - How to Contribute: contributing_guide.md
-theme: ivory
+theme: 
+    name: readthedocs
+
+extra_css: [extra.css]
+
+
+
+
