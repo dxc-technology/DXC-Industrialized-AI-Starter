@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Model Explainability - DXC Industrialized AI Starter</title>
+  <title>Clean Data - DXC Industrialized AI Starter</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -19,8 +19,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Model Explainability";
-    var mkdocs_page_input_path = "model_explainability.md";
+    var mkdocs_page_name = "Clean Data";
+    var mkdocs_page_input_path = "clean_data.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -56,8 +56,10 @@
                     <li class="toctree-l1"><a class="reference internal" href="../access_data/">Access Data</a>
                     </li>
                 </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../clean_data/">Clean Data</a>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Clean Data</a>
+    <ul class="current">
+    </ul>
                     </li>
                 </ul>
                 <ul>
@@ -72,12 +74,8 @@
                     <li class="toctree-l1"><a class="reference internal" href="../experiment/">Experiment</a>
                     </li>
                 </ul>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Model Explainability</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#shap-explainer">SHAP explainer</a>
-    </li>
-    </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../model_explainability/">Model Explainability</a>
                     </li>
                 </ul>
                 <ul>
@@ -121,7 +119,7 @@
     
       
     
-    <li>Model Explainability</li>
+    <li>Clean Data</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -132,38 +130,26 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="model-explainability">Model Explainability</h1>
-<p>In the context of machine learning and artificial intelligence, Explainability is the extent to which the internal mechanics of a machine or deep learning system can be explained in human terms. Model explainability is one of the most important problems in machine learning today.</p>
-<p>DXC Industrialized AI Starter helps you to understand the model explainability using interactive dashboards via SHAP - based explainer.</p>
-<pre><code class="python">global_explanation = ai.Global_Model_Explanation(model,x_train,x_test,feature_names = None,classes = None, explantion_data = None)
-ai.Explanation_Dashboard(global_explanation, model, x_train, x_test, explantion_data = None)
+                <h1 id="clean-raw-data">Clean  Raw Data</h1>
+<hr />
+<p>Below code snippet helps to clean raw data.</p>
+<pre><code class="python">    clean_data = ai.clean_dataframe(df)
 </code></pre>
 
-<p>To generate the model explainability, you need to pass your model, training data, test data to the functions. You can also optionally pass in feature names and output class names(classification) which will be used to make the explanations and visualizations more informative. Explanations will be generated default on the test data. If you pass the value of the explantion_data parameter as 'Training', then the explanation will be generated on training data. But with more examples, explanations will take longer although they may be more accurate.</p>
 <ul>
-<li>
-<p><strong>ai.Global_Model_Explanation:</strong> This function generates the overall model predictions and generates a dictionary of sorted feature importance names and values.</p>
-</li>
-<li>
-<p><strong>ai.Explanation_Dashboard:</strong>  This will generate an interactive visualization dashboard, you can investigate different aspects of your dataset and trained model via below four tab views:</p>
+<li>This method imputes missing data, cleans the column headings, removes empty rows and columns, anonymizes text, and casts fields to their proper data type. </li>
+<li>Except for the data, every input field for the clean_dataframe is optional. By default, the method will not impute missing data. If instructed, the clean_dataframe will replace missing numeric fields with the mean value and replace missing categorical fields with the mode.</li>
+</ul>
+<p><strong>ai.clean_dataframe(df, impute = False, text_fields = [], date_fields = [], numeric_fields = [], categorical_fields = []):</strong></p>
+<p>The above function performs the following process:</p>
 <ul>
-<li>Model Performance</li>
-<li>Data Explorer</li>
-<li>Aggregate Feature Importance</li>
-<li>Individual Feature Importance</li>
+<li>The column names are transformed to lower case and spaces are removed.</li>
+<li>If any of the rows or columns with total null values are removed completely.</li>
+<li>For text fields, the cleaner removes harmful characters, removes personal identifiers, converts to lowercase</li>
+<li>For object field types(categorical field), the KNN model is implemented with a default value of K as 2 to fill the missing values. KNN model imputes the missing values with the prediction based on all the other attributes. This makes data more reliable and meaningful as all the values are implemented using a prediction model against all the attributes.</li>
+<li>For the KNN model to run, the object datatypes are encoded into numerical values, and predictions are calculated based on the encoded values and after the predictions are made, values are decoded and converted back to original values for user convenience.</li>
+<li>For Numerical field types, the skewness of the column is calculated. If the skewness is within the range of -1 to 1, the mean of the column is used to impute the missing values otherwise median is used to impute the missing values.</li>
 </ul>
-</li>
-</ul>
-<h4 id="shap-explainer">SHAP explainer</h4>
-<p>SHAP (SHapley Additive exPlanations) is a game-theoretic approach to explain the output of any machine learning model. It connects optimal credit allocation with local explanations using the classic Shapley values from game theory and their related extensions. Depending on the model, Model Explainer uses one of the below supported SHAP explainers.</p>
-<ul>
-<li>SHAP TreeExplainer</li>
-<li>SHAP DeepExplainer</li>
-<li>SHAP LinearExplainer</li>
-<li>SHAP KernelExplainer</li>
-</ul>
-<p>To know more details about SHAP explainer <a href="https://github.com/slundberg/shap">click here</a>.</p>
-<p>Check out <a href="https://nbviewer.jupyter.org/github/dxc-technology/DXC-Industrialized-AI-Starter/blob/c58754247060262ac0949396e48f71861cb79d4e/Examples/Interpretation%20of%20a%20regression%20model.ipynb">Examples</a> to understand how to use each function, what parameters are expected for each function. Also check out <a href="https://github.com/slundberg/shap">shap</a>, <a href="https://github.com/marcotcr/lime">lime</a>, <a href="https://github.com/interpretml/interpret-community">interpret-community</a> libraries to learn more about the Model explainability and its usage.</p>
               
             </div>
           </div>
@@ -171,10 +157,10 @@ ai.Explanation_Dashboard(global_explanation, model, x_train, x_test, explantion_
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../publish_microservice/" class="btn btn-neutral float-right" title="Publish Microservice">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../explore/" class="btn btn-neutral float-right" title="Visualization">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../experiment/" class="btn btn-neutral" title="Experiment"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../access_data/" class="btn btn-neutral" title="Access Data"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -200,10 +186,10 @@ ai.Explanation_Dashboard(global_explanation, model, x_train, x_test, explantion_
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../experiment/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../access_data/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../publish_microservice/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../explore/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

@@ -1,0 +1,17 @@
+h1,h2,h3,h4 {
+	color: #5f249f;
+}
+.wy-nav-side{
+    background: black;
+}
+a{
+	color: #5f249f;
+}
+.wy-side-nav-search, .wy-nav-top {
+    background: #5f249f;
+	image: url("img/dxc_image1.png");
+    }
+	
+#logo_dxc{
+	text-align: right;
+}

@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Model Explainability - DXC Industrialized AI Starter</title>
+  <title>Access Data - DXC Industrialized AI Starter</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -19,8 +19,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Model Explainability";
-    var mkdocs_page_input_path = "model_explainability.md";
+    var mkdocs_page_name = "Access Data";
+    var mkdocs_page_input_path = "access_data.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -52,8 +52,16 @@
                     <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
                     </li>
                 </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../access_data/">Access Data</a>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Access Data</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#access-csv-data">Access CSV data</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#access-json-data">Access JSON data</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#access-excel-data">Access Excel data</a>
+    </li>
+    </ul>
                     </li>
                 </ul>
                 <ul>
@@ -72,12 +80,8 @@
                     <li class="toctree-l1"><a class="reference internal" href="../experiment/">Experiment</a>
                     </li>
                 </ul>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Model Explainability</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#shap-explainer">SHAP explainer</a>
-    </li>
-    </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../model_explainability/">Model Explainability</a>
                     </li>
                 </ul>
                 <ul>
@@ -121,7 +125,7 @@
     
       
     
-    <li>Model Explainability</li>
+    <li>Access Data</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -132,38 +136,45 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="model-explainability">Model Explainability</h1>
-<p>In the context of machine learning and artificial intelligence, Explainability is the extent to which the internal mechanics of a machine or deep learning system can be explained in human terms. Model explainability is one of the most important problems in machine learning today.</p>
-<p>DXC Industrialized AI Starter helps you to understand the model explainability using interactive dashboards via SHAP - based explainer.</p>
-<pre><code class="python">global_explanation = ai.Global_Model_Explanation(model,x_train,x_test,feature_names = None,classes = None, explantion_data = None)
-ai.Explanation_Dashboard(global_explanation, model, x_train, x_test, explantion_data = None)
+                <h1 id="access-raw-data">Access raw data</h1>
+<hr />
+<p>Below code snippets help to bring in raw data from either a remote source or from your local machine into a data frame.</p>
+<pre><code class="python">    df = ai.read_data_frame_from_remote_json(json_url)
+    df = ai.read_data_frame_from_remote_csv(csv_url)
 </code></pre>
 
-<p>To generate the model explainability, you need to pass your model, training data, test data to the functions. You can also optionally pass in feature names and output class names(classification) which will be used to make the explanations and visualizations more informative. Explanations will be generated default on the test data. If you pass the value of the explantion_data parameter as 'Training', then the explanation will be generated on training data. But with more examples, explanations will take longer although they may be more accurate.</p>
+<p>Get raw data from your <strong>local machine</strong> by opening up a file system browser, identifying a file, and importing the selected file.</p>
+<pre><code class="python">    df = ai.read_data_frame_from_local_csv()
+    df = ai.read_data_frame_from_local_excel_file()
+</code></pre>
+
+<h2 id="access-csv-data">Access CSV data</h2>
+<p><strong>ai.read_data_frame_from_remote_csv</strong>(csv_url, col_names = [], names=None, sep=',',  delim_whitespace=False, header = 'infer', skiprows=None, error_bad_lines=True, encoding=None)__</p>
 <ul>
-<li>
-<p><strong>ai.Global_Model_Explanation:</strong> This function generates the overall model predictions and generates a dictionary of sorted feature importance names and values.</p>
-</li>
-<li>
-<p><strong>ai.Explanation_Dashboard:</strong>  This will generate an interactive visualization dashboard, you can investigate different aspects of your dataset and trained model via below four tab views:</p>
+<li>It allows you to read character-delimited (commas, tabs, spaces) data from a URL. Expect csv_url parameter remaining all are optional.</li>
+<li>col_names: array-like, optional</li>
+<li>sep: str, default ‘,’</li>
+<li>names: array-like, optional</li>
+<li>header: int, list of int, default ‘infer’</li>
+<li>delim_whitespace: True or False</li>
+<li>skiprows: list-like, int or callable, optional</li>
+<li>error_bad_linesbool, default None</li>
+<li>encoding: str, optional - Encoding to use for UTF when reading/writing (ex. ‘utf-8’)</li>
+</ul>
+<p><strong>ai.read_data_frame_from_local_csv(col_names = [], sep=',', delim_whitespace=False, header = 'infer', names = None, skiprows=None, error_bad_lines=True, encoding=None):</strong> </p>
 <ul>
-<li>Model Performance</li>
-<li>Data Explorer</li>
-<li>Aggregate Feature Importance</li>
-<li>Individual Feature Importance</li>
+<li>This method allows you to import local character-delimited (commas, tabs, spaces) files. All parameters are optional. By default, the function will infer the header from the data, but an explicit header can be specified.</li>
 </ul>
-</li>
-</ul>
-<h4 id="shap-explainer">SHAP explainer</h4>
-<p>SHAP (SHapley Additive exPlanations) is a game-theoretic approach to explain the output of any machine learning model. It connects optimal credit allocation with local explanations using the classic Shapley values from game theory and their related extensions. Depending on the model, Model Explainer uses one of the below supported SHAP explainers.</p>
+<h2 id="access-json-data">Access JSON data</h2>
+<p><strong>ai.read_data_frame_from_remote_json(json_url)</strong></p>
 <ul>
-<li>SHAP TreeExplainer</li>
-<li>SHAP DeepExplainer</li>
-<li>SHAP LinearExplainer</li>
-<li>SHAP KernelExplainer</li>
+<li>It reads JSON files from a URL and also flattened (in the case of nested data) the json data and cast into a pandas data frame.</li>
 </ul>
-<p>To know more details about SHAP explainer <a href="https://github.com/slundberg/shap">click here</a>.</p>
-<p>Check out <a href="https://nbviewer.jupyter.org/github/dxc-technology/DXC-Industrialized-AI-Starter/blob/c58754247060262ac0949396e48f71861cb79d4e/Examples/Interpretation%20of%20a%20regression%20model.ipynb">Examples</a> to understand how to use each function, what parameters are expected for each function. Also check out <a href="https://github.com/slundberg/shap">shap</a>, <a href="https://github.com/marcotcr/lime">lime</a>, <a href="https://github.com/interpretml/interpret-community">interpret-community</a> libraries to learn more about the Model explainability and its usage.</p>
+<h2 id="access-excel-data">Access Excel data</h2>
+<p><strong>ai.read_data_frame_from_local_excel_file()</strong> </p>
+<ul>
+<li>This function allows you to import XLSX files. When the file explorer is launched, you must select an XLSX file or the function will result in an error.</li>
+</ul>
               
             </div>
           </div>
@@ -171,10 +182,10 @@ ai.Explanation_Dashboard(global_explanation, model, x_train, x_test, explantion_
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../publish_microservice/" class="btn btn-neutral float-right" title="Publish Microservice">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../clean_data/" class="btn btn-neutral float-right" title="Clean Data">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../experiment/" class="btn btn-neutral" title="Experiment"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href=".." class="btn btn-neutral" title="Welcome"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -200,10 +211,10 @@ ai.Explanation_Dashboard(global_explanation, model, x_train, x_test, explantion_
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../experiment/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../publish_microservice/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../clean_data/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
