@@ -74,3 +74,25 @@ rl.rl_helper(env=gym_env,
              critic_hidden_layers=2,
              hidden_layers=2)
 ```
+# Making your own environment
+
+Now that you've learned how to use the `rl_helper()`, you can explore how to create your own environment to train your own agent.
+
+Each environment has 3 main parts: 
+
+`__init__()` is where the variables describing the environment is initialized. This includes variables that define what an agent can do and observe. This also includes the variables that define how the environment looks as the agent is going through it. It is important to define what the agent can observe since this is what the agent will base his choices in his action on. For example, in an environment where a car is running, if the road is slippery, the agent might want to choose a slower speed. 
+
+In `__init__()`, it is important to define the following variables in the environment:
+
+*   `action_space` initializes the number of actions that are defined. 
+*   `observation_space` initializes the number of variables that is observed by the agent
+*   `total_reward` initializes and later stores the rewards that the agent has
+*   `isDone` initializes and stores whether or not the agent is done going through the environment
+
+The rest of the variables defined in init are variables that just describe what the environment looks like to the agent.
+
+`reset()` is where the variables of the environment are reset when the environment is ran again. Generally, it will just look like `__init__()` since we are just setting the variables to its original values again. This is done because the agent will train in the environment multiple times. To make sure each run independent of each other, the variables need to be reset to their original values. 
+
+It is important to note that `reset()` should return what the agent can observe.
+
+`step()` is where the steps that the agent takes through the environment is defined. 
