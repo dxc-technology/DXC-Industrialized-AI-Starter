@@ -184,7 +184,7 @@ pathos==0.2.5
 patsy==0.5.1
 pbr==5.4.4
 pep8==1.7.1
-phonenumbers==8.12.0
+phonenumbers==8.12.29
 pickleshare==0.7.5
 Pillow>=7.1.0
 pkginfo==1.5.0.1
