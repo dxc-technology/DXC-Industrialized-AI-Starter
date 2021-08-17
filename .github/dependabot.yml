@@ -8,7 +8,7 @@ updates:
   - package-ecosystem: "pip" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
-      interval: "daily"  # Add reviewers
+      interval: "weekly"  # Add reviewers
     reviewers:
       - "npulagam"
       - "Soujanya8977"
