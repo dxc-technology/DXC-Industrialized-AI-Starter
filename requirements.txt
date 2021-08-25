@@ -11,7 +11,7 @@ feature_engine==1.1.1
 matplotlib==3.4.3
 pymongo==3.12.0
 pmdarima==1.8.2
-numpy==1.21.2
+numpy
 opencv_python==4.5.3.56
 ftfy==6.0.3
 interpret_community==0.19.3
