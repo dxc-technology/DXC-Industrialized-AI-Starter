@@ -8,10 +8,10 @@ pandas==1.1.3
 requests==2.24.0
 nltk==3.4.5
 feature_engine==0.6.0
-~atplotlib==3.1.3
+matplotlib==3.1.3
 pymongo==3.10.1
 pmdarima==1.6.1
-~umpy==1.18.1
+numpy==1.18.1
 opencv_python==4.2.0.34
 ftfy==5.7
 interpret_community==0.11.2
