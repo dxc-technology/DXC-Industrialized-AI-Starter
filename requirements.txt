@@ -27,7 +27,7 @@ gensim==4.0.1
 Algorithmia==1.10.0
 beautifulsoup4==4.9.3
 GitPython==3.1.18
-ipython==7.26.0
+ipython>=7.16.1
 janitor==0.1.1
 ktrain==0.27.2
 raiwidgets==0.9.4
