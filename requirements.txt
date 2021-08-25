@@ -22,7 +22,7 @@ pyjanitor==0.21.0
 pyaf==3.0
 statsmodels==0.12.2
 pandas_profiling==3.0.0
-datacleaner==1.0.1
+datacleaner==0.1.5
 gensim==4.0.1
 Algorithmia==1.10.0
 beautifulsoup4==4.9.3
