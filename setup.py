@@ -1,4 +1,7 @@
 from setuptools import setup, find_packages
+import pathlib
+import pkg_resources
+import setuptools
 
 def readme():
     with open('README.md') as f:
@@ -8,6 +11,12 @@ def read_requirements():
     with open('requirements.txt') as f:
         required = f.read().splitlines()
     return required
+with pathlib.Path('requirements.txt').open() as requirements_txt:
+    install_requires = [
+        str(requirement)
+        for requirement
+        in pkg_resources.parse_requirements(requirements_txt)
+    ]
 
 setup(
     name="DXC-Industrialized-AI-Starter",
@@ -27,8 +36,7 @@ setup(
     #packages=["dxc", "dxc.ai"],
     packages=find_packages(),
 #     include_package_data=True,
-    install_requires= ["JIRA","scikit-learn==0.22.2.post1","auto_ml","Algorithmia==1.7.8","gitpython","flatten_json==0.1.13","pyjanitor","ftfy","arrow","pandas-profiling[notebook]==2.9.0",
-                      "scrubadub","yellowbrick==1.1","datacleaner","missingno","pymongo","IPython","dnspython","pmdarima","pyaf","interpret-community","flask_cors","gevent","tpot","feature_engine","tensorflow","ktrain","raiwidgets","pandas","janitor", "gym==0.18.0","keras-rl2","tensorflow"],
+    install_requires= install_requires,
     entry_points={
         "console_scripts": [
             "dxc=dxc.ai:main",
