@@ -33,3 +33,4 @@ ktrain==0.27.2
 raiwidgets==0.9.4
 scikit_learn
 SQLAlchemy==1.4.23
+greenlet>=0.4.17
