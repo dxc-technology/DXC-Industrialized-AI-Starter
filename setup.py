@@ -27,7 +27,7 @@ setup(
     #packages=["dxc", "dxc.ai"],
     packages=find_packages(),
 #     include_package_data=True,
-    install_requires=read_requirements(),
+    install_requires=[line.strip() for line in open("requirements.txt").readlines()],
     entry_points={
         "console_scripts": [
             "dxc=dxc.ai:main",
