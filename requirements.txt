@@ -14,7 +14,7 @@ pmdarima==1.6.1
 numpy==1.18.1
 opencv_python==4.2.0.34
 ftfy==5.7
-interpret_community==0.11.2
+interpret_community>=0.18.1
 missingno==0.4.2
 arrow==0.15.5
 seaborn==0.11.0
