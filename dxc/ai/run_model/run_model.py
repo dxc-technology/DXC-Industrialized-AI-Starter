@@ -1,7 +1,7 @@
 import arrow #normalizing dates
 import numpy as np
 from sklearn.base import TransformerMixin #impute missing data
-from auto_ml import Predictor #ML models
+#from auto_ml import Predictor #ML models
 from sklearn.model_selection import train_test_split
 import os
 import pickle
@@ -52,8 +52,9 @@ class prediction(model):
                 self.__model = classifier(verbose, max_time_mins, max_eval_time_mins, config_dict, warm_start, scoring)
             else:
                 self.__model = globals_file.run_experiment_model
-        else:    
-            self.__model = Predictor(type_of_estimator=self.estimator, column_descriptions=meta_data)
+        else: 
+            pass
+            #self.__model = Predictor(type_of_estimator=self.estimator, column_descriptions=meta_data)
         self.__label = self.meta_data_key(meta_data, "output")
 
     def train_and_score(self, data, labels, verbose, interpret, warm_start, export_pipeline):
@@ -61,24 +62,25 @@ class prediction(model):
         if self.estimator == 'TPOTRegressor' or self.estimator == 'TPOTClassifier':
             self.__model = train_model(data, self.__label, self.__model, self.estimator, interpret, warm_start, export_pipeline)
         else:
+            pass
             # create training and test data
-            training_data, test_data = train_test_split(data, test_size=0.2)
+            #training_data, test_data = train_test_split(data, test_size=0.2)
 
         # train the model
-            if verbose == False:
-                warnings.filterwarnings('ignore')
-                text_trap = io.StringIO()
-                with redirect_stdout(text_trap):
-                    self.__model.train(training_data, verbose=False, ml_for_analytics= False)
-            else:
-                warnings.filterwarnings('ignore')
-                self.__model.train(training_data, verbose=True, ml_for_analytics=False)
+            #if verbose == False:
+            #    warnings.filterwarnings('ignore')
+            #    text_trap = io.StringIO()
+            #    with redirect_stdout(text_trap):
+            #        self.__model.train(training_data, verbose=False, ml_for_analytics= False)
+            #else:
+            #    warnings.filterwarnings('ignore')
+            #    self.__model.train(training_data, verbose=True, ml_for_analytics=False)
 
         # score the model
-            if verbose == False:
-                self.__model.score(test_data, test_data[self.__label], verbose=0)
-            else:
-                self.__model.score(test_data, test_data[self.__label], verbose=1)
+            #if verbose == False:
+            #    self.__model.score(test_data, test_data[self.__label], verbose=0)
+            #else:
+            #    self.__model.score(test_data, test_data[self.__label], verbose=1)
 
     def interpret(self):
         pass
