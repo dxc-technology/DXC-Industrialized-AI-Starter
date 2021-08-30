@@ -3,6 +3,11 @@ import pathlib
 import pkg_resources
 import setuptools
 
+def readme():
+    with open('README.md') as f:
+        README = f.read()
+    return README
+
 with pathlib.Path('requirements.txt').open() as requirements_txt:
     install_requires = [
         str(requirement)
