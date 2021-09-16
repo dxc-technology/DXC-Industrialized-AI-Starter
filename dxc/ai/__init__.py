@@ -39,20 +39,20 @@ from .run_model.run_model import tpot_regression
 from .run_model.run_model import tpot_classification
 from .run_model.interpret_model import Global_Model_Explanation
 from .run_model.interpret_model import Explanation_Dashboard
-from .run_model.clustering import Clustering
-from .sentiment_analysis.sentiment_analysis import texts_from_df
-from .sentiment_analysis.sentiment_analysis import get_model_learner
-from .sentiment_analysis.sentiment_analysis import get_predictor
-from .unsupervised_sentiment_analysis.kmeans_sentiment_analysis import get_text_clean
-from .unsupervised_sentiment_analysis.kmeans_sentiment_analysis import kmeans_sentiment_analyzer
-from .unsupervised_sentiment_analysis.kmeans_sentiment_analysis import kmeans_sentiment_predictor
+# from .run_model.clustering import Clustering
+# from .sentiment_analysis.sentiment_analysis import texts_from_df
+# from .sentiment_analysis.sentiment_analysis import get_model_learner
+# from .sentiment_analysis.sentiment_analysis import get_predictor
+# from .unsupervised_sentiment_analysis.kmeans_sentiment_analysis import get_text_clean
+# from .unsupervised_sentiment_analysis.kmeans_sentiment_analysis import kmeans_sentiment_analyzer
+# from .unsupervised_sentiment_analysis.kmeans_sentiment_analysis import kmeans_sentiment_predictor
 
 from .publish_microservice.publish_microservice import publish_microservice
 
-from .deep_learning.image_classifier import create_training_data
-from .deep_learning.image_classifier import seggregate_data
-from .deep_learning.image_classifier import split_normalize_data
-from .deep_learning.image_classifier import image_classifier
+# from .deep_learning.image_classifier import create_training_data
+# from .deep_learning.image_classifier import seggregate_data
+# from .deep_learning.image_classifier import split_normalize_data
+# from .deep_learning.image_classifier import image_classifier
 
 from .logging.pipeline_logging          import pipeline_log
 from .logging.experiment_design_logging import experiment_design_log
