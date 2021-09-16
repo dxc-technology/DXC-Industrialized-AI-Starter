@@ -37,10 +37,12 @@ def col_header_conv_1(pipe):
                 if type(each) is dict:
                     col_header_conv_1(each)
                 else:
-                    j = value.index(each)
-                    value[j] = '_'.join(each.split()).lower()
+                    if isinstance(each, str):
+                        j = value.index(each)
+                        value[j] = '_'.join(each.split()).lower()
         else:
-            pipe[key] = '_'.join(value.split()).lower()
+            if isinstance(value, str):
+                pipe[key] = '_'.join(value.split()).lower()
     return pipe
 
 def col_header_conv(pipe):
