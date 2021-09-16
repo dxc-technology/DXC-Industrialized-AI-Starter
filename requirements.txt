@@ -1,4 +1,3 @@
-tensorflow==2.6.0
 TPOT==0.11.7
 yellowbrick==1.1
 scrubadub==1.2.2
@@ -13,12 +12,11 @@ pyjanitor==0.21.0
 pyaf==3.0
 pandas_profiling==3.0.0
 datacleaner==0.1.5
-gensim==4.0.1
 Algorithmia==1.10.0
 GitPython==3.1.18
 ipython>=7.16.1
 janitor==0.1.1
-ktrain==0.27.2
 raiwidgets==0.9.4
 scikit-learn
 flatten-json==0.1.13
+sqlalchemy==1.3.24
