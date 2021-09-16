@@ -9,7 +9,7 @@ from contextlib import redirect_stdout
 import warnings
 import io
 from dxc.ai.global_variables import globals_file
-from .TimeSeriesModels import getBestForcastingModel
+# from .TimeSeriesModels import getBestForcastingModel
 from dxc.ai.logging import experiment_design_logging
 from .model_pipeline import regressor
 from .model_pipeline import train_model
@@ -114,9 +114,9 @@ class tpot_regression(prediction):
 
 def run_experiment(design, verbose = False, interpret = False, max_time_mins = 5, max_eval_time_mins = 0.04 , config_dict = None, warm_start = False, export_pipeline = True, scoring = None):
     experiment_design_logging.experiment_design_log(design)
-    if design["model"] == 'timeseries':
-        trained_model = getBestForcastingModel(design['labels'], no_predictions=7, debug=verbose, visualize = False)
-        return trained_model
+#     if design["model"] == 'timeseries':
+#         trained_model = getBestForcastingModel(design['labels'], no_predictions=7, debug=verbose, visualize = False)
+#         return trained_model
     globals_file.run_experiment_used = True
     design["model"].build(design["meta_data"], verbose, max_time_mins, max_eval_time_mins, config_dict,warm_start, scoring)
     design["model"].train_and_score(design["data"], design["labels"], verbose, interpret, warm_start, export_pipeline)
