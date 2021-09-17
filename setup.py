@@ -17,7 +17,7 @@ with pathlib.Path('requirements.txt').open() as requirements_txt:
 
 setup(
     name="DXC-Industrialized-AI-Starter",
-    version="2.3.9",
+    version="3.0",
     description="Python library which is extensively used for all AI projects",
     long_description=readme(),
     long_description_content_type="text/markdown",
