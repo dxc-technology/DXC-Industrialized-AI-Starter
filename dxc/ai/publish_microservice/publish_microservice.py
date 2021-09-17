@@ -126,28 +126,6 @@ def publish_microservice(microservice_design, trained_model, verbose = False):
     ##this is the source code needed for the microservice
     
     src_code_content = """import Algorithmia
-import auto_ml
-import pandas as pd
-import pickle
-# create an Algorithmia client
-client = Algorithmia.client()
-def load_model():
-    # Get file by name
-    # Open file and load model
-\tfile_path = {file_path}
-\tmodel_path = client.file(file_path).getFile().name
-    # Open file and load model
-\twith open(model_path, 'rb') as f:
-\t\tmodel = pickle.load(f)
-\t\treturn model
-trained_model = load_model()
-def apply(input):
-\tprediction = trained_model.predict(input)
-\treturn {results}"""
-
-    ## source code for customized model
-    src_code_generalized = """import Algorithmia
-import auto_ml
 import pandas as pd
 import pickle
 import json
@@ -172,13 +150,42 @@ def default(obj):
             return obj.item()
     raise TypeError('Unknown type:', type(obj))
 def apply(input):
-\tprediction = trained_model.predict(input)
+\tprediction = trained_model.predict(pd.DataFrame(input,index = [0]))
+\tprediction = json.dumps(prediction, default=default)
+\treturn {results}"""
+
+    ## source code for customized model
+    src_code_generalized = """import Algorithmia
+import pandas as pd
+import pickle
+import json
+import numpy as np
+# create an Algorithmia client
+client = Algorithmia.client()
+def load_model():
+    # Get file by name
+    # Open file and load model
+\tfile_path = {file_path}
+\tmodel_path = client.file(file_path).getFile().name
+    # Open file and load model
+\twith open(model_path, 'rb') as f:
+\t\tmodel = pickle.load(f)
+\t\treturn model
+trained_model = load_model()
+def default(obj):
+    if type(obj).__module__ == np.__name__:
+        if isinstance(obj, np.ndarray):
+            return obj.tolist()
+        else:
+            return obj.item()
+    raise TypeError('Unknown type:', type(obj))
+def apply(input):
+\tprediction = trained_model.predict(pd.DataFrame(input, index = [0]))
 \tprediction = json.dumps(prediction, default=default)
 \treturn {results}"""
 
     ## source code for generalized tpot model
     src_code_generalized_encode = """import Algorithmia
-import auto_ml
 import pandas as pd
 import pickle
 import json
@@ -225,7 +232,6 @@ def apply(input):
 
     ## source code for generalized tpot model
     src_code_generalized_target_encode = """import Algorithmia
-import auto_ml
 import pandas as pd
 import pickle
 import json
@@ -277,7 +283,6 @@ def apply(input):
 
     ## source code for generalized tpot model
     src_code_generalized_both_encode = """import Algorithmia
-import auto_ml
 import pandas as pd
 import pickle
 import json
@@ -363,13 +368,10 @@ def apply(input):
 
     ##Don't change the structure of below docstring
     ##this is the requirements needed for microservice
-    requirements_file_content="""algorithmia>=1.0.0,<2.0
-    six
-    auto_ml
+    requirements_file_content="""algorithmia
     pandas
     numpy
-    feature-engine
-    bottleneck==1.2.1"""
+    feature-engine"""
 
     post_split=requirements_file_content.split('\n')
 
