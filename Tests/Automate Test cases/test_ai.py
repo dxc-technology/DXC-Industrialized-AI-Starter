@@ -2,6 +2,15 @@
 
 import pandas as pd
 
+def simple_math():
+    x = 2
+    y = 3
+    try:
+        assert x+y == 5
+    except:
+        print('----------WRONG CALCULATION----------')
+    
+
 # loaded_data = None
 # raw_data = None
 # wrt_raw_data = None
