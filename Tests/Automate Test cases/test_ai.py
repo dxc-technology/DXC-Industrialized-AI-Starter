@@ -1,6 +1,6 @@
-from dxc import ai
+# from dxc import ai
 
-# import pandas as pd
+import pandas as pd
 
 # loaded_data = None
 # raw_data = None
