@@ -2,7 +2,7 @@
 
 import pandas as pd
 
-def simple_math():
+def test_simple_math():
     x = 2
     y = 3
     try:
