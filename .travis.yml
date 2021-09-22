@@ -5,7 +5,7 @@ python:
 
 before_script:
   - pip uninstall numpy -y
-  - pip install -I numpy==1.8.2
+  - pip install numpy==1.8.2
   
 # command to install dependencies
 install:
