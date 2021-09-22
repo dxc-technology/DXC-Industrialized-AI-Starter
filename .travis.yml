@@ -2,10 +2,6 @@ language: python
 python:
   - "3.7"
 
-
-before_script:
-  - pip uninstall numpy -y
-  - pip install numpy==1.8.2
   
 # command to install dependencies
 install:
