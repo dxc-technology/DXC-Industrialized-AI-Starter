@@ -11,19 +11,19 @@ def test_simple_math():
         print('----------WRONG CALCULATION----------')
     
 
-# loaded_data = None
-# raw_data = None
-# wrt_raw_data = None
-# df = None
-# trained_model = None
+loaded_data = None
+raw_data = None
+wrt_raw_data = None
+df = None
+trained_model = None
 
-# def test_load():
-#     global loaded_data
-#     try:
-#         loaded_data = ai.read_data_frame_from_remote_json("https://data.cincinnati-oh.gov/resource/ucjy-ykv4.json")
-#         assert type(loaded_data) == type(pd.DataFrame())
-#     except:
-#         print ('----------INCORRECT URL----------')      
+def test_load():
+    global loaded_data
+    try:
+        loaded_data = ai.read_data_frame_from_remote_json("https://data.cincinnati-oh.gov/resource/ucjy-ykv4.json")
+        assert type(loaded_data) == type(pd.DataFrame())
+    except:
+        print ('----------INCORRECT URL----------')      
 
 # def test_empty():
 #     assert loaded_data.empty == False
