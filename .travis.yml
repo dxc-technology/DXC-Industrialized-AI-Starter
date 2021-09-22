@@ -6,4 +6,5 @@ python:
 install:
 #   - pip install git+https://github.com/dxc-technology/DXC-Industrialized-AI-Starter.git
   - pip install git+https://github.com/madhubandru/DXC-Industrialized-AI-Starter.git
+  - conda install --yes numpy=1.8
 script: pytest -v -s
