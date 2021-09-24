@@ -1,15 +1,6 @@
 from dxc import ai
 
-import pandas as pd
-
-def test_simple_math():
-    x = 2
-    y = 3
-    try:
-        assert x+y == 5
-    except:
-        print('----------WRONG CALCULATION----------')
-    
+import pandas as pd    
 
 loaded_data = None
 raw_data = None
