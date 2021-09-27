@@ -16,40 +16,40 @@ def test_load():
     except:
         print ('----------INCORRECT URL----------')      
 
-# def test_empty():
-#     assert loaded_data.empty == False
+def test_empty():
+    assert loaded_data.empty == False
     
-# text_fields = []
-# date_fields = ['date_fleet_doc_entered', 'purchasing_bid_date', 'date_bid_closed', 'date_po_awarded']
-# numeric_fields = ['est_unit_cost', 'actual_unit_cost']
-# categorical_fields = ['request_id','request_status', 'funding_source', 'request_type', 'department_name', 
-#                       'fiscal_year', 'replacement_body_style','equipment_class','equip_id_to_replace',
-#                       'replacement_make', 'replacement_model','fleet_document_type', 'procurement_plan']
+text_fields = []
+date_fields = ['date_fleet_doc_entered', 'purchasing_bid_date', 'date_bid_closed', 'date_po_awarded']
+numeric_fields = ['est_unit_cost', 'actual_unit_cost']
+categorical_fields = ['request_id','request_status', 'funding_source', 'request_type', 'department_name', 
+                      'fiscal_year', 'replacement_body_style','equipment_class','equip_id_to_replace',
+                      'replacement_make', 'replacement_model','fleet_document_type', 'procurement_plan']
     
-# def test_clean():
-#     impute = True
-#     global raw_data
-#     raw_data = ai.clean_dataframe(loaded_data, impute, text_fields, date_fields, numeric_fields, categorical_fields)
-#     assert raw_data.isnull().values.any() == False
+def test_clean():
+    impute = True
+    global raw_data
+    raw_data = ai.clean_dataframe(loaded_data, impute, text_fields, date_fields, numeric_fields, categorical_fields)
+    assert raw_data.isnull().values.any() == False
 
 
-# def test_visualize():
-#     try:
-#         visualize_data = ai.visualize_missing_data(raw_data)
-#     except:
-#         print('----------VISUALIZATION FAILED----------')
+def test_visualize():
+    try:
+        visualize_data = ai.visualize_missing_data(raw_data)
+    except:
+        print('----------VISUALIZATION FAILED----------')
 
-# def test_explore():
-#     try:
-#         explore_data = ai.explore_features(raw_data)
-#     except:
-#         print('----------DATA EXPLORATION FAILED----------')
+def test_explore():
+    try:
+        explore_data = ai.explore_features(raw_data)
+    except:
+        print('----------DATA EXPLORATION FAILED----------')
         
-# def test_plot():
-#     try:
-#         plot_data = ai.plot_distributions(raw_data)
-#     except:
-#         print('----------PLOT DISTRIBUTION FAILED----------')
+def test_plot():
+    try:
+        plot_data = ai.plot_distributions(raw_data)
+    except:
+        print('----------PLOT DISTRIBUTION FAILED----------')
         
 
 # #data_layer need to be included here for MongoDB access.
