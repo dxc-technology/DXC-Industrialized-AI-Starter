@@ -34,7 +34,7 @@ def test_empty():
 def test_bs_data():
     global loaded_data
     try:
-        loaded_data = ai.load_data('bike_sharing')
+        loaded_data = ai.load_data('bike_sharing_data')
         assert type(loaded_data) == type(pd.DataFrame())
     except:
         print('----------DATA LOADING FAILED----------')
