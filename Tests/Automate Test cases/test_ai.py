@@ -8,7 +8,41 @@ wrt_raw_data = None
 df = None
 trained_model = None
 
-def test_load():
+def test_load_csv_data_remote():
+    global loaded_data
+    try:
+        csv_url = "https://raw.githubusercontent.com/dxc-technology/DXC-Industrialized-AI-Starter/master/dxc/ai/datasets/data/ab_nyc_2019.csv"
+        loaded_data = ai.read_data_frame_from_remote_csv(csv_url, col_names = [], delim_whitespace=False, header = 'infer')
+        assert type(loaded_data) == type(pd.DataFrame())
+    except:
+        print ('----------INCORRECT URL----------')  
+
+def test_empty():
+    assert loaded_data.empty == False
+
+def test_iris_data():
+    global loaded_data
+    try:
+        loaded_data = ai.load_data('iris')
+        assert type(loaded_data) == type(pd.DataFrame())
+    except:
+        print('----------DATA LOADING FAILED----------')
+        
+def test_empty():
+    assert loaded_data.empty == False
+
+def test_bs_data():
+    global loaded_data
+    try:
+        loaded_data = ai.load_data('bike_sharing')
+        assert type(loaded_data) == type(pd.DataFrame())
+    except:
+        print('----------DATA LOADING FAILED----------')
+        
+def test_empty():
+    assert loaded_data.empty == False
+    
+def test_load_json_data_remote():
     global loaded_data
     try:
         loaded_data = ai.read_data_frame_from_remote_json("https://data.cincinnati-oh.gov/resource/ucjy-ykv4.json")
