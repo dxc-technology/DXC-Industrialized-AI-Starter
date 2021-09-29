@@ -86,14 +86,20 @@ def test_plot():
         print('----------PLOT DISTRIBUTION FAILED----------')
         
 
-# #data_layer need to be included here for MongoDB access.
+data_layer = {
+    "connection_string": "mongodb://mbandru2:revsRfBCOIod4eiW@freecluster0-shard-00-00-sxnu6.azure.mongodb.net:27017,freecluster0-shard-00-01-sxnu6.azure.mongodb.net:27017,freecluster0-shard-00-02-sxnu6.azure.mongodb.net:27017/<dbname>?ssl=true&replicaSet=FreeCluster0-shard-0&authSource=admin&retryWrites=true&w=majority",
+    "collection_name": "testcollection",
+    "database_name": "testdatabase",
+    "data_source": '',
+    "cleaner": ''
+}
 
-# def test_wrt_data():
-#     global wrt_raw_data
-#     try:
-#         wrt_raw_data = ai.write_raw_data(data_layer, raw_data, date_fields)
-#     except:
-#         print('----------MONGODB CONNECTION FAILED----------')
+def test_wrt_data():
+    global wrt_raw_data
+    try:
+        wrt_raw_data = ai.write_raw_data(data_layer, raw_data, date_fields)
+    except:
+        print('----------MONGODB CONNECTION FAILED----------')
 
 # def data_pipeline():
 
