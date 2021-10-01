@@ -76,7 +76,6 @@ def test_visualize():
 
 def test_explore_data():
     try:
-        %matplotlib inline
         report = ai.explore_complete_data(raw_data, 'report')
         report.to_notebook_iframe()
     except:
