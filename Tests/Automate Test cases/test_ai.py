@@ -73,13 +73,6 @@ def test_visualize():
         visualize_data = ai.visualize_missing_data(raw_data)
     except:
         print('----------VISUALIZATION FAILED----------')
-
-def test_explore_data():
-    try:
-        report = ai.explore_complete_data(raw_data, 'report')
-        report.to_notebook_iframe()
-    except:
-        print('----------COMPLETE EXPLORATION FAILED----------')
         
 def test_explore():
     try:
@@ -112,79 +105,3 @@ def test_wrt_data():
         wrt_raw_data = ai.write_raw_data(data_layer, raw_data, date_fields)
     except:
         print('----------MONGODB CONNECTION FAILED----------')
-
-# def data_pipeline():
-
-#   pipe = [
-#           {
-#               '$group':{
-#                   '_id': {
-#                       "funding_source":"$funding_source",
-#                       "request_type":"$request_type",
-#                       "department_name":"$department_name",
-#                       "replacement_body_style":"$replacement_body_style",
-#                       "equipment_class":"$equipment_class",
-#                       "replacement_make":"$replacement_make",
-#                       "replacement_model":"$replacement_model",
-#                       "procurement_plan":"$procurement_plan"
-#                       },
-#                   "avg_est_unit_cost":{"$avg":"$est_unit_cost"},
-#                   "avg_est_unit_cost_error":{"$avg":{ "$subtract": [ "$est_unit_cost", "$actual_unit_cost" ] }}
-#               }
-#           }
-#   ]
-
-#   return pipe        
-
-# def test_datepipeline():
-#     global df
-#     try:
-#         df = ai.access_data_from_pipeline(wrt_raw_data, data_pipeline())
-#         assert type(df) == type(pd.DataFrame())
-#         assert loaded_data.empty == False
-#     except:
-#         print ('----------ACCESS DATA FROM MONGODB FAILED----------')
-        
-        
-# # TODO: design and run an experiment
-# def test_experiment():
-#     global trained_model
-#     try:
-#         experiment_design = {
-#             #model options include ['regression()', 'classification()']
-#             "model": ai.regression(),
-#             "labels": df.avg_est_unit_cost_error,
-#             "data": df,
-#             #Tell the model which column is 'output'
-#             #Also note columns that aren't purely numerical
-#             #Examples include ['nlp', 'date', 'categorical', 'ignore']
-#             "meta_data": {
-#               "avg_est_unit_cost_error": "output",
-#               "_id.funding_source": "categorical",
-#               "_id.department_name": "categorical",
-#               "_id.replacement_body_style": "categorical",
-#               "_id.replacement_make": "categorical",
-#               "_id.replacement_model": "categorical",
-#               "_id.procurement_plan": "categorical"
-#           }
-#         }
-#         trained_model = ai.run_experiment(experiment_design)
-#     except:
-#         print('----------MODEL BUILDING FAILED----------')
-        
-# # TODO design a microservice
-# microservice_design = {
-#     "microservice_name": "dxcaistarter",
-#     "microservice_description": "test api generated from the DXC ai starter",
-#     "execution_environment_username": "joverton",
-#     "api_key": "sim6lSW/N7LIfmNsPzLQCTTknRv1",
-#     "api_namespace": "joverton/dxcaistarter",
-#     "model_path":"data://.my/mycollection"
-# }
-
-# def test_publish_api():
-#     try:
-#         api_url = ai.publish_microservice(microservice_design, trained_model)
-#         assert api_url != ' '
-#     except:
-#         print('----------API PUBLISHING FAILED----------')
