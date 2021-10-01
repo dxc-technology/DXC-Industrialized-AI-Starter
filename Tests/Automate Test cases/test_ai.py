@@ -1,6 +1,7 @@
 from dxc import ai
 
 import pandas as pd    
+import base64
 
 loaded_data = None
 raw_data = None
@@ -86,8 +87,13 @@ def test_plot():
         print('----------PLOT DISTRIBUTION FAILED----------')
         
 
+
+id_decoded = base64. b64decode('bWJhbmRydTI=').decode("utf-8")
+pwd_decoded = base64. b64decode('cmV2c1JmQkNPSW9kNGVpVw==').decode("utf-8")
+connection_string_ = str("mongodb://" + id_decoded + ":" + pwd_decoded + "@freecluster0-shard-00-00-sxnu6.azure.mongodb.net:27017,freecluster0-shard-00-01-sxnu6.azure.mongodb.net:27017,freecluster0-shard-00-02-sxnu6.azure.mongodb.net:27017/<dbname>?ssl=true&replicaSet=FreeCluster0-shard-0&authSource=admin&retryWrites=true&w=majority")
+        
 data_layer = {
-    "connection_string": "mongodb://mbandru2:revsRfBCOIod4eiW@freecluster0-shard-00-00-sxnu6.azure.mongodb.net:27017,freecluster0-shard-00-01-sxnu6.azure.mongodb.net:27017,freecluster0-shard-00-02-sxnu6.azure.mongodb.net:27017/<dbname>?ssl=true&replicaSet=FreeCluster0-shard-0&authSource=admin&retryWrites=true&w=majority",
+    "connection_string": connection_string_
     "collection_name": "testcollection",
     "database_name": "testdatabase",
     "data_source": '',
