@@ -5,8 +5,7 @@ python:
   
 # command to install dependencies
 install:
-#   - pip install git+https://github.com/dxc-technology/DXC-Industrialized-AI-Starter.git
-  - pip install --upgrade pip 
-  - pip install git+https://github.com/madhubandru/DXC-Industrialized-AI-Starter.git
+  - pip install --upgrade pip   
+  - pip install git+https://github.com/dxc-technology/DXC-Industrialized-AI-Starter.git
   
 script: pytest -v -s
