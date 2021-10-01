@@ -74,6 +74,14 @@ def test_visualize():
     except:
         print('----------VISUALIZATION FAILED----------')
 
+def test_explore_data():
+    try:
+        %matplotlib inline
+        report = ai.explore_complete_data(raw_data, 'report')
+        report.to_notebook_iframe()
+    except:
+        print('----------COMPLETE EXPLORATION FAILED----------')
+        
 def test_explore():
     try:
         explore_data = ai.explore_features(raw_data)
@@ -86,8 +94,7 @@ def test_plot():
     except:
         print('----------PLOT DISTRIBUTION FAILED----------')
         
-
-
+        
 id_decoded = base64. b64decode('bWJhbmRydTI=').decode("utf-8")
 pwd_decoded = base64. b64decode('cmV2c1JmQkNPSW9kNGVpVw==').decode("utf-8")
 connection_string_ = str("mongodb://" + id_decoded + ":" + pwd_decoded + "@freecluster0-shard-00-00-sxnu6.azure.mongodb.net:27017,freecluster0-shard-00-01-sxnu6.azure.mongodb.net:27017,freecluster0-shard-00-02-sxnu6.azure.mongodb.net:27017/<dbname>?ssl=true&replicaSet=FreeCluster0-shard-0&authSource=admin&retryWrites=true&w=majority")
