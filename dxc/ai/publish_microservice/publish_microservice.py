@@ -132,6 +132,7 @@ def publish_microservice(microservice_design, trained_model, verbose = False):
     ##this is the source code needed for the microservice
     
     src_code_content = """import Algorithmia
+from Algorithmia import ADK
 import pandas as pd
 import pickle
 import json
@@ -158,10 +159,13 @@ def default(obj):
 def apply(input):
 \tprediction = trained_model.predict(pd.DataFrame(input,index = [0]))
 \tprediction = json.dumps(prediction, default=default)
-\treturn {results}"""
+\treturn {results}
+algorithm = ADK(apply)
+algorithm.init("Algorithmia")"""
 
     ## source code for customized model
     src_code_generalized = """import Algorithmia
+from Algorithmia import ADK
 import pandas as pd
 import pickle
 import json
@@ -188,10 +192,13 @@ def default(obj):
 def apply(input):
 \tprediction = trained_model.predict(pd.DataFrame(input, index = [0]))
 \tprediction = json.dumps(prediction, default=default)
-\treturn {results}"""
+\treturn {results}
+algorithm = ADK(apply)
+algorithm.init("Algorithmia")"""
 
     ## source code for generalized tpot model
     src_code_generalized_encode = """import Algorithmia
+from Algorithmia import ADK
 import pandas as pd
 import pickle
 import json
@@ -234,10 +241,13 @@ def apply(input):
 \t\tpass
 \tprediction = trained_model.predict(input)
 \tprediction = json.dumps(prediction[0], default=default)
-\treturn {results}"""
+\treturn {results}
+algorithm = ADK(apply)
+algorithm.init("Algorithmia")"""
 
     ## source code for generalized tpot model
     src_code_generalized_target_encode = """import Algorithmia
+from Algorithmia import ADK
 import pandas as pd
 import pickle
 import json
@@ -285,10 +295,13 @@ def apply(input):
 \t\tprediction = prediction[0]
 \texcept:
 \t\tprediction = json.dumps(prediction[0], default=default)
-\treturn {results}"""
+\treturn {results}
+algorithm = ADK(apply)
+algorithm.init("Algorithmia")"""
 
     ## source code for generalized tpot model
     src_code_generalized_both_encode = """import Algorithmia
+from Algorithmia import ADK
 import pandas as pd
 import pickle
 import json
@@ -346,7 +359,9 @@ def apply(input):
 \t\tprediction = prediction[0]
 \texcept:
 \t\tprediction = json.dumps(prediction[0], default=default)
-\treturn {results}"""
+\treturn {results}
+algorithm = ADK(apply)
+algorithm.init("Algorithmia")"""
 
     if globals_file.run_experiment_used:
         src_code_content = src_code_generalized
