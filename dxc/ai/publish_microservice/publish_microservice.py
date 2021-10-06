@@ -17,7 +17,14 @@ def publish_microservice(microservice_design, trained_model, verbose = False):
     # create a connection to algorithmia
     client=Algorithmia.client(microservice_design["api_key"])
     api = client.algo(microservice_design["execution_environment_username"] + "/" + microservice_design["microservice_name"])
-
+    ##Defining the environment for Algorithmia
+    try:
+      if microservice_design["environment"].lower() == 'default':
+        run_environment = "python38" 
+      else:
+        run_environment = microservice_design["environment"]
+    except:
+        run_environment = "python38"
     # create the algorithm if it doesn't exist
     try:
         api.create(
@@ -25,12 +32,11 @@ def publish_microservice(microservice_design, trained_model, verbose = False):
                 "label": microservice_design["microservice_name"],
             },
             settings = {
-                "language": "python3-1",
                 "source_visibility": "closed",
+                "package_set": run_environment,
                 "license": "apl",
                 "network_access": "full",
-                "pipeline_enabled": True,
-                "environment": "cpu"
+                "pipeline_enabled": True
             }
     )
     except Exception as error:
