@@ -415,17 +415,23 @@ algorithm.init("Algorithmia")"""
 
     # publish/deploy our algorithm
     #client.algo(microservice_design["api_namespace"]).publish()
+#     api.publish(
+#     settings = {
+#         "algorithm_callability": "private"
+#     },
+#     version_info = {
+#         "release_notes": "Publishing Microservice",
+#         "version_type": "revision"
+#     },
+#     details = {
+#         "label": microservice_design["microservice_name"]
+#     }
+#     )
+
     api.publish(
-    settings = {
-        "algorithm_callability": "private"
-    },
-    version_info = {
-        "release_notes": "Publishing Microservice",
-        "version_type": "revision"
-    },
-    details = {
+      details = {
         "label": microservice_design["microservice_name"]
-    }
+      } 
     )
 
     #  code generates the api endpoint for the newly published microservice
