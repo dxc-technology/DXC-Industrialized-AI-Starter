@@ -78,5 +78,5 @@ def access_data_from_pipeline(db, pipe):
 
 def store_data_from_pipeline(data_layer, df):
   db = insert_collection(data_layer, data_layer["collection_name"] + '_aggregate', df)
-  print('Created data piple line has stored in MongoDB in %s collection under %s datbase' %(data_layer["collection_name"] + '_aggregate',data_layer["database_name"] ))
+  print('Created data piple line has stored in MongoDB in "%s" collection under "%s" datbase' %(data_layer["collection_name"] + '_aggregate',data_layer["database_name"] ))
 
