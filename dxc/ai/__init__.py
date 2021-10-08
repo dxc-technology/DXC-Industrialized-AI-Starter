@@ -29,7 +29,9 @@ from .visualization.visualization import explore_complete_data
 from .pipeline.pipeline import convert_dates_from_arrow_to_string
 from .pipeline.pipeline import write_raw_data
 from .pipeline.pipeline import access_data_from_pipeline
+from .pipeline.pipeline import store_data_from_pipeline
 
+from .run_model.run_model import get_data_from_pipeline
 from .run_model.run_model import run_experiment
 from .run_model.run_model import model
 from .run_model.run_model import prediction

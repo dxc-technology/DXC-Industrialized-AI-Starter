@@ -14,6 +14,19 @@ from dxc.ai.logging import experiment_design_logging
 from .model_pipeline import regressor
 from .model_pipeline import train_model
 from .model_pipeline import classifier
+from pymongo import MongoClient #MongoDB
+import pandas as pd
+
+
+
+#Getting data from MongoDB
+def get_data_from_pipeline(data_layer):
+    #connect to MongoDB
+    client = MongoClient(data_layer["connection_string"])
+    db = client[data_layer["database_name"]][data_layer["collection_name"] + '_aggregate']
+    #getting aggregated pipeline data
+    df = pd.json_normalize(list(db.find({},{'_id':0})))
+    return df
 
 
 # define the general class of models

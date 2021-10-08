@@ -10,6 +10,20 @@ def convert_dates_from_arrow_to_string(df, arrow_date_fields):
         df[field] = df[field].apply(format)
     return(df)
 
+#inserting data into mongo DB
+def insert_collection(data_layer, collection_name, df):
+  client = MongoClient(data_layer["connection_string"]) #connect to the data layer
+  collections = client[data_layer["database_name"]].list_collection_names()
+  db = client[data_layer["database_name"]][collection_name]
+
+  #delete the collection if it exists
+  if collection_name not in collections:
+    db.insert_many(df.to_dict('records'))
+  else:
+    db.drop()
+    db.insert_many(df.to_dict('records'))
+  return db
+
 def write_raw_data(data_layer, raw_data, arrow_date_fields = []):
     ##make the column names lower case and remove spaces    
     if globals_file.clean_data_used == True:
@@ -19,12 +33,9 @@ def write_raw_data(data_layer, raw_data, arrow_date_fields = []):
     ##convert your raw data into writable data by converting Arrow dates to strings
     writable_raw_data = convert_dates_from_arrow_to_string(raw_data, arrow_date_fields)
     
-    #connect to the data layer
-    client = MongoClient(data_layer["connection_string"])
+    #inserting data into MongoDB collection
+    db = insert_collection(data_layer, data_layer["collection_name"], writable_raw_data)
     
-    #start a data collection, build a database, insert the raw data
-    db = client[data_layer["database_name"]][data_layer["collection_name"]]
-    db.insert_many(writable_raw_data.to_dict('records'))
     return db
 
 #Handle case-sensitive for column names in pipeline
@@ -64,3 +75,8 @@ def access_data_from_pipeline(db, pipe):
     df = pd.json_normalize(data)
     globals_file.run_experiment_warm_start = False
     return df
+
+def store_data_from_pipeline(data_layer, df):
+  db = insert_collection(data_layer, data_layer["collection_name"] + '_aggregate', df)
+  print('Created data piple line has stored in MongoDB in "%s" collection under "%s" datbase' %(data_layer["collection_name"] + '_aggregate',data_layer["database_name"] ))
+
