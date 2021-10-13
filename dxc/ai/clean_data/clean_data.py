@@ -37,7 +37,7 @@ def clean_dataframe(df, impute = False, text_fields = [], date_fields = [], nume
       #.clean_names()
 
       #remove empty columns
-      .remove_empty()
+      #.remove_empty()
 
       #remove empty rows and columns
       .dropna(how='all')
