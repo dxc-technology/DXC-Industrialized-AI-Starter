@@ -69,7 +69,7 @@ def clean_dataframe(df, impute = False, text_fields = [], date_fields = [], nume
         field = '_'.join(field.split()).lower()
         clean_df[field] = clean_df[field].astype('category')
     
-    clean_df=clean_df.clean_names()
+    #clean_df=clean_df.clean_names()
     
     globals_file.clean_data_used = True
 
