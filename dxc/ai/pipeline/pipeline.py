@@ -27,7 +27,7 @@ def insert_collection(data_layer, collection_name, df):
 def write_raw_data(data_layer, raw_data, arrow_date_fields = []):
     ##make the column names lower case and remove spaces    
     if globals_file.clean_data_used == True:
-        raw_data = raw_data.clean_names()
+        #raw_data = raw_data.clean_names()
         globals_file.wrt_raw_data_used = True
         globals_file.clean_data_used = False    
     ##convert your raw data into writable data by converting Arrow dates to strings
