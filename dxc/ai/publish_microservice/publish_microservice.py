@@ -29,7 +29,9 @@ def publish_microservice(microservice_design, trained_model, verbose = False):
     try:
         api.create(
             details = {
+                "summary": microservice_design["microservice_description"],
                 "label": microservice_design["microservice_name"],
+                "tagline": microservice_design["microservice_description"]
             },
             settings = {
                 "source_visibility": "closed",
