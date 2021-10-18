@@ -32,7 +32,7 @@ def get_data_from_pipeline(data_layer):
 # define the general class of models
 class model:
     __model = []
-    def build(self, meta_data): raise NotImplementedError()
+    def build(self): raise NotImplementedError()
     def train_and_score(self, data): raise NotImplementedError()
     def interpret(self): raise NotImplementedError()
     def python_object(): raise NotImplementedError()
