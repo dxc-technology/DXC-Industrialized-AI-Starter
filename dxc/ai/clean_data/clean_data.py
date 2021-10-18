@@ -1,5 +1,5 @@
 import pandas as pd
-#import janitor #data cleaning
+import janitor #data cleaning
 from ftfy import fix_text #data cleaning
 import nltk #data cleaning
 nltk.download('punkt') #data cleaning
@@ -34,10 +34,10 @@ def clean_dataframe(df, impute = False, text_fields = [], date_fields = [], nume
     clean_df = (
       df
       #make the column names lower case and remove spaces
-      #.clean_names()
+      .clean_names()
 
       #remove empty columns
-      #.remove_empty()
+      .remove_empty()
 
       #remove empty rows and columns
       .dropna(how='all')
@@ -69,7 +69,7 @@ def clean_dataframe(df, impute = False, text_fields = [], date_fields = [], nume
         field = '_'.join(field.split()).lower()
         clean_df[field] = clean_df[field].astype('category')
     
-    #clean_df=clean_df.clean_names()
+    clean_df=clean_df.clean_names()
     
     globals_file.clean_data_used = True
 
