@@ -32,17 +32,17 @@ def get_data_from_pipeline(data_layer):
 # define the general class of models
 class model:
     __model = []
-    def build(self, meta_data): raise NotImplementedError()
+    def build(self): raise NotImplementedError()
     def train_and_score(self, data): raise NotImplementedError()
     def interpret(self): raise NotImplementedError()
     def python_object(): raise NotImplementedError()
 
-    @staticmethod
-    def meta_data_key(meta_data, value):
-        key_list = list(meta_data.keys())
-        val_list = list(meta_data.values())
+#     @staticmethod
+#     def meta_data_key(meta_data, value):
+#         key_list = list(meta_data.keys())
+#         val_list = list(meta_data.values())
 
-        return key_list[val_list.index(value)]
+#         return key_list[val_list.index(value)]
 
 #define the model lifecycle
 
@@ -54,7 +54,7 @@ class prediction(model):
     def estimator(self):
         raise NotImplementedError()
 
-    def build(self, meta_data, verbose, max_time_mins, max_eval_time_mins, config_dict, warm_start, scoring):
+    def build(self, target_label, verbose, max_time_mins, max_eval_time_mins, config_dict, warm_start, scoring):
         if self.estimator == 'TPOTRegressor':
             if globals_file.run_experiment_warm_start == False or warm_start == False:
                 self.__model = regressor(verbose, max_time_mins, max_eval_time_mins, config_dict, warm_start, scoring)
@@ -68,7 +68,7 @@ class prediction(model):
         else: 
             pass
             #self.__model = Predictor(type_of_estimator=self.estimator, column_descriptions=meta_data)
-        self.__label = self.meta_data_key(meta_data, "output")
+        self.__label = target_label
 
     def train_and_score(self, data, labels, verbose, interpret, warm_start, export_pipeline):
         ##Train and score 
@@ -131,7 +131,7 @@ def run_experiment(design, verbose = False, interpret = False, max_time_mins = 5
 #         trained_model = getBestForcastingModel(design['labels'], no_predictions=7, debug=verbose, visualize = False)
 #         return trained_model
     globals_file.run_experiment_used = True
-    design["model"].build(design["meta_data"], verbose, max_time_mins, max_eval_time_mins, config_dict,warm_start, scoring)
+    design["model"].build(design["labels"].name, verbose, max_time_mins, max_eval_time_mins, config_dict,warm_start, scoring)
     design["model"].train_and_score(design["data"], design["labels"], verbose, interpret, warm_start, export_pipeline)
     design["model"].interpret()
     return design["model"].python_object()
