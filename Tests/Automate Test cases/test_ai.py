@@ -129,11 +129,4 @@ def data_pipeline():
 
   return pipe        
 
-def test_datepipeline():
-    global df
-    try:
-        df = ai.access_data_from_pipeline(wrt_raw_data, data_pipeline())
-        assert type(df) == type(pd.DataFrame())
-        assert loaded_data.empty == False
-    except:
-        print ('----------ACCESS DATA FROM MONGODB FAILED----------')
+
