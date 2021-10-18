@@ -2,6 +2,7 @@ from dxc import ai
 
 import pandas as pd    
 import base64
+import numpy
 
 loaded_data = None
 raw_data = None
