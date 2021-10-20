@@ -42,7 +42,15 @@ def test_bs_data():
         
 def test_empty():
     assert loaded_data.empty == False
-    
+
+def test_add():
+    a = 2
+    b = 3
+    try:
+        assert (a+b) == 6
+    except:
+        print('----------INCORRECT CALCULATION----------')     
+
 def test_load_json_data_remote():
     global loaded_data
     try:
