@@ -105,3 +105,36 @@ def test_wrt_data():
         wrt_raw_data = ai.write_raw_data(data_layer, raw_data, date_fields)
     except:
         print('----------MONGODB CONNECTION FAILED----------')
+        
+def data_pipeline():
+
+  pipe = [
+          {
+              '$group':{
+                  '_id': {
+                      "funding_source":"$funding_source",
+                      "request_type":"$request_type",
+                      "department_name":"$department_name",
+                      "replacement_body_style":"$replacement_body_style",
+                      "equipment_class":"$equipment_class",
+                      "replacement_make":"$replacement_make",
+                      "replacement_model":"$replacement_model",
+                      "procurement_plan":"$procurement_plan"
+                      },
+                  "avg_est_unit_cost":{"$avg":"$est_unit_cost"},
+                  "avg_est_unit_cost_error":{"$avg":{ "$subtract": [ "$est_unit_cost", "$actual_unit_cost" ] }}
+              }
+          }
+  ]
+
+  return pipe        
+
+
+def test_datepipeline():
+    global df
+    try:
+        df = ai.access_data_from_pipeline(wrt_raw_data, data_pipeline())
+        assert type(df) == type(pd.DataFrame())
+        assert loaded_data.empty == False
+    except:
+        print ('----------ACCESS DATA FROM MONGODB FAILED----------')
