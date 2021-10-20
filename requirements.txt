@@ -19,5 +19,6 @@ ipython>=7.16.1
 raiwidgets==0.9.4
 scikit-learn
 flatten-json==0.1.13
-sqlalchemy==1.3.24
+sqlalchemy==1.4.26
 dnspython==2.1.0
+pytest==6.0.1
