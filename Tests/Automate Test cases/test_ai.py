@@ -11,51 +11,33 @@ trained_model = None
 
 def test_load_csv_data_remote():
     global loaded_data
-#     try:
     csv_url = "https://raw.githubusercontent.com/dxc-technology/DXC-Industrialized-AI-Starter/master/dxc/ai/datasets/data/ab_nyc_2019.csv"
     loaded_data = ai.read_data_frame_from_remote_csv(csv_url, col_names = [], delim_whitespace=False, header = 'infer')
-    assert type(loaded_data) == type(pd.DataFrame())
-#     except:
-#         print ('----------INCORRECT URL----------')  
+    assert type(loaded_data) == type(pd.DataFrame()) 
 
 def test_empty():
     assert loaded_data.empty == False
 
 def test_iris_data():
     global loaded_data
-#     try:
     loaded_data = ai.load_data('iris')
     assert type(loaded_data) == type(pd.DataFrame())
-#     except:
-#         print('----------DATA LOADING FAILED----------')
         
 def test_empty():
     assert loaded_data.empty == False
 
 def test_bs_data():
     global loaded_data
-#     try:
     loaded_data = ai.load_data('bike_sharing_data')
     assert type(loaded_data) == type(pd.DataFrame())
-#     except:
-#         print('----------DATA LOADING FAILED----------')
         
 def test_empty():
     assert loaded_data.empty == False
-    
-
-# def test_add():
-#     a = 2
-#     b = 3
-#     assert (a+b) == 6
 
 def test_load_json_data_remote():
     global loaded_data
-#     try:
     loaded_data = ai.read_data_frame_from_remote_json("https://data.cincinnati-oh.gov/resource/ucjy-ykv4.json")
-    assert type(loaded_data) == type(pd.DataFrame())
-#     except:
-#         print ('----------INCORRECT URL----------')      
+    assert type(loaded_data) == type(pd.DataFrame())    
 
 def test_empty():
     assert loaded_data.empty == False
@@ -75,22 +57,13 @@ def test_clean():
 
 
 def test_visualize():
-#     try:
     visualize_data = ai.visualize_missing_data(raw_data)
-#     except:
-#         print('----------VISUALIZATION FAILED----------')
         
 def test_explore():
-#     try:
     explore_data = ai.explore_features(raw_data)
-#     except:
-#         print('----------DATA EXPLORATION FAILED----------')
         
 def test_plot():
-#     try:
     plot_data = ai.plot_distributions(raw_data)
-#     except:
-#         print('----------PLOT DISTRIBUTION FAILED----------')
         
         
 id_decoded = base64. b64decode('bWJhbmRydTI=').decode("utf-8")
@@ -107,10 +80,7 @@ data_layer = {
 
 def test_wrt_data():
     global wrt_raw_data
-#     try:
     wrt_raw_data = ai.write_raw_data(data_layer, raw_data, date_fields)
-#     except:
-#         print('----------MONGODB CONNECTION FAILED----------')
         
 def data_pipeline():
 
@@ -138,9 +108,6 @@ def data_pipeline():
 
 def test_datepipeline():
     global df
-#     try:
     df = ai.access_data_from_pipeline(wrt_raw_data, data_pipeline())
     assert type(df) == type(pd.DataFrame())
     assert loaded_data.empty == False
-#     except:
-#         print ('----------ACCESS DATA FROM MONGODB FAILED----------')
