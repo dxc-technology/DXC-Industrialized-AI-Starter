@@ -1,6 +1,6 @@
-![DXC](https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/dxc%20image.png)
+![DXC](https://raw.githubusercontent.com/dxc-technology/DXC-Industrialized-AI-Starter/master/DXC_Logo.png)
 
-<img src="https://github.com/dxc-technology/DXC-Industrialized-AI-Starter/blob/master/Industrialized_AI_Animation.gif" height="500" width="900" ></img>
+<img src="https://raw.githubusercontent.com/dxc-technology/DXC-Industrialized-AI-Starter/master/Industrialized_AI_Animation.gif" height="500" width="900" ></img>
 
 
 # DXC Industrialized AI Starter
