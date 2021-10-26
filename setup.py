@@ -1,12 +1,25 @@
 from setuptools import setup, find_packages
 import pathlib
 import pkg_resources
-import setuptools
+import subprocess
+import os
 
 def readme():
     with open('README.md') as f:
         README = f.read()
     return README
+
+#Getting the version number from Git
+version_number = (
+    subprocess.run(["git", "describe", "--tags"], stdout=subprocess.PIPE)
+    .stdout.decode("utf-8")
+    .strip()
+)
+assert "." in version_number
+
+assert os.path.isfile("version.py")
+with open("VERSION", "w", encoding="utf-8") as fh:
+    fh.write(f"{version_number}\n")
 
 with pathlib.Path('requirements.txt').open() as requirements_txt:
     install_requires = [
@@ -17,7 +30,7 @@ with pathlib.Path('requirements.txt').open() as requirements_txt:
 
 setup(
     name="DXC-Industrialized-AI-Starter",
-    version="3.1.1",
+    version= version_number, 
     description="Python library which is extensively used for all AI projects",
     long_description=readme(),
     long_description_content_type="text/markdown",
@@ -40,5 +53,6 @@ setup(
         ]
     },
 #     package_data={'datasets/data': ['datasets/data/*'],},
+    package_data={"DXC-Industrialized-AI-Starter": ["VERSION"]},
     include_package_data=True,
 )
