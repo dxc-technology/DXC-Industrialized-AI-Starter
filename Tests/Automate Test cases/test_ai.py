@@ -111,3 +111,62 @@ def test_datepipeline():
     df = ai.access_data_from_pipeline(wrt_raw_data, data_pipeline())
     assert type(df) == type(pd.DataFrame())
     assert loaded_data.empty == False
+
+
+def test_experiment():
+    global trained_model
+    try:
+        experiment_design = {
+            #model options include ['tpot_regression()', 'tpot_classification()']
+            "model": ai.tpot_regression(),
+            "labels": df.avg_est_unit_cost_error,
+            "data": df,
+        }
+
+        trained_model = ai.run_experiment(experiment_design, verbose = False, max_time_mins = 5, max_eval_time_mins = 0.04, 
+                                          config_dict = None, warm_start = False, export_pipeline = True, scoring = None)
+    except:
+        print('----------MODEL BUILDING FAILED----------')
+    
+# # TODO: design and run an experiment
+# def test_experiment():
+#     global trained_model
+#     try:
+#         experiment_design = {
+#             #model options include ['regression()', 'classification()']
+#             "model": ai.regression(),
+#             "labels": df.avg_est_unit_cost_error,
+#             "data": df,
+#             #Tell the model which column is 'output'
+#             #Also note columns that aren't purely numerical
+#             #Examples include ['nlp', 'date', 'categorical', 'ignore']
+#             "meta_data": {
+#               "avg_est_unit_cost_error": "output",
+#               "_id.funding_source": "categorical",
+#               "_id.department_name": "categorical",
+#               "_id.replacement_body_style": "categorical",
+#               "_id.replacement_make": "categorical",
+#               "_id.replacement_model": "categorical",
+#               "_id.procurement_plan": "categorical"
+#           }
+#         }
+#         trained_model = ai.run_experiment(experiment_design)
+#     except:
+#         print('----------MODEL BUILDING FAILED----------')
+        
+# # TODO design a microservice
+# microservice_design = {
+#     "microservice_name": "dxcaistarter",
+#     "microservice_description": "test api generated from the DXC ai starter",
+#     "execution_environment_username": "joverton",
+#     "api_key": "sim6lSW/N7LIfmNsPzLQCTTknRv1",
+#     "api_namespace": "joverton/dxcaistarter",
+#     "model_path":"data://.my/mycollection"
+# }
+
+# def test_publish_api():
+#     try:
+#         api_url = ai.publish_microservice(microservice_design, trained_model)
+#         assert api_url != ' '
+#     except:
+#         print('----------API PUBLISHING FAILED----------')
