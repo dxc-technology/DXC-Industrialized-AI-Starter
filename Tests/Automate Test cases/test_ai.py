@@ -124,3 +124,19 @@ def test_experiment():
 
     trained_model = ai.run_experiment(experiment_design, verbose = False, max_time_mins = 5, max_eval_time_mins = 0.04, 
                                           config_dict = None, warm_start = False, export_pipeline = True, scoring = None)
+    
+microservice_design = {
+    "microservice_name": "dxcaistarter",
+    "microservice_description": "test api generated from the DXC ai starter",
+    "execution_environment_username": "joverton",
+    "api_key": "sim6lSW/N7LIfmNsPzLQCTTknRv1",
+    "api_namespace": "joverton/dxcaistarter",
+    "model_path":"data://.my/mycollection"
+}
+
+def test_publish_api():
+    try:
+        api_url = ai.publish_microservice(microservice_design, trained_model)
+        assert api_url != ' '
+    except:
+        print('----------API PUBLISHING FAILED----------')
