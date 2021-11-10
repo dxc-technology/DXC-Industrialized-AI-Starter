@@ -136,8 +136,5 @@ microservice_design = {
 }
 
 def test_publish_api():
-#     try:
     api_url = ai.publish_microservice(microservice_design, trained_model, verbose = False)
     assert api_url != ' '
-#     except:
-#         print('----------API PUBLISHING FAILED----------')
