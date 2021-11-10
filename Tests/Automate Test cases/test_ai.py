@@ -135,11 +135,11 @@ def test_experiment():
 # }
 
 microservice_design = {
-    "microservice_name": "dxcaistarter",
+    "microservice_name": "dxcaistarternew",
     "microservice_description": "test api generated from the DXC ai starter",
     "execution_environment_username": "mbandru2",
     "api_key": 'sim1CBEvUbMpducHofhsUQIJBx41',
-    "api_namespace": "mbandru2/dxcaistarter4",
+    "api_namespace": "mbandru2/dxcaistarternew",
     "model_path":"data://.my/mycollection"
 }
 
