@@ -122,7 +122,7 @@ def test_experiment():
         "data": df,
     }
 
-    trained_model = ai.run_experiment(experiment_design, verbose = False, max_time_mins = 5, max_eval_time_mins = 0.04, 
+    trained_model = ai.run_experiment(experiment_design, verbose = False, max_time_mins = 1, max_eval_time_mins = 0.04, 
                                           config_dict = None, warm_start = False, export_pipeline = True, scoring = None)
     
 microservice_design = {
