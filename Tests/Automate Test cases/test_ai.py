@@ -134,9 +134,9 @@ microservice_design = {
     "model_path":"data://.my/mycollection"
 }
 
-def test_publish_api():
-    try:
-        api_url = ai.publish_microservice(microservice_design, trained_model)
-        assert api_url != ' '
-    except:
-        print('----------API PUBLISHING FAILED----------')
+# def test_publish_api():
+#     try:
+#         api_url = ai.publish_microservice(microservice_design, trained_model)
+#         assert api_url != ' '
+#     except:
+#         print('----------API PUBLISHING FAILED----------')
