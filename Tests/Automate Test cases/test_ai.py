@@ -111,3 +111,30 @@ def test_datepipeline():
     df = ai.access_data_from_pipeline(wrt_raw_data, data_pipeline())
     assert type(df) == type(pd.DataFrame())
     assert loaded_data.empty == False
+    
+    
+def test_experiment():
+    global trained_model
+    experiment_design = {
+        #model options include ['tpot_regression()', 'tpot_classification()']
+        "model": ai.tpot_regression(),
+        "labels": df.avg_est_unit_cost_error,
+        "data": df,
+    }
+
+    trained_model = ai.run_experiment(experiment_design, verbose = False, max_time_mins = 1, max_eval_time_mins = 0.04, 
+                                          config_dict = None, warm_start = False, export_pipeline = True, scoring = None)
+    
+
+microservice_design = {
+    "microservice_name": "dxcaistarternew",
+    "microservice_description": "test api generated from the DXC ai starter",
+    "execution_environment_username": "mbandru2",
+    "api_key": 'sim1CBEvUbMpducHofhsUQIJBx41',
+    "api_namespace": "mbandru2/dxcaistarternew",
+    "model_path":"data://.my/mycollection"
+}
+
+def test_publish_api():
+    api_url = ai.publish_microservice(microservice_design, trained_model, verbose = False)
+    assert api_url != ' '
