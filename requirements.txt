@@ -12,7 +12,7 @@ pyjanitor==0.20.0
 pyaf==3.0
 pandas_profiling==3.0.0
 datacleaner==0.1.5
-Algorithmia==1.10.0
+Algorithmia==1.14.1
 GitPython==3.1.18
 ipython>=7.16.1
 #janitor==0.1.1
