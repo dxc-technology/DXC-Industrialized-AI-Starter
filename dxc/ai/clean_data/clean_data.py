@@ -34,7 +34,7 @@ def clean_dataframe(df, impute = False, text_fields = [], date_fields = [], nume
     clean_df = (
       df
       #make the column names lower case and remove spaces
-      .clean_names()
+      #.clean_names()
 
       #remove empty columns
       .remove_empty()
