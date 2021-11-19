@@ -1,3 +1,4 @@
+import os
 from dxc import ai
 
 import pandas as pd    
@@ -66,8 +67,8 @@ def test_plot():
     plot_data = ai.plot_distributions(raw_data)
         
         
-id_decoded = base64. b64decode('bWJhbmRydTI=').decode("utf-8")
-pwd_decoded = base64. b64decode('cmV2c1JmQkNPSW9kNGVpVw==').decode("utf-8")
+id_decoded = os.environ.get("MONGODB_ID")
+pwd_decoded = os.environ.get("MONGODB_PWD")
 connection_string_ = str("mongodb://" + id_decoded + ":" + pwd_decoded + "@freecluster0-shard-00-00-sxnu6.azure.mongodb.net:27017,freecluster0-shard-00-01-sxnu6.azure.mongodb.net:27017,freecluster0-shard-00-02-sxnu6.azure.mongodb.net:27017/<dbname>?ssl=true&replicaSet=FreeCluster0-shard-0&authSource=admin&retryWrites=true&w=majority")
         
 data_layer = {
@@ -129,8 +130,8 @@ def test_experiment():
 microservice_design = {
     "microservice_name": "dxcaistarternew",
     "microservice_description": "test api generated from the DXC ai starter",
-    "execution_environment_username": "mbandru2",
-    "api_key": 'sim1CBEvUbMpducHofhsUQIJBx41',
+    "execution_environment_username": os.environ.get("MICROSERVICE_USERNAME"),
+    "api_key": os.environ.get("MICROSERVICE_KEY"),
     "api_namespace": "mbandru2/dxcaistarternew",
     "model_path":"data://.my/mycollection"
 }
