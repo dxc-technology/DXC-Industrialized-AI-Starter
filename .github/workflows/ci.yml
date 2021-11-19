@@ -26,4 +26,6 @@ jobs:
         env: 
           MONGODB_ID: ${{ secrets.MONGODB_ID }}
           MONGODB_PWD: ${{ secrets.MONGODB_PWD }}
+          MICROSERVICE_USERNAME: ${{ secrets.MICROSERVICE_USERNAME }}
+          MICROSERVICE_KEY: ${{ secrets.MICROSERVICE_KEY }}
         run: pytest -v -s
