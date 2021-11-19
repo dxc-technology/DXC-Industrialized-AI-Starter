@@ -23,4 +23,7 @@ jobs:
           pip install -r requirements.txt
           pip install git+https://github.com/dxc-technology/DXC-Industrialized-AI-Starter.git
       - name: Test with pytest
+        env: 
+          MONGODB_ID: ${{ secrets.MONGODB_ID }}
+          MONGODB_PWD: ${{ secrets.MONGODB_PWD }}
         run: pytest -v -s
