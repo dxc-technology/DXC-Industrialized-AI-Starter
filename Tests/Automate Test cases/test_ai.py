@@ -65,10 +65,6 @@ def test_explore():
 def test_plot():
     plot_data = ai.plot_distributions(raw_data)
         
-        
-# id_decoded = base64. b64decode('bWJhbmRydTI=').decode("utf-8")
-# pwd_decoded = base64. b64decode('cmV2c1JmQkNPSW9kNGVpVw==').decode("utf-8")
-# connection_string_ = str("mongodb://" + id_decoded + ":" + pwd_decoded + "@freecluster0-shard-00-00-sxnu6.azure.mongodb.net:27017,freecluster0-shard-00-01-sxnu6.azure.mongodb.net:27017,freecluster0-shard-00-02-sxnu6.azure.mongodb.net:27017/<dbname>?ssl=true&replicaSet=FreeCluster0-shard-0&authSource=admin&retryWrites=true&w=majority")
 
 id_decoded = ${{ secrets.MONGODB_ID }}
 pwd_decoded = ${{ secrets.MONGODB_PWD }}
