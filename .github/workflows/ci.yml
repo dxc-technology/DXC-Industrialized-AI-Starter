@@ -21,6 +21,11 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install --upgrade setuptools pip
           pip install -r requirements.txt
-          pip install git+https://github.com/dxc-technology/DXC-Industrialized-AI-Starter.git
+          pip install git+https://github.com/madhubandru/DXC-Industrialized-AI-Starter.git
       - name: Test with pytest
+        env: 
+          MONGODB_ID: ${{ secrets.MONGODB_ID }}
+          MONGODB_PWD: ${{ secrets.MONGODB_PWD }}
+          MICROSERVICE_USERNAME: ${{ secrets.MICROSERVICE_USERNAME }}
+          MICROSERVICE_KEY: ${{ secrets.MICROSERVICE_KEY }}
         run: pytest -v -s
