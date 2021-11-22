@@ -8,7 +8,7 @@ ftfy==6.0.3
 interpret_community==0.19.3
 missingno==0.5.0
 arrow==1.1.1
-pyjanitor==0.20.0
+pyjanitor==0.22.0
 pyaf==3.0
 pandas_profiling==3.0.0
 datacleaner==0.1.5
