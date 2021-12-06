@@ -2,6 +2,7 @@ from dxc import ai
 
 import pandas as pd    
 import base64
+import os
 
 loaded_data = None
 raw_data = None
@@ -129,8 +130,8 @@ def test_experiment():
 microservice_design = {
     "microservice_name": "dxcaistarternew",
     "microservice_description": "test api generated from the DXC ai starter",
-    "execution_environment_username": "mbandru2",
-    "api_key": 'sim1CBEvUbMpducHofhsUQIJBx41',
+    "execution_environment_username": os.environ.get("MICROSERVICE_USERNAME"),
+    "api_key": os.environ.get("MICROSERVICE_KEY"),
     "api_namespace": "mbandru2/dxcaistarternew",
     "model_path":"data://.my/mycollection"
 }
