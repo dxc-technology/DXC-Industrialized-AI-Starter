@@ -51,6 +51,8 @@ from .run_model.interpret_model import Explanation_Dashboard
 
 from .publish_microservice.publish_microservice import publish_microservice
 
+from .deploy_app.build_app import generate_req_files
+
 # from .deep_learning.image_classifier import create_training_data
 # from .deep_learning.image_classifier import seggregate_data
 # from .deep_learning.image_classifier import split_normalize_data
