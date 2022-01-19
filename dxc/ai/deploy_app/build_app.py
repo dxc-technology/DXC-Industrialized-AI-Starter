@@ -30,12 +30,12 @@ def generate_app_script(data_path='', encoder_path='', target_encoder_path='', a
     """
 
     with open('requirements.txt', 'w') as f:
-    f.write(requirements)
+        f.write(requirements)
     print('Generated requirements.txt file')
 
 
     with open("best_pipeline.py", "r") as txt_file:
-    script = txt_file.readlines()
+        script = txt_file.readlines()
 
     script = open("best_pipeline.py").read()
     script = script.replace('import numpy as np', '')
