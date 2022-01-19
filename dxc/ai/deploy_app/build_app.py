@@ -122,5 +122,5 @@ def generate_app_script(data_path='', encoder_path='', target_encoder_path='', a
 
 
     with open('app.py', 'w') as f:
-    f.write(app_script)
+        f.write(app_script)
     print('Generated app.py file to build the application')
