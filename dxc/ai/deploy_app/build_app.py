@@ -11,9 +11,7 @@ def create_git_repo(github_design, pat_key):
   gitrepo = Github(pat_key)
   user = gitrepo.get_user()
   git_repo_create = user.create_repo(github_design["Repository_Name"], description= github_design['Project_Description'])
-  #git_folder = str(github_design["Github_Code_Folder"]) + "/requirements.txt"
   git_repo_create.create_file(path = "readme.md", message = github_design["Commit_Message"], content = github_design["Project_Description"], branch= github_design["Branch"])
-  #git_repo_create.create_file(path = git_folder, message = github_design["Commit_Message"], content = github_design["Project_Description"], branch= github_design["Branch"])
   print("Github Repo %s Created" %github_design["Repository_Name"])
 
 def publish_github(github_design, pat_key):    
