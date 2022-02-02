@@ -53,6 +53,7 @@ from .publish_microservice.publish_microservice import publish_microservice
 
 from .deploy_app.build_app import generate_req_files
 from .deploy_app.build_app import generate_app_script
+from .deploy_app.build_app import publish_github
 
 # from .deep_learning.image_classifier import create_training_data
 # from .deep_learning.image_classifier import seggregate_data
