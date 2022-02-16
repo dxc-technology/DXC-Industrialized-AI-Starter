@@ -24,5 +24,5 @@ This notebook helps in understanding on datasets available in DXC Industrialized
 ### logging_functionality.ipynb
 This notebook helps in understanding the logging functionality available in DXC Industrialized AI Starter Library.
 
-### Publish_Micro_service_Example_Notebook.ipynb
+### publish_microservice(new)_example_notebook.ipynb
 This notebook provides an example to publish a microservice for your Machine Learning model using AI-Starter Package.
