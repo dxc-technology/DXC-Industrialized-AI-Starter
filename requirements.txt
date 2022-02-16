@@ -24,3 +24,4 @@ dnspython==2.1.0
 pytest==6.0.1
 PyGithub
 statsmodels==0.13.1
+numpy==1.20.0
