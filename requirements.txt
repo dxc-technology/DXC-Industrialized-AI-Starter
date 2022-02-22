@@ -3,7 +3,7 @@ yellowbrick==1.4
 scrubadub==1.2.2
 feature_engine==1.1.1
 pymongo==3.12.0
-pmdarima==1.8.2
+pmdarima==1.8.5
 ftfy==6.0.3
 interpret_community==0.19.3
 missingno==0.5.0
