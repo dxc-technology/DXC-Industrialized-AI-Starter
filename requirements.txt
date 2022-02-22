@@ -23,4 +23,3 @@ sqlalchemy==1.3.24
 dnspython==2.1.0
 pytest==6.0.1
 PyGithub
-statsmodels==0.13.2
