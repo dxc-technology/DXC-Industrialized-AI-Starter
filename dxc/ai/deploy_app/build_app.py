@@ -186,10 +186,17 @@ if 'float' in str(type(prediction[0])):
     st.write(round(prediction[0],2))
 else:
     st.write(prediction[0])
-    
+
+# Dataset
+st.subheader('Data Set')
+if len(target_encoder_location) > 5:
+    df['target'] = target_encoder.inverse_transform(tpot_data['target'])
+else:
+    df['target'] = tpot_data['target']
+st.write(df)
+
 #pandas profling-report
-st.title('Pandas-Profiling Report')
-st.write('Progiling Report for dataset.')
+st.subheader('Profiling Report of your dataset')
 pr = df.profile_report()
 st_profile_report(pr)
     """
