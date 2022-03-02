@@ -115,7 +115,9 @@ requests
 pickle-mixin
 scikit-learn
 streamlit
-feature-engine"""
+feature-engine
+pandas_profiling
+streamlit-pandas-profiling"""
 
     requirement_save_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Code_Folder"]) + "/requirements.txt"
     with open(requirement_save_path, 'w') as f:
@@ -138,6 +140,8 @@ import pickle
 from io import BytesIO
 import requests
 import pandas as pd 
+import pandas_profiling
+from streamlit_pandas_profiling import st_profile_report
 # Code from Best Pipeline.py here
 best_pipeline
 ######################
@@ -182,6 +186,12 @@ if 'float' in str(type(prediction[0])):
     st.write(round(prediction[0],2))
 else:
     st.write(prediction[0])
+    
+#pandas profling-report
+st.title('Pandas-Profiling Report')
+st.write('Progiling Report for dataset.')
+pr = df.profile_report()
+st_profile_report(pr)
     """
 
     app_script = app_script.replace('best_pipeline', script)
