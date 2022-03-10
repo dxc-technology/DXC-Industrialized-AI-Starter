@@ -44,17 +44,38 @@ def publish_model(github_design):
     if not os.path.exists(github_design["Repository_Name"] + '/' + github_design["Github_Code_Folder"]):
        os.makedirs(github_design["Repository_Name"] + '/' + github_design["Github_Code_Folder"]) 
 
-    if globals_file.run_experiment_encoder_used:
-      encoder_path = "https://github.com/" + str(github_design["GitHub_Username"]) + '/' + str(github_design["Repository_Name"]) + "/blob/" + str(github_design["Branch"]) + '/' + str(github_design["Github_Code_Folder"]) + "/encoder.pkl?raw=true"
-    else:
-      encoder_path = ''
-    if globals_file.run_experiment_target_encoder_used:
-      target_encoder_path = "https://github.com/" + str(github_design["GitHub_Username"]) + '/' + str(github_design["Repository_Name"]) + "/blob/" + str(github_design["Branch"]) + '/' + str(github_design["Github_Code_Folder"]) +"/target_encoder.pkl?raw=true"
-    else:
-      target_encoder_path = ''
-    data_path = "https://raw.githubusercontent.com/" + str(github_design["GitHub_Username"]) + '/' + str(github_design["Repository_Name"]) + '/' + str(github_design["Branch"]) + '/' + str(github_design["Github_Code_Folder"]) + "/prepared_data.csv"
+    if globals_file.imported_model_files:
 
-    generate_req_files(github_design)
+      encoder_file_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Model_Folder"]) + "/encoder.pkl"
+      if os.path.exists(encoder_file_path):
+        encoder_path = "https://github.com/" + str(github_design["GitHub_Username"]) + '/' + str(github_design["Repository_Name"]) + "/blob/" + str(github_design["Branch"]) + '/' + str(github_design["Github_Code_Folder"]) + "/encoder.pkl?raw=true"
+      else:
+        encoder_path = ''
+    
+      target_encoder_file_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Model_Folder"]) + "/target_encoder.pkl"
+      if os.path.exists(target_encoder_file_path):
+        target_encoder_path = "https://github.com/" + str(github_design["GitHub_Username"]) + '/' + str(github_design["Repository_Name"]) + "/blob/" + str(github_design["Branch"]) + '/' + str(github_design["Github_Code_Folder"]) +"/target_encoder.pkl?raw=true"
+      else:
+        target_encoder_path = ''
+
+      data_path = "https://raw.githubusercontent.com/" + str(github_design["GitHub_Username"]) + '/' + str(github_design["Repository_Name"]) + '/' + str(github_design["Branch"]) + '/' + str(github_design["Github_Code_Folder"]) + "/prepared_data.csv"
+    else:
+      if globals_file.run_experiment_encoder_used:
+        encoder_path = "https://github.com/" + str(github_design["GitHub_Username"]) + '/' + str(github_design["Repository_Name"]) + "/blob/" + str(github_design["Branch"]) + '/' + str(github_design["Github_Code_Folder"]) + "/encoder.pkl?raw=true"
+      else:
+        encoder_path = ''
+
+      if globals_file.run_experiment_target_encoder_used:
+        target_encoder_path = "https://github.com/" + str(github_design["GitHub_Username"]) + '/' + str(github_design["Repository_Name"]) + "/blob/" + str(github_design["Branch"]) + '/' + str(github_design["Github_Code_Folder"]) +"/target_encoder.pkl?raw=true"
+      else:
+        target_encoder_path = ''
+
+      data_path = "https://raw.githubusercontent.com/" + str(github_design["GitHub_Username"]) + '/' + str(github_design["Repository_Name"]) + '/' + str(github_design["Branch"]) + '/' + str(github_design["Github_Code_Folder"]) + "/prepared_data.csv"
+
+    if globals_file.imported_model_files:
+      generate_model_req_files(github_design)
+    else:
+      generate_req_files(github_design)
     generate_app_script(github_design, data_path, encoder_path, target_encoder_path, app_title = github_design["Project_Title"])
 
     git_operation_push(DIR_NAME, BRANCH, COMMIT_MSG)
@@ -107,6 +128,35 @@ def generate_req_files(github_design):
         pickle.dump(globals_file.run_experiment_target_encoder, open(target_encoder_save_path, 'wb'))
         print("Target encoder saved in target_encoder.pkl file")
 
+def generate_model_req_files(github_design):
+
+    data_file_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Model_Folder"]) + "/prepared_data.csv"
+    tpot_data = pd.read_csv(data_file_path)
+
+    # Save encoder
+    #if globals_file.run_experiment_encoder_used:
+    encoder_file_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Model_Folder"]) + "/encoder.pkl"
+    if os.path.exists(encoder_file_path):
+        with open(encoder_file_path, 'rb') as encoder_f:
+          encoder_file = pickle.load(encoder_f)
+        encoder_save_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Code_Folder"]) + "/encoder.pkl"
+        pickle.dump(encoder_file, open(encoder_save_path, 'wb'))
+        print("Data encoder saved in encoder.pkl file")
+    
+    # Save dataset
+    data_save_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Code_Folder"]) + "/prepared_data.csv"
+    tpot_data.to_csv(data_save_path, index=False)
+    print('Data saved in prepared_data.csv file')
+
+    # Save target encoder
+    target_encoder_file_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Model_Folder"]) + "/target_encoder.pkl"
+    if os.path.exists(target_encoder_file_path):
+        with open(target_encoder_file_path, 'rb') as target_f:
+          target_encoder = pickle.load(target_f)
+        target_encoder_save_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Code_Folder"]) + "/target_encoder.pkl"
+        pickle.dump(target_encoder, open(target_encoder_save_path, 'wb'))
+        print("Target encoder saved in target_encoder.pkl file")
+
 
 def generate_app_script(github_design, data_path='', encoder_path='', target_encoder_path='', app_title='App deployed by AI-Starter'):    
     requirements = """pip-upgrader
@@ -124,14 +174,19 @@ streamlit-pandas-profiling"""
         f.write(requirements)
     print('Generated requirements.txt file')
 
-
-    with open("best_pipeline.py", "r") as txt_file:
-        script = txt_file.readlines()
+    if globals_file.imported_model_files:
+      pipeline_save_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Model_Folder"]) + "/best_pipeline.py"
+      with open(pipeline_save_path, "r") as txt_file:
+          script = txt_file.readlines()
+    else:
+      with open("best_pipeline.py", "r") as txt_file:
+          script = txt_file.readlines()
 
     script = open("best_pipeline.py").read()
     script = script.replace('import numpy as np', '')
     script = script.replace('import pandas as pd', '')
-    script = script.replace("'/content\\data_file.csv\', sep=\'COLUMN_SEPARATOR\', dtype=np.float64", "'prepared_data.csv'")
+    if not globals_file.imported_model_files:
+      script = script.replace("'/content\\data_file.csv\', sep=\'COLUMN_SEPARATOR\', dtype=np.float64", "'prepared_data.csv'")
     script = script.replace("results = exported_pipeline.predict(testing_features)", "")
 
     #code of app.py
@@ -186,7 +241,6 @@ if 'float' in str(type(prediction[0])):
     st.write(round(prediction[0],2))
 else:
     st.write(prediction[0])
-
 # Dataset
 st.subheader('Data Set')
 if len(target_encoder_location) > 5:
@@ -194,7 +248,6 @@ if len(target_encoder_location) > 5:
 else:
     df['target'] = tpot_data['target']
 st.write(df)
-
 #pandas profling-report
 st.subheader('Profiling Report of your dataset')
 pr = df.profile_report()
@@ -205,7 +258,11 @@ st_profile_report(pr)
     app_script = app_script.replace('encoder.pkl', encoder_path)
     app_script = app_script.replace('target_encode.pkl', target_encoder_path)
     app_script = app_script.replace('title of the app', app_title)
-    app_script = app_script.replace('prepared_data.csv', data_path)
+    if globals_file.imported_model_files:
+      git_data_save_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Model_Folder"]) + "/prepared_data.csv"
+      app_script = app_script.replace(git_data_save_path, data_path)
+    else:
+      app_script = app_script.replace('prepared_data.csv', data_path)
 
     app_save_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Code_Folder"]) + "/app.py"
     with open(app_save_path, 'w') as f:
