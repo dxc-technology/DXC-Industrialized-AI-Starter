@@ -26,3 +26,4 @@ def retrieve_model_files(github_design):
       origin.pull(origin.refs[0].remote_head)
   except Exception as e:
       print(str(e))
+  globals_file.imported_model_files = True
