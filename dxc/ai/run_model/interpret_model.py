@@ -4,20 +4,28 @@ from raiwidgets import ExplanationDashboard
 import warnings
 import sys
 
-model_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Model_Folder"]) + '/'
-#print(model_path)
-sys.path.insert(1, model_path) 
-#from model_path import best_pipeline
-import best_pipeline
+def get_best_pipeline(github_design): 
+    model_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Model_Folder"]) + '/'
+    #print(model_path)
+    sys.path.insert(1, model_path) 
+    #from model_path import best_pipeline
+    import best_pipeline
+    return best_pipeline.exported_pipeline, best_pipeline.training_features, best_pipeline.testing_features, best_pipeline.training_target, best_pipeline.testing_target
 
-from best_pipeline import exported_pipeline
-from best_pipeline import training_features
-from best_pipeline import testing_features
-from best_pipeline import training_target
-from best_pipeline import testing_target
-
-def Global_Model_Explanation(model = exported_pipeline, x_train = training_features ,x_test = testing_features,y_train = training_target ,y_test = testing_target,feature_names = None,classes = None, explantion_data = None):
+def Global_Model_Explanation(model = None, x_train = None, x_test = None, y_train = None, y_test = None, feature_names = None,classes = None, explantion_data = None, design = None):
     warnings.filterwarnings('ignore')
+    if globals_file.imported_model_files:
+        model, x_train, x_test, y_train, y_test = get_best_pipeline(design)
+    if model == None:
+        return "Exported Pipeline is missing"
+    if x_train == None:
+        return "Training features is missing"
+    if x_test == None:
+        return "Testing features is missing"
+    if y_train == None:
+        return "Training Target is missing"
+    if y_test == None:
+        return "Testing Target is missing"
     #Using SHAP TabularExplainer
     explainer = TabularExplainer(model, 
                                   x_train, 
@@ -33,7 +41,20 @@ def Global_Model_Explanation(model = exported_pipeline, x_train = training_featu
     #Return Generated Explanation dashboard
     return global_explanation
 
-def Explanation_Dashboard(global_explanation, model = exported_pipeline, x_train = training_features , x_test = testing_features, y_train = training_target , y_test = testing_target, explantion_data = None):
+def Explanation_Dashboard(global_explanation, model = None, x_train = None, x_test = None, y_train = None, y_test = None, explantion_data = None, design = None):
+    if globals_file.imported_model_files:
+        model, x_train, x_test, y_train, y_test = get_best_pipeline(design)
+    if model == None:
+        return "Exported Pipeline is missing"
+    if x_train == None:
+        return "Training features is missing"
+    if x_test == None:
+        return "Testing features is missing"
+    if y_train == None:
+        return "Training Target is missing"
+    if y_test == None:
+        return "Testing Target is missing"
+
     if explantion_data == 'Training':
         ExplanationDashboard(global_explanation, model, dataset=x_train, true_y=y_train)
     else:
