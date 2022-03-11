@@ -55,6 +55,8 @@ from .publish_microservice.publish_new_microservice import publish_app_api
 from .deploy_app.build_app import generate_req_files
 from .deploy_app.build_app import generate_app_script
 from .deploy_app.build_app import publish_model
+from .deploy_app.deploy_modelfiles import publish_model_files
+from .deploy_app.retrieve_modelfiles import retrieve_model_files
 
 # from .deep_learning.image_classifier import create_training_data
 # from .deep_learning.image_classifier import seggregate_data
