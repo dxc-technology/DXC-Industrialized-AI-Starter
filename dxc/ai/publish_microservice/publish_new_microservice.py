@@ -178,6 +178,8 @@ gunicorn
       with open(pipeline_save_path, "r") as txt_file:
           script = txt_file.readlines()
       script = open(pipeline_save_path).read()
+      git_data_save_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Model_Folder"]) + "/prepared_data.csv"
+      script = script.replace(git_data_save_path, "'prepared_data.csv'")
       script = script.replace("results = exported_pipeline.predict(testing_features)", "")
     else:
       with open("best_pipeline.py", "r") as txt_file:
