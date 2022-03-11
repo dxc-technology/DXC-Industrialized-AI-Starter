@@ -4,6 +4,7 @@ from raiwidgets import ExplanationDashboard
 import warnings
 import sys
 from dxc.ai.global_variables import globals_file
+import pandas as pd
 
 def get_best_pipeline(github_design): 
     model_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Model_Folder"]) + '/'
@@ -13,19 +14,19 @@ def get_best_pipeline(github_design):
     import best_pipeline
     return best_pipeline.exported_pipeline, best_pipeline.training_features, best_pipeline.testing_features, best_pipeline.training_target, best_pipeline.testing_target
 
-def Global_Model_Explanation(model = None, x_train = None, x_test = None, y_train = None, y_test = None, feature_names = None,classes = None, explantion_data = None, design = None):
+def Global_Model_Explanation(model = None, x_train = pd.DataFrame() , x_test = pd.DataFrame(), y_train = pd.DataFrame(), y_test = pd.DataFrame(), feature_names = None,classes = None, explantion_data = None, design = None):
     warnings.filterwarnings('ignore')
     if globals_file.imported_model_files:
         model, x_train, x_test, y_train, y_test = get_best_pipeline(design)
     if model == None:
         return "Exported Pipeline is missing"
-    if x_train == None:
+    if x_train.empty:
         return "Training features is missing"
-    if x_test == None:
+    if x_test.empty:
         return "Testing features is missing"
-    if y_train == None:
+    if y_train.empty:
         return "Training Target is missing"
-    if y_test == None:
+    if y_test.empty:
         return "Testing Target is missing"
     #Using SHAP TabularExplainer
     explainer = TabularExplainer(model, 
