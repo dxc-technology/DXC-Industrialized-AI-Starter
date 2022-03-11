@@ -107,3 +107,5 @@ def publish_model_files(github_design):
     git_operation_model_push(DIR_NAME, BRANCH, COMMIT_MSG)
     
     globals_file.imported_model_files = True
+    
+    os.remove("best_pipeline.py")
