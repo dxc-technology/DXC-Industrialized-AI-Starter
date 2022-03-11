@@ -178,11 +178,11 @@ streamlit-pandas-profiling"""
       pipeline_save_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Model_Folder"]) + "/best_pipeline.py"
       with open(pipeline_save_path, "r") as txt_file:
           script = txt_file.readlines()
+      script = open(pipeline_save_path).read()
     else:
       with open("best_pipeline.py", "r") as txt_file:
           script = txt_file.readlines()
-
-    script = open("best_pipeline.py").read()
+      script = open("best_pipeline.py").read()
     script = script.replace('import numpy as np', '')
     script = script.replace('import pandas as pd', '')
     if not globals_file.imported_model_files:
