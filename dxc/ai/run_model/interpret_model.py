@@ -3,6 +3,7 @@ from raiwidgets import ExplanationDashboard
 #from interpret_community.widget import ExplanationDashboard
 import warnings
 import sys
+from dxc.ai.global_variables import globals_file
 
 def get_best_pipeline(github_design): 
     model_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Model_Folder"]) + '/'
