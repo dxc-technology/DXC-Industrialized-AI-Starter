@@ -14,3 +14,4 @@ run_experiment_y_test = None
 run_experiment_model = None
 run_experiment_datatransformed = None
 run_experiment_labeldata = None
+imported_model_files = False
