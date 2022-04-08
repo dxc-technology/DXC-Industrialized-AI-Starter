@@ -114,5 +114,8 @@ def publish_model_files(github_design):
     
     globals_file.imported_model_files = True
     
-    os.remove("best_pipeline.py")
+    try:
+      os.remove("best_pipeline.py")
+    except:
+      pass
       
