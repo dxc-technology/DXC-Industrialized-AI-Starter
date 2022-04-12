@@ -69,10 +69,16 @@ def generate_model_files(github_design):
     data_save_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Model_Folder"]) + "/prepared_data.csv"
     tpot_data.to_csv(data_save_path, index=False)
     print('Data saved in prepared_data.csv file')
-
-    with open("best_pipeline.py", "r") as txt_file:
-        script = txt_file.readlines()
-    script = open("best_pipeline.py").read()
+    try:
+        with open("best_pipeline.py", "r") as txt_file:
+            script = txt_file.readlines()
+        script = open("best_pipeline.py").read()
+    except:
+        if globals_file.imported_model_files:
+            pipeline_save_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Model_Folder"]) + "/best_pipeline.py"
+            with open(pipeline_save_path, "r") as txt_file:
+                script = txt_file.readlines()
+            script = open(pipeline_save_path).read()
     data_save_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Model_Folder"]) + "/prepared_data.csv"
     script = script.replace("'/content\\data_file.csv\', sep=\'COLUMN_SEPARATOR\', dtype=np.float64", repr(str(data_save_path)) )
     pipeline_save_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Model_Folder"]) + "/best_pipeline.py"
@@ -108,4 +114,8 @@ def publish_model_files(github_design):
     
     globals_file.imported_model_files = True
     
-    os.remove("best_pipeline.py")
+    try:
+      os.remove("best_pipeline.py")
+    except:
+      pass
+      
