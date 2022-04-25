@@ -43,6 +43,14 @@ def publish_model(github_design):
 
     if not os.path.exists(github_design["Repository_Name"] + '/' + github_design["Github_Code_Folder"]):
        os.makedirs(github_design["Repository_Name"] + '/' + github_design["Github_Code_Folder"]) 
+        
+    if not globals_file.imported_model_files:
+      try:
+          folder_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Model_Folder"]) + "/best_pipeline.py"
+          if os.path.exists(folder_path):
+             globals_file.imported_model_files = True
+      except:
+            pass
 
     if globals_file.imported_model_files:
 
