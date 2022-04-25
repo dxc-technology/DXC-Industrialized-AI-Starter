@@ -42,7 +42,15 @@ def publish_app_api(github_design):
 
     if not os.path.exists(github_design["Repository_Name"]):
        os.makedirs(github_design["Repository_Name"]) 
-
+    
+    if not globals_file.imported_model_files:
+      try:
+          folder_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Model_Folder"]) + "/best_pipeline.py"
+          if os.path.exists(folder_path):
+             globals_file.imported_model_files = True
+      except:
+            pass
+        
     if globals_file.imported_model_files:
 
       encoder_file_path = str(github_design["Repository_Name"]) + '/' + str(github_design["Github_Model_Folder"]) + "/encoder.pkl"
