@@ -49,7 +49,7 @@ from .run_model.interpret_model import Explanation_Dashboard
 # from .unsupervised_sentiment_analysis.kmeans_sentiment_analysis import kmeans_sentiment_analyzer
 # from .unsupervised_sentiment_analysis.kmeans_sentiment_analysis import kmeans_sentiment_predictor
 
-from .publish_microservice.publish_microservice import publish_microservice
+# from .publish_microservice.publish_microservice import publish_microservice
 from .publish_microservice.publish_new_microservice import publish_app_api
 
 from .deploy_app.build_app import generate_req_files
