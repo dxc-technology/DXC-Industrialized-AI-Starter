@@ -257,9 +257,10 @@ else:
     df['target'] = tpot_data['target']
 st.write(df)
 #pandas profling-report
-st.subheader('Profiling Report of your dataset')
-pr = df.profile_report()
-st_profile_report(pr)
+### To-Do: Uncomment the below three lines of code if you want to see profiling report in your web app.
+# st.subheader('Profiling Report of your dataset')
+# pr = df.profile_report()
+# st_profile_report(pr)
     """
 
     app_script = app_script.replace('best_pipeline', script)
