@@ -1,0 +1,69 @@
+# This repository adheres to the publiccode.yml standard by including this 
+# metadata file that makes public software easily discoverable.
+# More info at https://github.com/italia/publiccode.yml
+
+publiccodeYmlVersion: '0.2'
+categories:
+  - application-development
+  - workflow-management
+description:
+  en:
+    features:
+      - data-science
+      - automl
+      - python
+    genericName: Software to deploy AI algorithms
+    longDescription: |
+      If you are a data scientist, working on an algorithm that you would like
+      to deploy across the enterprise, DXC's Industrialized AI starter makes it
+      easier for you to:
+
+
+      - Access, clean, and explore raw data
+
+      - Build data pipelines
+
+      - Run AI experiments
+
+      - Publish microservices
+
+
+      The repository is provided with links to example notebooks for individual
+      models. These sample notebooks help to understand on how to use each
+      function, what parameters are expected for each function and what will be
+      the output of each function in a model. 
+    shortDescription: |-
+      DXC Industrialized AI Starter makes it easy for you to deploy your AI
+      algorithms (Industrialize).
+developmentStatus: stable
+it:
+  conforme:
+    gdpr: false
+    lineeGuidaDesign: false
+    misureMinimeSicurezza: false
+    modelloInteroperabilita: false
+  countryExtensionVersion: '0.2'
+  piattaforme:
+    anpr: false
+    cie: false
+    pagopa: false
+    spid: false
+legal:
+  license: Apache-2.0
+localisation:
+  availableLanguages:
+    - en
+  localisationReady: true
+maintenance:
+  contacts:
+    - name: Karthikreddy Kuna
+    - name: Madhu Bandru
+  type: internal
+name: DXC Industrialized AI Starter
+platforms:
+  - windows
+  - mac
+  - linux
+releaseDate: '2022-04-26'
+softwareType: standalone/desktop
+url: 'https://github.com/dxc-technology/DXC-Industrialized-AI-Starter.git'
