@@ -4,7 +4,7 @@ scrubadub==1.2.2
 feature_engine==1.2.0
 pymongo==4.0.1
 pmdarima==1.8.4
-ftfy==6.0.3
+ftfy==6.1.1
 interpret_community==0.24.2
 missingno==0.5.0
 arrow==1.1.1
